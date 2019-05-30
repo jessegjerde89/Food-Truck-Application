@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import TrucksMap from "../MapComponents/TrucksMap"
 import { connect } from 'react-redux'
+require('dotenv').config()
 // import '../../../en'
 
 class TruckMapContainer extends Component {

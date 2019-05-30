@@ -21,7 +21,7 @@ router.post('/register', (req, res, next) => {
   console.log(req.body)
   const queryText = `INSERT INTO "user" (username, password, is_vendor, vendor_name) 
                       VALUES ($1, $2, $3, $4) RETURNING id`;
-  pool.query(queryText, [username, password, req.body.is_vendor, req.body.vendor_name])
+  pool.query(queryText, [username, password, req.body.isvendor, req.body.vendorname])
     .then(() => res.sendStatus(201))
     .catch(() => res.sendStatus(500));
 });
