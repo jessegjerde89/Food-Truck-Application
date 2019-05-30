@@ -17,7 +17,7 @@ componentDidMount() {
             <div>
 
 
-                <h1>Vendor Page </h1>
+                <h1>{this.props.reduxState.user.vendor_name} Menu </h1>
                 <table>
                     <tr>
                     <th> Menu Item </th>

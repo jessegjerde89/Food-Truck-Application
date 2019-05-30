@@ -4,9 +4,9 @@ import { connect } from 'react-redux'
 class VendorDashboard extends Component {
     state = {
         item: '',
-        itemNumber: 0, 
+        itemNumber: '', 
         description: '',
-        price: 0
+        price: ''
       }
       
       componentDidMount() {
@@ -30,7 +30,7 @@ class VendorDashboard extends Component {
         render() {
             return (
         <div>
-            <h2> Vendor Dashboard</h2>
+            <h2> {this.props.reduxState.user.username}'s Dashboard</h2>
         <button
             type="button"
             onClick={this.handleAdd}
@@ -45,7 +45,7 @@ class VendorDashboard extends Component {
             onChange={this.handleInputChangeFor("item")}
             />
 
-             <input 
+          <input 
             type="number"
             placeholder="itemNumber"
             name="itemNumber"
@@ -60,7 +60,7 @@ class VendorDashboard extends Component {
             value={this.state.description}
             onChange={this.handleInputChangeFor("description")}
           />
-            <input 
+          <input 
             type="number"
             placeholder="price"
             name="price"
@@ -77,9 +77,21 @@ class VendorDashboard extends Component {
             </tr>
 
               <tr>
-                {JSON.stringify(this.props)}
+                  {this.props.item.map(item => {
+                   return {item.item}
+                  })}
+                {this.props.item.map(item => {
+                   return {item.item_number}
+                  })}
+                  {this.props.item.map(item => {
+                   return <td>{item.description}
+                  })}
+                   {this.props.item.map(item => {
+                   return <td>{item.price}</td>
+                  })}
+
               </tr>
-      
+              
           </table>
         </div>
       
@@ -89,10 +101,8 @@ class VendorDashboard extends Component {
       
       const mapState = reduxState => {
         return {
-            // item: reduxState.item, 
-            // itemNumber: reduxState.itemNumber, 
-            // description: reduxState.description,
-            // price: reduxState.price 
+            item: reduxState.menuItem, 
+           
             reduxState
 
             }   

@@ -65,6 +65,7 @@ componentDidMount() {
         />
 
         <button onClick={this.handleClick}>Change Location</button>
+        {JSON.stringify(this.props.reduxState.locations)}
             </div>
             )
         }  
