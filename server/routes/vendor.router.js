@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     console.log('in get', req.body)
-    const queryText = `SELECT "item", "description", "price" FROM "menu" `
+    const queryText = `SELECT * FROM "menu" `
                         // WHERE "menu"."number" = 1`
     pool.query(queryText)
     .then( response => {
@@ -20,10 +20,10 @@ router.get('/', (req, res) => {
 
 
 router.post('/', (req, res) => {
-    console.log('line 23', req.params)
-    const queryText = `INSERT INTO "menu" ("item", "item_number", "price", "description")
-                        VALUES ($1, $2, $3, $4)`
-    pool.query(queryText, [req.body.item, req.body.itemNumber, req.body.price, req.body.description])
+    console.log('line 23', req.body.itemNumber)
+    const queryText = `INSERT INTO "menu" ( "item", "price", "description")
+                        VALUES ($1, $2, $3)`
+    pool.query(queryText, [req.body.item, req.body.price, req.body.description])
     .then( response => {
         console.log('response from post', response)
         res.sendStatus(201)

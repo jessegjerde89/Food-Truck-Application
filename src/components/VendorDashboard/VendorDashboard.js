@@ -19,6 +19,11 @@ class VendorDashboard extends Component {
         console.log(this.state)
       this.props.dispatch({type: 'ADD_ITEM', payload: this.state})
       }
+
+      handleDelete = (event) => {
+        event.preventDefault()
+        this.props.dispatch({})
+      }
       
 
         handleInputChangeFor = propertyName => (event) => {
@@ -44,15 +49,6 @@ class VendorDashboard extends Component {
             value={this.state.item}
             onChange={this.handleInputChangeFor("item")}
             />
-
-          <input 
-            type="number"
-            placeholder="itemNumber"
-            name="itemNumber"
-            value={this.state.itemNumber}
-            onChange={this.handleInputChangeFor("itemNumber")}
-            />
-
           <input 
             type="text"
             placeholder="description"
@@ -70,28 +66,23 @@ class VendorDashboard extends Component {
       
           <table>
             <tr>
-              <th> Menu Item </th>
               <th> Item Number </th>
+              <th> Item </th>
               <th> Description </th>
               <th> Price </th>
             </tr>
 
-              <tr>
                   {this.props.item.map(item => {
-                   return {item.item}
+                   return ( <tr> 
+                            <td> {item.id} </td>
+                            <td> {item.item} </td>
+                            <td> {item.description} </td>
+                            <td> {item.price} </td> 
+                            <button onClick={this.handleDelete}>Delete</button>
+                            <button onClick={this.handleEdit}>Edit</button>
+                            </tr> )
                   })}
-                {this.props.item.map(item => {
-                   return {item.item_number}
-                  })}
-                  {this.props.item.map(item => {
-                   return <td>{item.description}
-                  })}
-                   {this.props.item.map(item => {
-                   return <td>{item.price}</td>
-                  })}
-
-              </tr>
-              
+             
           </table>
         </div>
       

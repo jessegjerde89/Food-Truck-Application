@@ -40,11 +40,21 @@ function* deleteitems(action) {
     }
 }
 
+function* edititems(action) {
+    try {
+        yield axios.put(`/api/vendor/${action.payload}`)
+        yield put({type:'FETCH_DASH'})
+    }catch(error) {
+        console.log(error)
+    }    
+}
+
 
 function* menuItemSaga(){
 yield takeLatest('FETCH_DASH', fetchitems)
 yield takeLatest('ADD_ITEM', additems)
-// yield takeLatest()
+yield takeLatest('DELETE_ITEM', deleteitems)
+yield takeLatest('EDIT_ITEM', edititems)
 }
 
 export default menuItemSaga
