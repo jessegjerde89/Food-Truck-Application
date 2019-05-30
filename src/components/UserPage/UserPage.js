@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 
-import Button from '@material-ui/core/Button';
+
 
 
 
