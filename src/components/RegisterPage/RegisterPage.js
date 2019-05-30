@@ -5,6 +5,8 @@ class RegisterPage extends Component {
   state = {
     username: '',
     password: '',
+    isvendor: '',
+    vendorname: ''
   };
 
   registerUser = (event) => {
@@ -16,6 +18,8 @@ class RegisterPage extends Component {
         payload: {
           username: this.state.username,
           password: this.state.password,
+          isvendor: this.state.isvendor,
+          vendorname: this.state.vendorname
         },
       });
     } else {
@@ -41,7 +45,7 @@ class RegisterPage extends Component {
           </h2>
         )}
         <form onSubmit={this.registerUser}>
-          <h1>Register User</h1>
+          <h3>Register User / Vendor</h3>
           <div>
             <label htmlFor="username">
               Username:
@@ -65,6 +69,28 @@ class RegisterPage extends Component {
             </label>
           </div>
           <div>
+            <label htmlFor="vendorname">
+              Vendor Name:
+            <input 
+              type="text"
+              name="vendorname"
+              value={this.state.vendorname}
+              onChange={this.handleInputChangeFor('vendorname')}
+              />
+            </label>
+          </div>
+          <div>
+            <label htmlFor="isvendor">
+            Are You A Vendor :
+            <input 
+            type="boolean"
+            name="isvendor"
+            value={this.state.isvendor}
+            onChange={this.handleInputChangeFor('isvendor')}
+            />
+            </label>
+          </div>
+          <div>
             <input
               className="register"
               type="submit"
@@ -73,7 +99,7 @@ class RegisterPage extends Component {
             />
           </div>
         </form>
-        <center>
+        {/* <center> */}
           <button
             type="button"
             className="link-button"
@@ -81,7 +107,14 @@ class RegisterPage extends Component {
           >
             Login
           </button>
-        </center>
+          {/* <button
+            type="button"
+            className="link-button"
+            onClick={() => {this.props.dispatch({type: 'SET_TO_LOGIN_MODE'})}}
+          >
+            Register Vendor
+          </button> */}
+        {/* </center> */}
       </div>
     );
   }
