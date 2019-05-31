@@ -89,6 +89,7 @@ getGeoLocation = () => {
 onMarkerClick = (event) => {
   
   console.log("clicked!")
+  
 }
   render() {
 
