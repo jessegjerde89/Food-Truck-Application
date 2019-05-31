@@ -9,8 +9,8 @@ router.get('/', (req, res) => {
     const queryText = 'SELECT "latitude", "longitude" FROM "location"'; 
     pool.query(queryText)
     .then(response => {
-        console.log('response location get', response)
-        res.send(response.data)
+        console.log('response location get', response.rows, response.data)
+        res.send(response.rows)
     }).catch( error =>{ 
         console.log('error response location', error)
         res.sendStatus(500)

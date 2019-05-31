@@ -16,6 +16,7 @@ function* fetchlocation() {
 
     try {
         let locationResponse = yield axios.get('api/location')
+        console.log('here', locationResponse)
         yield put({type: "SET_LOCATION", payload: locationResponse.data})
 
     }catch (error) {
@@ -26,7 +27,7 @@ function* fetchlocation() {
 
 function* locationSaga() {
     yield takeLatest('ADD_LOCATION', addlocation)
-    yield takeLatest('FETCH_LOCATION', fetchlocation)
+    yield takeEvery('FETCH_LOCATION', fetchlocation)
 }
 
 export default locationSaga

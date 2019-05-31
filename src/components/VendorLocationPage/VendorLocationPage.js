@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect} from 'react-redux'
 
+                 
+
 
 export class VendorLocationPage extends Component {
     
@@ -16,14 +18,12 @@ componentDidMount() {
 
     changeLat = (event) => {
         this.setState({
-             
             latitude: event.target.value
         })
     }    
     
     changeLong = (event) => {
         this.setState({ 
-          
             longitude: event.target.value
         })
     }
@@ -33,6 +33,12 @@ componentDidMount() {
         console.log(this.state)
         console.log(this.props.reduxState)
         {this.props.dispatch({ type: 'ADD_LOCATION', payload: this.state})}
+        // this.setState({
+            // latitude: this.props.reduxState.locations.latitude[this.props.reduxState.locations.length - 1],
+            //  lng: this.props.reduxState.locations.longitude[this.props.reduxState.locations.length - 1]
+                
+            // longitude: this.props.reduxState.locations.longitude[this.props.reduxState.locations.length - 1]
+        // })
     }
     
     render() {
@@ -65,6 +71,7 @@ componentDidMount() {
         />
 
         <button onClick={this.handleClick}>Change Location</button>
+        
             </div>
             )
         }  

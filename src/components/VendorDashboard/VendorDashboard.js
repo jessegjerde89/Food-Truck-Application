@@ -4,13 +4,13 @@ import { connect } from 'react-redux'
 class VendorDashboard extends Component {
     state = {
         item: '',
-        itemNumber: 0, 
+        itemNumber: '', 
         description: '',
-        price: 0
+        price: ''
       }
       
       componentDidMount() {
-        // this.props.dispatch({ type: 'FETCH_DASH'})
+        this.props.dispatch({ type: 'FETCH_DASH'})
         console.log(this.props)
       }
       
@@ -18,6 +18,10 @@ class VendorDashboard extends Component {
         event.preventDefault()
         console.log(this.state)
       this.props.dispatch({type: 'ADD_ITEM', payload: this.state})
+      }
+
+      handleDelete = (deletethis) => {
+        this.props.dispatch({type: 'DELETE_ITEM', payload: {id:deletethis}})
       }
       
 
@@ -30,7 +34,7 @@ class VendorDashboard extends Component {
         render() {
             return (
         <div>
-            <h2> Vendor Dashboard</h2>
+            <h2> {this.props.reduxState.user.username}'s Dashboard</h2>
         <button
             type="button"
             onClick={this.handleAdd}
@@ -44,15 +48,6 @@ class VendorDashboard extends Component {
             value={this.state.item}
             onChange={this.handleInputChangeFor("item")}
             />
-
-             <input 
-            type="number"
-            placeholder="itemNumber"
-            name="itemNumber"
-            value={this.state.itemNumber}
-            onChange={this.handleInputChangeFor("itemNumber")}
-            />
-
           <input 
             type="text"
             placeholder="description"
@@ -60,7 +55,7 @@ class VendorDashboard extends Component {
             value={this.state.description}
             onChange={this.handleInputChangeFor("description")}
           />
-            <input 
+          <input 
             type="number"
             placeholder="price"
             name="price"
@@ -70,16 +65,23 @@ class VendorDashboard extends Component {
       
           <table>
             <tr>
-              <th> Menu Item </th>
               <th> Item Number </th>
+              <th> Item </th>
               <th> Description </th>
               <th> Price </th>
             </tr>
 
-              <tr>
-                {JSON.stringify(this.props)}
-              </tr>
-      
+                  {this.props.item.map(item => {
+                   return ( <tr> 
+                            <td> {item.id} </td>
+                            <td> {item.item} </td>
+                            <td> {item.description} </td>
+                            <td> {item.price} </td> 
+                            <button onClick={() => this.handleDelete(item.id)}>Delete</button>
+                            <button onClick={this.handleEdit}>Edit</button>
+                            </tr> )
+                  })}
+             
           </table>
         </div>
       
@@ -89,10 +91,8 @@ class VendorDashboard extends Component {
       
       const mapState = reduxState => {
         return {
-            // item: reduxState.item, 
-            // itemNumber: reduxState.itemNumber, 
-            // description: reduxState.description,
-            // price: reduxState.price 
+            item: reduxState.menuItem, 
+           
             reduxState
 
             }   

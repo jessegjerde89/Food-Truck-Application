@@ -22,7 +22,6 @@ const Nav = (props) => (
           <Link className="nav-link" to="/info">
             Info Page
           </Link>
-          <LogOutButton className="nav-link"/>
         </>
       )}
       {/* Always show this link since the about page is not protected */}
@@ -39,6 +38,7 @@ const Nav = (props) => (
       <Link className="nav-link" to="/vendordash">
       VendorDash
       </Link>
+      <LogOutButton className="nav-link"/>
       </div>
   </div>
 );
