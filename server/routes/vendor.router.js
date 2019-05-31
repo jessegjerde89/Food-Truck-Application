@@ -34,9 +34,11 @@ router.post('/', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-    console.log(req.params.id, req.user.id); 
-    let queryText = `DELETE FROM "menu" WHERE ("menu"."id"=$1 AND "menu"."user.id"=$2)`; 
-    pool.query(queryText, [req.params.id, req.user.id])
+    console.log(req.params.id, req.user.id, req.body);
+    // let queryText = `DELETE FROM "menu" WHERE ("menu"."id"=$1 AND "menu"."user.id"=$2)`; 
+    let queryText = `DELETE FROM "menu" WHERE "menu"."id"=$1`; 
+    // pool.query(queryText, [req.params.id, req.user.id])
+    pool.query(queryText, [req.params.id])
     .then(response => {
         console.log(response)
         res.sendStatus(201)
@@ -45,5 +47,18 @@ router.delete('/:id', (req, res) => {
         res.sendStatus(500)
     }); 
 }); 
+
+router.put('/:id', (req, res) => {
+    console.log(req.body)
+    let queryText = `UPDATE from "menus" WHERE ("menu"."id"=$1)`; 
+    pool.query(queryText, [req.params.id])
+    .then(response => {
+        console.log(response)
+        res.sendStatus(201)
+    }).catch(error => {
+        console.log('error in put', error)
+        res.sendStatus(500)
+    }); 
+})
 
 module.exports = router;

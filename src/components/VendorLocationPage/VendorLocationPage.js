@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect} from 'react-redux'
 
+                 
+
 
 export class VendorLocationPage extends Component {
     
@@ -16,14 +18,12 @@ componentDidMount() {
 
     changeLat = (event) => {
         this.setState({
-             
             latitude: event.target.value
         })
     }    
     
     changeLong = (event) => {
         this.setState({ 
-          
             longitude: event.target.value
         })
     }
@@ -65,7 +65,7 @@ componentDidMount() {
         />
 
         <button onClick={this.handleClick}>Change Location</button>
-        {JSON.stringify(this.props.reduxState.locations)}
+        {JSON.stringify(this.props.reduxState.locations[this.props.reduxState.locations.length - 1])}
             </div>
             )
         }  

@@ -16,9 +16,14 @@ class TruckMarker extends Component{
     selectedPlace: {}
   }
 
-componentWillUpdate() { this.getGeoLocation() }
+componentWillUpdate() {
+ 
+   this.getGeoLocation() }
 
-componentDidMount() { this.delayedShowMarker() }
+componentDidMount() { 
+  
+  this.delayedShowMarker() 
+}
 
 delayedShowMarker() { this.getGeoLocation() }
 
@@ -48,7 +53,9 @@ getGeoLocation = () => {
 }
   render(){
 
-  
+    // position={{ lat: (this.props.reduxState.locations.latitude[this.props.reduxState.locations.length - 1]),
+    //   lng: (this.props.reduxState.locations.longitude[this.props.reduxState.locations.length - 1])
+    // }}
 
 return(
     <>
@@ -63,6 +70,12 @@ return(
     onClick={this.onMarkerClick}
     name={'Current Location'}
         >
+    <Marker 
+    position={{ lat: this.state.currentLatLng.latitude ,
+                lng: this.state.currentLatLng.longitude
+              }}
+
+    />
     <InfoWindow
       visible={this.state.showingInfoWindow}
       onOpen = {this.windowHasOpened}
@@ -74,10 +87,11 @@ return(
         </div>
     </InfoWindow> 
   </Marker>
-    <Marker 
-    position={{ lat: 45, lng: -93}}
-    onClick={this.handleMarkerClick}
-    />
+    {/* <Marker 
+  position={{ lat: this.props.reduxState.locations.latitude, 
+    lng: this.props.reduxState.locations.longitude }} 
+  onClick={this.handleMarkerClick}
+    /> */}
     </>
     );
   }

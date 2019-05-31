@@ -10,7 +10,7 @@ class VendorDashboard extends Component {
       }
       
       componentDidMount() {
-        // this.props.dispatch({ type: 'FETCH_DASH'})
+        this.props.dispatch({ type: 'FETCH_DASH'})
         console.log(this.props)
       }
       
@@ -20,9 +20,8 @@ class VendorDashboard extends Component {
       this.props.dispatch({type: 'ADD_ITEM', payload: this.state})
       }
 
-      handleDelete = (event) => {
-        event.preventDefault()
-        this.props.dispatch({})
+      handleDelete = (deletethis) => {
+        this.props.dispatch({type: 'DELETE_ITEM', payload: {id:deletethis}})
       }
       
 
@@ -78,7 +77,7 @@ class VendorDashboard extends Component {
                             <td> {item.item} </td>
                             <td> {item.description} </td>
                             <td> {item.price} </td> 
-                            <button onClick={this.handleDelete}>Delete</button>
+                            <button onClick={() => this.handleDelete(item.id)}>Delete</button>
                             <button onClick={this.handleEdit}>Edit</button>
                             </tr> )
                   })}
