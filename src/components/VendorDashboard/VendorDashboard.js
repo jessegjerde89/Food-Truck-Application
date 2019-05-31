@@ -23,6 +23,10 @@ class VendorDashboard extends Component {
       handleDelete = (deletethis) => {
         this.props.dispatch({type: 'DELETE_ITEM', payload: {id:deletethis}})
       }
+
+      handleEdit = (editthis) => {
+        this.props.dispatch({type:'EDIT_ITEM', payload: {id:editthis}})
+      }
       
 
         handleInputChangeFor = propertyName => (event) => {
@@ -63,7 +67,7 @@ class VendorDashboard extends Component {
             onChange={this.handleInputChangeFor("price")}
           />
       
-          <table>
+        <table align="center">
             <tr>
               <th> Item Number </th>
               <th> Item </th>
@@ -72,13 +76,13 @@ class VendorDashboard extends Component {
             </tr>
 
                   {this.props.item.map(item => {
-                   return ( <tr> 
+                   return ( <tr align="center"> 
                             <td> {item.id} </td>
                             <td> {item.item} </td>
                             <td> {item.description} </td>
                             <td> {item.price} </td> 
                             <button onClick={() => this.handleDelete(item.id)}>Delete</button>
-                            <button onClick={this.handleEdit}>Edit</button>
+                            <button onClick={() => this.handleEdit(item.id)}>Edit</button>
                             </tr> )
                   })}
              
