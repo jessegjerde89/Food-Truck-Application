@@ -19,8 +19,6 @@ router.get('/', (req, res) => {
 
     // post the new location of the food truck 
 router.post('/', (req, res) => {
-    // const queryText = `INSERT INTO "location" ("vendor_id", latitude", "longitude") 
-    // VALUES ($1, $2, $3)`
     
     const queryText = `INSERT INTO "location" ("latitude", "longitude") 
                         VALUES ($1, $2)`

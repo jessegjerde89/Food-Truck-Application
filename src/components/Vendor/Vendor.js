@@ -8,7 +8,7 @@ export class Vendor extends Component {
 
     
 componentDidMount() {
-
+    // dispatch for getting menu items
     this.props.dispatch({ type:'FETCH_ITEMS'})
     console.log(this.props)
 }
@@ -21,6 +21,7 @@ componentDidMount() {
                 
 
                 <h1>{this.props.reduxState.user.vendor_name} Menu </h1>
+                {/* table displaying menu items */}
                 <table className="vendorTable">
                     <tr>
                     <th> Menu Item </th>
@@ -31,7 +32,7 @@ componentDidMount() {
                 <tbody>
                     <tr>
                     </tr>
-
+                            {/* mapping through menu items */}
                         {this.props.item.map(item => {
                         return ( <tr >
                                 <td> {item.id} </td>
