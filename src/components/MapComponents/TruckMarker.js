@@ -87,24 +87,23 @@ getGeoLocation = () => {
 }
   render() {
 
-     const icon = { url: 'http://wherethatfoodtruck.com/graphics/default/logo.png', scaledSize: { width: 32, height: 32 } };
+     const icon = { url: 'http://wherethatfoodtruck.com/graphics/default/logo.png', scaledSize: { width: 32, height: 40 } };
   
 
 return (
         <>
 
 
-          <Marker 
+          {/* <Marker 
           position={{ lat: this.state.currentLocal.lat, 
                         lng: this.state.currentLocal.lng }} 
           onClick={this.onMarkerClick}
           name={'Your Here'}
-              />
+              /> */}
           <Marker 
           position={{ lat: this.state.currentLocal.lat,
                       lng: this.state.currentLocal.lng
                     }}
-
           >
           <InfoWindow
             visible={this.state.showingInfoWindow}
@@ -139,25 +138,24 @@ return (
       <div>
                 <div>
                     <h2>Key: </h2>       
-                </div>
-                <div>
+                
                     Trucks: <img 
                     src= "http://wherethatfoodtruck.com/graphics/default/logo.png" 
                     alt="truck-icon" 
                     width= "10%"
-                    height= "5%">
-                    </img>
-                </div>
-                <div>
-                    Favorite Trucks: <img 
+                    height= "5%"
+                    />
+                    
+                    You are here: <img 
                     src="https://png.pngtree.com/element_our/md/20180526/md_5b09436fd0515.png" 
                     alt="fav-icon"
-                    width="15%"
-                    >
-                    </img>
-                </div>
-                <div>
-                    You are here: <img src="" alt="you-are-here"></img>
+                    width="20%"
+                    />
+  
+                    Favorite : <img 
+                    src="http://simpleicon.com/wp-content/uploads/Google-Place-Optimization.png" 
+                    alt="you-are-here"
+                    width="15%"/>
                 </div>
         
         <h3>Add New Spot</h3>
