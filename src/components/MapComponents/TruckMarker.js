@@ -6,28 +6,62 @@ import { connect } from 'react-redux'
 class TruckMarker extends Component{
 
   state = {
-    currentLatLng: {
+    latitude: '0',
+    longitude: '0',
+    currentLocal: {
       lat: 44.977753,
       lng: -93.265015, 
-    }, 
+    },
     isMarkerShown: false, 
     showingInfoWindow: false, 
     activeMarker: {}, 
-    selectedPlace: {}
+    selectedPlace: {},
+    long: '',
+    lati: '',
   }
 
-componentWillUpdate() {
- 
-   this.getGeoLocation() }
-
-componentDidMount() { 
-  
-  this.delayedShowMarker() 
+componentDidMount() {
+this.props.dispatch({ type: 'SET_LOCATION'})
+console.log(this.props)
 }
+
+changeLat = (event) => {
+    this.setState({
+        latitude: parseInt(event.target.value)
+    })
+}    
+
+changeLong = (event) => {
+    this.setState({ 
+        longitude: parseInt(event.target.value)
+    })
+}
+
+handleClick = (event) => {
+    event.preventDefault()
+    console.log(this.state)
+    console.log(this.props.reduxState)
+    {this.props.dispatch({ type: 'ADD_LOCATION', payload: this.state})}
+
+       this.setState({
+         lati: (this.state.latitude), 
+         long: (this.state.longitude)
+       })
+    // this.setState({
+    // lati : (this.props.reduxState.latitude[this.props.reduxState.length - 1]),
+    // long : (this.props.reduxState.longitude[this.props.reduxState.length - 1])
+    // })
+
+    console.log(this.state.lati, this.state.long)
+}
+componentWillUpdate() { this.getGeoLocation() }
+
+componentDidMount() { this.delayedShowMarker() }
 
 delayedShowMarker() { this.getGeoLocation() }
 
   onMarkerClick = (props, marker, event) => {
+    event.preventDefault()
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
@@ -40,7 +74,7 @@ getGeoLocation = () => {
     navigator.geolocation.getCurrentPosition(
     position => {
       this.setState(prevState => ({
-        currentLatLng: {
+        currentLocal: {
          ...prevState.currentLatLng, 
      lat: position.coords.latitude,
       lng: position.coords.longitude
@@ -51,54 +85,107 @@ getGeoLocation = () => {
   )
   }
 }
-  render(){
+  render() {
 
-    // position={{ lat: (this.props.reduxState.locations.latitude[this.props.reduxState.locations.length - 1]),
-    //   lng: (this.props.reduxState.locations.longitude[this.props.reduxState.locations.length - 1])
-    // }}
+     const icon = { url: 'http://wherethatfoodtruck.com/graphics/default/logo.png', scaledSize: { width: 32, height: 32 } };
+  
 
-return(
-    <>
-      {/* <Marker
-        position={this.props.location}
-        icon={Foodtruck}
-      >
-      </Marker> */}
-    <Marker 
-    position={{ lat: this.state.currentLatLng.lat, 
-                  lng: this.state.currentLatLng.lng }} 
-    onClick={this.onMarkerClick}
-    name={'Current Location'}
-        >
-    <Marker 
-    position={{ lat: this.state.currentLatLng.latitude ,
-                lng: this.state.currentLatLng.longitude
+return (
+        <>
+
+
+          <Marker 
+          position={{ lat: this.state.currentLocal.lat, 
+                        lng: this.state.currentLocal.lng }} 
+          onClick={this.onMarkerClick}
+          name={'Your Here'}
+              />
+          <Marker 
+          position={{ lat: this.state.currentLocal.lat,
+                      lng: this.state.currentLocal.lng
+                    }}
+
+          >
+          <InfoWindow
+            visible={this.state.showingInfoWindow}
+            onOpen = {this.windowHasOpened}
+            onClose = {this.windowHasClosed}
+            marker={this.state.activeMarker}
+            >
+              <div>
+                <h3>You are here!</h3>
+              </div>
+          </InfoWindow> 
+        </Marker>
+      
+      <Marker options={{ icon: icon }}
+        position={{ 
+                lat: this.state.long, 
+                lng: this.state.lati 
               }}
+            >
+        <InfoWindow
+          visible={this.state.showingInfoWindow}
+          onOpen = {this.windowHasOpened}
+          onClose = {this.windowHasClosed}
+          marker={this.state.activeMarker}
+          >
+            <div>
+              <h1>{this.props.reduxState.user.vendor_name}</h1>
+            </div>
+        </InfoWindow> 
+      </Marker>
+        
+      <div>
+                <div>
+                    <h2>Key: </h2>       
+                </div>
+                <div>
+                    Trucks: <img 
+                    src= "http://wherethatfoodtruck.com/graphics/default/logo.png" 
+                    alt="truck-icon" 
+                    width= "10%"
+                    height= "5%">
+                    </img>
+                </div>
+                <div>
+                    Favorite Trucks: <img 
+                    src="https://png.pngtree.com/element_our/md/20180526/md_5b09436fd0515.png" 
+                    alt="fav-icon"
+                    width="15%"
+                    >
+                    </img>
+                </div>
+                <div>
+                    You are here: <img src="" alt="you-are-here"></img>
+                </div>
+        
+        <h3>Add New Spot</h3>
+        
+        <input 
+        type="number" 
+        onChange={this.changeLong} 
+        placeholder="longitude" 
+        />
+        <input 
+        type="number" 
+        onChange={this.changeLat} 
+        placeholder="latitude" 
+        />
 
-    />
-    <InfoWindow
-      visible={this.state.showingInfoWindow}
-      onOpen = {this.windowHasOpened}
-      onClose = {this.windowHasClosed}
-      marker={this.state.activeMarker}
-      >
-        <div>
-          <h1>You are here!</h1>
-        </div>
-    </InfoWindow> 
-  </Marker>
-    {/* <Marker 
-  position={{ lat: this.props.reduxState.locations.latitude, 
-    lng: this.props.reduxState.locations.longitude }} 
-  onClick={this.handleMarkerClick}
-    /> */}
-    </>
+        <button onClick={this.handleClick}>Change Location</button>
+         
+  </div>
+</>
+
     );
   }
 }
 
-  const mapRedux = reduxState => {
-    return { reduxState }
-}
 
+  const mapRedux = reduxState => {
+    return { 
+      reduxState
+   }
+}
 export default connect(mapRedux)(TruckMarker);

@@ -7,7 +7,7 @@ export class MapPage extends Component {
         return (
             <div>
                  <TruckMapContainer />
-                 <VendorLocationPage />
+                 {/* <VendorLocationPage /> */}
             </div>
         )
     }

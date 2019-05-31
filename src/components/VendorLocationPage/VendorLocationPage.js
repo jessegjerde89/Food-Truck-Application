@@ -33,6 +33,12 @@ componentDidMount() {
         console.log(this.state)
         console.log(this.props.reduxState)
         {this.props.dispatch({ type: 'ADD_LOCATION', payload: this.state})}
+        // this.setState({
+            // latitude: this.props.reduxState.locations.latitude[this.props.reduxState.locations.length - 1],
+            //  lng: this.props.reduxState.locations.longitude[this.props.reduxState.locations.length - 1]
+                
+            // longitude: this.props.reduxState.locations.longitude[this.props.reduxState.locations.length - 1]
+        // })
     }
     
     render() {
@@ -65,7 +71,7 @@ componentDidMount() {
         />
 
         <button onClick={this.handleClick}>Change Location</button>
-        {JSON.stringify(this.props.reduxState.locations[this.props.reduxState.locations.length - 1])}
+        
             </div>
             )
         }  
