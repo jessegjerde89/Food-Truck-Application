@@ -85,6 +85,11 @@ getGeoLocation = () => {
   )
   }
 }
+
+onMarkerClick = (event) => {
+  
+  console.log("clicked!")
+}
   render() {
 
      const icon = { url: 'http://wherethatfoodtruck.com/graphics/default/logo.png', scaledSize: { width: 32, height: 40 } };
@@ -122,12 +127,14 @@ return (
                 lat: this.state.long, 
                 lng: this.state.lati 
               }}
+        onClick={this.onMarkerClick}
             >
         <InfoWindow
           visible={this.state.showingInfoWindow}
           onOpen = {this.windowHasOpened}
           onClose = {this.windowHasClosed}
           marker={this.state.activeMarker}
+          
           >
             <div>
               <h1>{this.props.reduxState.user.vendor_name}</h1>
