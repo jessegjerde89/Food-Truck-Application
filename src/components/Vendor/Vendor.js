@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
+import './Vendor.css'
 
 export class Vendor extends Component {
 
@@ -21,7 +21,7 @@ componentDidMount() {
                 
 
                 <h1>{this.props.reduxState.user.vendor_name} Menu </h1>
-                <table align="center">
+                <table className="vendorTable">
                     <tr>
                     <th> Menu Item </th>
                     <th> Item Number </th>
@@ -33,7 +33,7 @@ componentDidMount() {
                     </tr>
 
                         {this.props.item.map(item => {
-                        return ( <tr align="center">
+                        return ( <tr >
                                 <td> {item.id} </td>
                                 <td> {item.item} </td>
                                 <td> {item.description} </td>

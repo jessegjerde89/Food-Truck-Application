@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import './VendorDashboard.css'
 
 class VendorDashboard extends Component {
     state = {
@@ -37,8 +38,8 @@ class VendorDashboard extends Component {
 
         render() {
             return (
-        <div>
-            <h2> {this.props.reduxState.user.username}'s Dashboard</h2>
+        <div align= "center">
+            <h2 > {this.props.reduxState.user.username}'s Dashboard</h2>
         <button
             type="button"
             onClick={this.handleAdd}
@@ -67,7 +68,7 @@ class VendorDashboard extends Component {
             onChange={this.handleInputChangeFor("price")}
           />
       
-        <table align="center">
+        <table className="dashTable">
             <tr>
               <th> Item Number </th>
               <th> Item </th>
@@ -76,14 +77,14 @@ class VendorDashboard extends Component {
             </tr>
 
                   {this.props.item.map(item => {
-                   return ( <tr align="center"> 
+                   return (<tr > 
                             <td> {item.id} </td>
                             <td> {item.item} </td>
                             <td> {item.description} </td>
                             <td> {item.price} </td> 
                             <button onClick={() => this.handleDelete(item.id)}>Delete</button>
                             <button onClick={() => this.handleEdit(item.id)}>Edit</button>
-                            </tr> )
+                            </tr>)
                   })}
              
           </table>

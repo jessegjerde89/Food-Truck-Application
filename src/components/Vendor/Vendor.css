@@ -1,0 +1,11 @@
+.vendorTable * {
+ 
+    border: 3px groove #ba000d;
+    text-align: center; 
+    
+}
+
+.vendorTable {
+    width: 80%; 
+    border-collapse: collapse;
+}

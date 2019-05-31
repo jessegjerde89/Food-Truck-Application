@@ -35,9 +35,14 @@ const Nav = (props) => (
       <Link className="nav-link" to="/vendor">
       Vendor
       </Link>
+      {/* Only a vendor can view this link and access it  */}
+      {props.user.is_vendor && (
+      <>
       <Link className="nav-link" to="/vendordash">
       VendorDash
       </Link>
+      </>
+      )}
       <LogOutButton className="nav-link"/>
       </div>
   </div>
