@@ -13,6 +13,7 @@ componentDidMount() {
     console.log(this.props)
 }
 
+
     render() {
         return (
             
@@ -20,7 +21,7 @@ componentDidMount() {
                 
 
                 <h1>{this.props.reduxState.user.vendor_name} Menu </h1>
-                <table>
+                <table align="center">
                     <tr>
                     <th> Menu Item </th>
                     <th> Item Number </th>
@@ -32,13 +33,12 @@ componentDidMount() {
                     </tr>
 
                         {this.props.item.map(item => {
-                        return ( <tr> 
+                        return ( <tr align="center">
                                 <td> {item.id} </td>
                                 <td> {item.item} </td>
                                 <td> {item.description} </td>
                                 <td> {item.price} </td> 
-                                <button onClick={() => this.handleDelete(item.id)}>Delete</button>
-                                <button onClick={this.handleEdit}>Edit</button>
+                               
                                 </tr> )
                         })}
                 </tbody>
