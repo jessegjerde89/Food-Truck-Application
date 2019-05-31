@@ -15,7 +15,7 @@ const TrucksMap = withScriptjs(withGoogleMap((props) =>{
    
   return (
       <GoogleMap
-      defaultZoom={12}
+      defaultZoom={13}
       defaultCenter={{ lat: props.currentLocation.lat, 
                         lng: props.currentLocation.lng }}
     >
