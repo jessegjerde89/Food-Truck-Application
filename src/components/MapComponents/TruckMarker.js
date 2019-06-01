@@ -20,11 +20,6 @@ class TruckMarker extends Component{
     lati: '',
   }
 
-componentDidMount() {
-this.props.dispatch({ type: 'SET_LOCATION'})
-console.log(this.props)
-}
-
 changeLat = (event) => {
     this.setState({
         latitude: parseInt(event.target.value)
@@ -54,9 +49,16 @@ handleClick = (event) => {
 
     console.log(this.state.lati, this.state.long)
 }
-componentWillUpdate() { this.getGeoLocation() }
+componentWillUpdate() { 
+  this.getGeoLocation() 
+  // this.props.dispatch({ type: 'SET_LOCATION'})
+}
 
-componentDidMount() { this.delayedShowMarker() }
+componentDidMount() {
+   this.delayedShowMarker() 
+   this.props.dispatch({ type: 'SET_LOCATION'})
+  console.log(this.props)
+  }
 
 delayedShowMarker() { this.getGeoLocation() }
 
@@ -122,11 +124,13 @@ return (
               </div>
           </InfoWindow> 
         </Marker>
-      
+      {JSON.stringify(this.props.reduxState.locations)}
+      {/* {this.props.reduxState.locations.map(locals =>
+        
       <Marker options={{ icon: icon }}
         position={{ 
-                lat: this.state.long, 
-                lng: this.state.lati 
+                lat: locals.latitude, 
+                lng: locals.longitude
               }}
         onClick={this.onMarkerClick}
             >
@@ -142,7 +146,8 @@ return (
             </div>
         </InfoWindow> 
       </Marker>
-        
+      )} */}
+    
       <div>
                 <div>
                     <h2>Key: </h2>       

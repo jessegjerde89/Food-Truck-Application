@@ -20,7 +20,9 @@ function* fetchitems() {
 function* additems(action) {
 
     try {
+        console.log('what i need', action.payload)
         yield axios.post('/api/vendor', action.payload)
+        
         yield put({type : 'FETCH_DASH'})
     } 
     catch(error) {

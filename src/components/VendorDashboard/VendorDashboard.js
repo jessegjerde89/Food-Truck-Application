@@ -4,8 +4,8 @@ import './VendorDashboard.css'
 
 class VendorDashboard extends Component {
     state = {
+        user_id: '',
         item: '',
-        itemNumber: '', 
         description: '',
         price: ''
       }
@@ -20,6 +20,11 @@ class VendorDashboard extends Component {
       handleAdd = (event) => {
         event.preventDefault()
         console.log(this.state)
+        
+        // this.setState({
+        //   user_id: this.props.reduxState.user.id
+        // })
+      // this.props.dispatch({type: 'ADD_ITEM', payload: Promise.all([this.state, this.props.reduxState.user.id])})
       this.props.dispatch({type: 'ADD_ITEM', payload: this.state})
       }
 
