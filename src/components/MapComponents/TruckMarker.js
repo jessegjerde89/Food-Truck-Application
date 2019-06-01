@@ -95,9 +95,9 @@ onMarkerClick = (event) => {
 }
   render() {
 
-     const icon = { url: 'http://wherethatfoodtruck.com/graphics/default/logo.png', scaledSize: { width: 32, height: 40 } };
+     const truckIcon = { url: 'http://wherethatfoodtruck.com/graphics/default/logo.png', scaledSize: { width: 32, height: 40 } };
+     const favIcon
   
-
 return (
         <>
 
@@ -125,9 +125,11 @@ return (
           </InfoWindow> 
         </Marker>
       {JSON.stringify(this.props.reduxState.locations)}
-      {/* {this.props.reduxState.locations.map(locals =>
+      
+    
+      {this.props.reduxState.locations.map(locals =>
         
-      <Marker options={{ icon: icon }}
+      <Marker options={{ icon: truckIcon }}
         position={{ 
                 lat: locals.latitude, 
                 lng: locals.longitude
@@ -146,8 +148,8 @@ return (
             </div>
         </InfoWindow> 
       </Marker>
-      )} */}
-    
+      )}
+      
       <div>
                 <div>
                     <h2>Key: </h2>       
