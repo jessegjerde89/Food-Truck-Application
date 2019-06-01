@@ -2,9 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-
     // get the new location of the food truck 
-
 router.get('/', (req, res) => {
     const queryText = 'SELECT "latitude", "longitude" FROM "location"'; 
     pool.query(queryText)
