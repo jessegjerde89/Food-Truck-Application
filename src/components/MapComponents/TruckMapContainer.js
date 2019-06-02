@@ -9,8 +9,8 @@ class TruckMapContainer extends Component {
 
 	state = {
 		currentLatLng: {
-			lat: 44.977753,
-			lng: -93.265015, 
+			lat: 0,
+			lng: 0, 
 		}
 	}
 	
