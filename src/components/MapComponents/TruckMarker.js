@@ -9,8 +9,8 @@ class TruckMarker extends Component{
     latitude: '0',
     longitude: '0',
     currentLocal: {
-      lat: 44.977753,
-      lng: -93.265015, 
+      lat: 0,
+      lng: 0 
     },
     isMarkerShown: false, 
     showingInfoWindow: false, 
@@ -105,12 +105,12 @@ return (
         <div>
 
 
-          {/* <Marker 
+          <Marker 
           position={{ lat: this.state.currentLocal.lat, 
                         lng: this.state.currentLocal.lng }} 
           onClick={this.onMarkerClick}
           name={'Your Here'}
-              /> */}
+              />
           <Marker 
           position={{ lat: this.state.currentLocal.lat,
                       lng: this.state.currentLocal.lng
@@ -128,6 +128,8 @@ return (
           </InfoWindow> 
         </Marker>
         {JSON.stringify(this.props.reduxState.locations)}
+        <div></div>
+        {JSON.stringify(this.state)}
         
         {/* {truckIcons && (
                       
