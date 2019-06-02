@@ -1,11 +1,13 @@
 const locationsReducer = (state = {}, action) => {
     switch(action.type) {
         case 'SET_LOCATION':
-        console.log('4', action)
-            return action.payload; 
+        if ( action.payload ) {
+            return action.payload
+        } else {
+            return state
+        }
         default: 
             return state; 
-
     }
 }
 

@@ -20,20 +20,15 @@ class TruckMarker extends Component{
     lati: '',
   }
 
-componentDidMount() {
-this.props.dispatch({ type: 'SET_LOCATION'})
-console.log(this.props)
-}
-
 changeLat = (event) => {
     this.setState({
-        latitude: parseInt(event.target.value)
+        latitude: parseFloat(event.target.value)
     })
 }    
 
 changeLong = (event) => {
     this.setState({ 
-        longitude: parseInt(event.target.value)
+        longitude: parseFloat(event.target.value)
     })
 }
 
@@ -54,9 +49,16 @@ handleClick = (event) => {
 
     console.log(this.state.lati, this.state.long)
 }
-componentWillUpdate() { this.getGeoLocation() }
+componentWillUpdate() { 
+  this.getGeoLocation() 
+  // this.props.dispatch({ type: 'SET_LOCATION'})
+}
 
-componentDidMount() { this.delayedShowMarker() }
+componentDidMount() {
+   this.delayedShowMarker() 
+   this.props.dispatch({ type: 'SET_LOCATION'})
+  console.log(this.props)
+  }
 
 delayedShowMarker() { this.getGeoLocation() }
 
@@ -93,11 +95,14 @@ onMarkerClick = (event) => {
 }
   render() {
 
-     const icon = { url: 'http://wherethatfoodtruck.com/graphics/default/logo.png', scaledSize: { width: 32, height: 40 } };
-  
+     const truckIcon = { url: 'http://wherethatfoodtruck.com/graphics/default/logo.png', scaledSize: { width: 32, height: 40 } };
+     const favIcon = { url: "http://simpleicon.com/wp-content/uploads/Google-Place-Optimization.png" }
+     let truckIcons =  (this.props.reduxState.locations)
+    // let truckIcons
+
 
 return (
-        <>
+        <div>
 
 
           {/* <Marker 
@@ -122,27 +127,35 @@ return (
               </div>
           </InfoWindow> 
         </Marker>
-      
-      <Marker options={{ icon: icon }}
-        position={{ 
-                lat: this.state.long, 
-                lng: this.state.lati 
-              }}
-        onClick={this.onMarkerClick}
-            >
-        <InfoWindow
-          visible={this.state.showingInfoWindow}
-          onOpen = {this.windowHasOpened}
-          onClose = {this.windowHasClosed}
-          marker={this.state.activeMarker}
-          
-          >
-            <div>
-              <h1>{this.props.reduxState.user.vendor_name}</h1>
-            </div>
-        </InfoWindow> 
-      </Marker>
+        {JSON.stringify(this.props.reduxState.locations)}
         
+        {/* {truckIcons && (
+                      
+                      (this.props.reduxState.locations.map(locals =>
+                       <p> {locals} </p>
+                      <Marker options={{ icon: truckIcon }}
+                        position={{ 
+                                lat: locals.latitude,
+                                lng: locals.longitude
+                              }}
+                        onClick={this.onMarkerClick}
+                            >
+                        <InfoWindow
+                          visible={this.state.showingInfoWindow}
+                          onOpen = {this.windowHasOpened}
+                          onClose = {this.windowHasClosed}
+                          marker={this.state.activeMarker}
+                          
+                          >
+                            <div>
+                              <h1>{this.props.reduxState.user.vendor_name}</h1>
+                            </div>
+                        </InfoWindow> 
+                      </Marker>
+                      ))
+                    )
+        }            */}
+    
       <div>
                 <div>
                     <h2>Key: </h2>       
@@ -182,7 +195,7 @@ return (
         <button onClick={this.handleClick}>Change Location</button>
          
   </div>
-</>
+</div>
 
     );
   }

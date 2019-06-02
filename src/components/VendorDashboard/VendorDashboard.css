@@ -1,0 +1,16 @@
+.dashTable * {
+    
+    border: 3px groove #ba000d;
+    text-align: center; 
+
+}
+
+.dashTable {
+    width: 80%; 
+    border-collapse: collapse;
+}
+
+
+/* .dashTable  > :not(button) {
+    border: 1px solid black;
+} */

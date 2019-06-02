@@ -2,7 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-
+// get route for menu items 
 router.get('/', (req, res) => {
     console.log('in get', req.body)
     const queryText = `SELECT * FROM "menu" `
@@ -18,12 +18,12 @@ router.get('/', (req, res) => {
 
 });
 
-
+// post route for inserting new menu items
 router.post('/', (req, res) => {
-    console.log('line 23', req.body.itemNumber)
-    const queryText = `INSERT INTO "menu" ( "item", "price", "description")
-                        VALUES ($1, $2, $3)`
-    pool.query(queryText, [req.body.item, req.body.price, req.body.description])
+    console.log('line 23', req.user.id, req.body.item, req.body.price, req.body.description)
+    const queryText = `INSERT INTO "menu" ( "user_id", "item", "price", "description")
+                        VALUES ($1, $2, $3, $4)`
+    pool.query(queryText, [req.user.id, req.body.item, req.body.price, req.body.description])
     .then( response => {
         console.log('response from post', response)
         res.sendStatus(201)
@@ -33,6 +33,7 @@ router.post('/', (req, res) => {
     })
 });
 
+// delete route for deleting menu items
 router.delete('/:id', (req, res) => {
     console.log(req.params.id, req.user.id, req.body);
     // let queryText = `DELETE FROM "menu" WHERE ("menu"."id"=$1 AND "menu"."user.id"=$2)`; 
@@ -48,6 +49,7 @@ router.delete('/:id', (req, res) => {
     }); 
 }); 
 
+// put route for editing existing menu items
 router.put('/:id', (req, res) => {
     console.log(req.body)
     let queryText = `UPDATE from "menus" WHERE ("menu"."id"=$1)`; 

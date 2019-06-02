@@ -17,13 +17,13 @@ const Nav = (props) => (
         {props.user.id ? 'Home' : 'Login / Register'}
       </Link>
       {/* Show the link to the info page and the logout button if the user is logged in */}
-      {props.user.id && (
-        <>
-          <Link className="nav-link" to="/info">
-            Info Page
-          </Link>
-        </>
-      )}
+      {/* {props.user.id && ( */}
+        {/* // <>
+        //   <Link className="nav-link" to="/info">
+        //     Info Page
+        //   </Link>
+        // </>
+       ]])} */}
       {/* Always show this link since the about page is not protected */}
       <Link className="nav-link" to="/about">
         About
@@ -35,9 +35,14 @@ const Nav = (props) => (
       <Link className="nav-link" to="/vendor">
       Vendor
       </Link>
+      {/* Only a vendor can view this link and access it  */}
+      {props.user.is_vendor && (
+      <>
       <Link className="nav-link" to="/vendordash">
       VendorDash
       </Link>
+      </>
+      )}
       <LogOutButton className="nav-link"/>
       </div>
   </div>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
+import './Vendor.css'
 
 export class Vendor extends Component {
 
@@ -8,7 +8,7 @@ export class Vendor extends Component {
 
     
 componentDidMount() {
-
+    // dispatch for getting menu items
     this.props.dispatch({ type:'FETCH_ITEMS'})
     console.log(this.props)
 }
@@ -21,7 +21,8 @@ componentDidMount() {
                 
 
                 <h1>{this.props.reduxState.user.vendor_name} Menu </h1>
-                <table align="center">
+                {/* table displaying menu items */}
+                <table className="vendorTable">
                     <tr>
                     <th> Menu Item </th>
                     <th> Item Number </th>
@@ -31,9 +32,9 @@ componentDidMount() {
                 <tbody>
                     <tr>
                     </tr>
-
+                            {/* mapping through menu items */}
                         {this.props.item.map(item => {
-                        return ( <tr align="center">
+                        return ( <tr >
                                 <td> {item.id} </td>
                                 <td> {item.item} </td>
                                 <td> {item.description} </td>
