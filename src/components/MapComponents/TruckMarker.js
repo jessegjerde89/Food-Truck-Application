@@ -106,8 +106,8 @@ return (
 
 
           <Marker 
-          position={{ lat: this.state.currentLocal.lat, 
-                        lng: this.state.currentLocal.lng }} 
+          position={{ lat: this.state.latitude, 
+                        lng: this.state.longitude}} 
           onClick={this.onMarkerClick}
           name={'Your Here'}
               />
