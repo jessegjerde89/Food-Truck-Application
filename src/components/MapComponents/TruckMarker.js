@@ -22,13 +22,13 @@ class TruckMarker extends Component{
 
 changeLat = (event) => {
     this.setState({
-        latitude: parseInt(event.target.value)
+        latitude: parseFloat(event.target.value)
     })
 }    
 
 changeLong = (event) => {
     this.setState({ 
-        longitude: parseInt(event.target.value)
+        longitude: parseFloat(event.target.value)
     })
 }
 
@@ -96,10 +96,13 @@ onMarkerClick = (event) => {
   render() {
 
      const truckIcon = { url: 'http://wherethatfoodtruck.com/graphics/default/logo.png', scaledSize: { width: 32, height: 40 } };
-     const favIcon
-  
+     const favIcon = { url: "http://simpleicon.com/wp-content/uploads/Google-Place-Optimization.png" }
+     let truckIcons =  (this.props.reduxState.locations)
+    // let truckIcons
+
+
 return (
-        <>
+        <div>
 
 
           {/* <Marker 
@@ -124,32 +127,35 @@ return (
               </div>
           </InfoWindow> 
         </Marker>
-      {JSON.stringify(this.props.reduxState.locations)}
-      
-    
-      {this.props.reduxState.locations.map(locals =>
+        {JSON.stringify(this.props.reduxState.locations)}
         
-      <Marker options={{ icon: truckIcon }}
-        position={{ 
-                lat: locals.latitude, 
-                lng: locals.longitude
-              }}
-        onClick={this.onMarkerClick}
-            >
-        <InfoWindow
-          visible={this.state.showingInfoWindow}
-          onOpen = {this.windowHasOpened}
-          onClose = {this.windowHasClosed}
-          marker={this.state.activeMarker}
-          
-          >
-            <div>
-              <h1>{this.props.reduxState.user.vendor_name}</h1>
-            </div>
-        </InfoWindow> 
-      </Marker>
-      )}
-      
+        {/* {truckIcons && (
+                      
+                      (this.props.reduxState.locations.map(locals =>
+                       <p> {locals} </p>
+                      <Marker options={{ icon: truckIcon }}
+                        position={{ 
+                                lat: locals.latitude,
+                                lng: locals.longitude
+                              }}
+                        onClick={this.onMarkerClick}
+                            >
+                        <InfoWindow
+                          visible={this.state.showingInfoWindow}
+                          onOpen = {this.windowHasOpened}
+                          onClose = {this.windowHasClosed}
+                          marker={this.state.activeMarker}
+                          
+                          >
+                            <div>
+                              <h1>{this.props.reduxState.user.vendor_name}</h1>
+                            </div>
+                        </InfoWindow> 
+                      </Marker>
+                      ))
+                    )
+        }            */}
+    
       <div>
                 <div>
                     <h2>Key: </h2>       
@@ -189,7 +195,7 @@ return (
         <button onClick={this.handleClick}>Change Location</button>
          
   </div>
-</>
+</div>
 
     );
   }
