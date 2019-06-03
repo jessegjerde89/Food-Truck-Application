@@ -6,9 +6,6 @@ import { connect } from 'react-redux'
 class CurrentMarker extends Component{
 
   state = {
-    latitude: '0',
-    longitude: '0',
-    
     currentLocal: {
         lat: 0,
         lng: 0 
@@ -19,32 +16,20 @@ class CurrentMarker extends Component{
     selectedPlace: {},
   }
 
-changeLat = (event) => {
-    this.setState({
-        latitude: parseFloat(event.target.value)
-    })
-}    
 
-changeLong = (event) => {
-    this.setState({ 
-        longitude: parseFloat(event.target.value)
-    })
+componentWillUpdate() { 
+  this.getGeoLocation() 
 }
-
-handleClick = (event) => {
-    event.preventDefault()
-    {this.props.dispatch({ type: 'ADD_LOCATION', payload: this.state})}
-}
-
-componentWillUpdate() { this.getGeoLocation() }
 
 componentDidMount() {
    this.delayedShowMarker() 
-   this.props.dispatch({ type: 'SET_LOCATION'})
-  console.log(this.props)
+   this.getGeoLocation() 
+   console.log(this.state.currentLocal)
   }
 
-delayedShowMarker() { this.getGeoLocation() }
+delayedShowMarker() { 
+  this.getGeoLocation() 
+}
 
   onMarkerClick = (props, marker, event) => {
     event.preventDefault()
@@ -88,54 +73,11 @@ return (
           </div>
       </InfoWindow> 
     </Marker>
-        <>     
-    </>
-      <div>
-        <div>
-            <h2>Key: </h2>       
-        
-            Trucks: <img 
-            src= "http://wherethatfoodtruck.com/graphics/default/logo.png" 
-            alt="truck-icon" 
-            width= "10%"
-            height= "5%"
-            />
-            
-            You are here: <img 
-            src="https://png.pngtree.com/element_our/md/20180526/md_5b09436fd0515.png" 
-            alt="fav-icon"
-            width="20%"
-            />
-
-            Favorite : <img 
-            src="http://simpleicon.com/wp-content/uploads/Google-Place-Optimization.png" 
-            alt="you-are-here"
-            width="15%"/>
-        </div>
-        
-          <h3>Add New Spot</h3>
-        
-          <input 
-          type="number" 
-          onChange={this.changeLong} 
-          placeholder="longitude" 
-          />
-          <input 
-          type="number" 
-          onChange={this.changeLat} 
-          placeholder="latitude" 
-          />
-
-          <button onClick={this.handleClick}>Change Location</button>
-         
-      </div>
   </div>
 
     );
   }
 }
-
-
   const mapRedux = reduxState => {
     return { 
       reduxState

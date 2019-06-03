@@ -41,4 +41,15 @@ router.post('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
+// router.put('/:id', rejectUnauthenticated, (req, res) => {
+//   let queryText = `UPDATE FROM "user" WHERE ("user"."id"=$1)`
+//   pool.query(queryText, req.user.id)
+// }).then(response => {
+//   console.log("response from put user", response) 
+//   res.sendStatus(201)
+// }).catch(error => {
+//   console.log("error in post user", error)
+//   res.sendStatus(500)
+// })
+
 module.exports = router;
