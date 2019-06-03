@@ -37,6 +37,7 @@ render() {
 }
 
 const mapRedux = reduxState => {
+    
 return { reduxState }
 }
 

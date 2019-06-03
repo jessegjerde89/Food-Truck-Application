@@ -2,7 +2,7 @@ import React from "react";
 import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps";
 import CurrentMarker from '../MapComponents/CurrentMarker'
 import { connect } from 'react-redux'
-// import AllTheTrucks from '../UserPage/AllTheTrucks'
+import AllTheTrucks from '../UserPage/AllTheTrucks'
 
 
 
@@ -18,8 +18,9 @@ const UserMap = withScriptjs(withGoogleMap((props) =>{
     >
  
       <CurrentMarker />
-      {/* <AllTheTrucks /> */}
+      <AllTheTrucks />
       </GoogleMap>
+      
     );
   }
 ))

@@ -30,5 +30,11 @@ router.post('/', (req, res) => {
     })
 })
 
+// router.post('/', (req, res) => {
+//     const queryText = `INSERT INTO "locations" (latitude, longitude)
+//                         VALUES ($1, $2)`
+//     pool.query(queryText, [req.body.latitude, req.body.longitude]) 
+
+// })
 
 module.exports = router;
