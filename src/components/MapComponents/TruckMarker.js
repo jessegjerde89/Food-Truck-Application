@@ -47,15 +47,9 @@ export class TruckMarker extends Component {
 
     handleClick = (event) => {
         event.preventDefault()
-        // if (this.props.reduxState.user.latitude === null){
-        //     if (this.props.reduxState.user.longitude === null) {
-        //         {this.props.dispatch({ type: 'ADD_LOCATION', payload: this.state})}
-        //     }
-        // }
+       
         {this.props.dispatch({ type: 'ADD_LOCATION', payload: this.state})}
-        //     else {
-        //     this.props.dispatch({ type: 'UPDATE_LOCATION', payload: this.state})
-        // }
+      
     }
 
     render() {
@@ -66,75 +60,8 @@ export class TruckMarker extends Component {
             const favIcon = 
             { url: "http://simpleicon.com/wp-content/uploads/Google-Place-Optimization.png" }
         
-            
-return (
-        <div>
-
-
-          <Marker 
-          position={{ lat: this.state.latitude, 
-                        lng: this.state.longitude}} 
-          onClick={this.onMarkerClick}
-          name={'Your Here'}
-              />
-          <Marker 
-          position={{ lat: this.state.currentLocal.lat,
-                      lng: this.state.currentLocal.lng
-                    }}
-          >
-          <InfoWindow
-            visible={this.state.showingInfoWindow}
-            onOpen = {this.windowHasOpened}
-            onClose = {this.windowHasClosed}
-            marker={this.state.activeMarker}
-            >
-              <div>
-                <h3>You are here!</h3>
-              </div>
-          </InfoWindow> 
-        </Marker>
-        {JSON.stringify(this.props.reduxState.locations)}
-        <div></div>
-        {JSON.stringify(this.state)}
-        
-        {/* {truckIcons && (
-                      
-                      (this.props.reduxState.locations.map(locals =>
-                       <p> {locals} </p>
-                      <Marker options={{ icon: truckIcon }}
-                        position={{ 
-                                lat: locals.latitude,
-                                lng: locals.longitude
-                              }}
-                        onClick={this.onMarkerClick}
-                            >
-                        <InfoWindow
-                          visible={this.state.showingInfoWindow}
-                          onOpen = {this.windowHasOpened}
-                          onClose = {this.windowHasClosed}
-                          marker={this.state.activeMarker}
-                          
-                          >
-                            <div>
-                              <h1>{this.props.reduxState.user.vendor_name}</h1>
-                            </div>
-                        </InfoWindow> 
-                      </Marker>
-                      ))
-                    )
-        }            */}
-    
-            // const truckMarkers = ({ places }) => {
-            return ( 
-                <div>
-                {/* {this.props.reduxState.locations.map(place => {
-                return (
-                    <Marker 
-                    key={place.id} 
-                    position={{ lat: place.lat, lng: place.lng }} />
-                    )
-                })
-            } */}
+        return(   
+            <div>
                     <Marker 
                     position = {{ 
                         lat: this.props.reduxState.user.latitude, 
@@ -143,12 +70,20 @@ return (
                     onClick={this.onMarkerClick}
                     icon = {truckIcon}
                         >
+                            <InfoWindow
+                            visible={this.state.showingInfoWindow}
+                            onOpen = {this.windowHasOpened}
+                            onClose = {this.windowHasClosed}
+                            marker={this.state.activeMarker}
+                            >
+
+                            </InfoWindow>
 
                     </Marker>
 
                                 {JSON.stringify(this.props.reduxState.user.latitude)}
                                 {JSON.stringify(this.props.reduxState.user.longitude)}
-                    <div>
+                    
                     <div>
                         <h2>Key: </h2>       
                     
@@ -187,8 +122,8 @@ return (
                     <button onClick={this.handleClick}>Change Location</button>
                     
                     </div>
-                </div>
             )
+            
         }
     }
 
