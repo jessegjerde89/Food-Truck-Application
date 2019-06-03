@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import React, {Component} from 'react'
-import {withGoogleMap, GoogleMap, withScriptjs,  Marker , InfoWindow} from "react-google-maps";
+import {Marker , InfoWindow} from "react-google-maps";
 
 
 
@@ -9,7 +9,12 @@ export class TruckMarker extends Component {
     state =
         {
         latitude: 0, 
-        longitude: 0
+        longitude: 0,
+
+        isMarkerShown: false, 
+        showingInfoWindow: false, 
+        activeMarker: {}, 
+        selectedPlace: {},
          }
 
     componentDidUpdate() {
@@ -20,11 +25,10 @@ export class TruckMarker extends Component {
     }     
 
     componentDidMount()  {
-        // this.props.dispatch({ type: 'SET_LOCATION'})
+        this.props.dispatch({ type: 'SET_LOCATION'})
     }
 
     onMarkerClick = (props, marker, event) => {
-        event.preventDefault()
         this.setState({
         selectedPlace: props,
         activeMarker: marker,
@@ -72,17 +76,19 @@ export class TruckMarker extends Component {
                         >
                             <InfoWindow
                             visible={this.state.showingInfoWindow}
-                            onOpen = {this.windowHasOpened}
-                            onClose = {this.windowHasClosed}
+                          
                             marker={this.state.activeMarker}
                             >
-
+                                <div>
+                                    <h3>{this.props.reduxState.user.vendor_name}</h3>
+                                </div>
                             </InfoWindow>
 
                     </Marker>
 
-                                {JSON.stringify(this.props.reduxState.user.latitude)}
-                                {JSON.stringify(this.props.reduxState.user.longitude)}
+                                {JSON.stringify(this.props.reduxState.user.vendor_name)}
+                                {/* {JSON.stringify(this.props.reduxState.user.latitude)} */}
+                                {/* {JSON.stringify(this.props.reduxState.user.longitude)} */}
                     
                     <div>
                         <h2>Key: </h2>       

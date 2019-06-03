@@ -1,20 +1,28 @@
 import React, {Component } from 'react';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
-require('dotenv').config()
+import UserContainer from '../UserPage/UserContainer'; 
 
 
 class UserPage extends Component {
 
 render() {
+
+
+const API_KEY = process.env.REACT_APP_GOOGLE_KEY; 
+
   return (
 
       <div>
       <h1 id="welcome">
-        Welcome, { this.props.reduxState.user.username }!
-      </h1>
-      {/* <p>Your ID is: {props.user.id}</p> */}
+        Welcome, { this.props.reduxState.user.username }! </h1>
+     
+     <UserContainer/>
       <LogOutButton className="log-in" />
+
+
+
+
     </div>
 
     )
@@ -23,9 +31,11 @@ render() {
 
 
 
-const mapStateToProps = state => ({
- 
-});
+const mapStateToProps = reduxState => {
+ return {
+  reduxState
+ }
+};
 
 
 export default connect(mapStateToProps)(UserPage);

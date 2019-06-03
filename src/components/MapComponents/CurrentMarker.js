@@ -32,7 +32,7 @@ delayedShowMarker() {
 }
 
   onMarkerClick = (props, marker, event) => {
-    event.preventDefault()
+   
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
@@ -63,10 +63,9 @@ return (
       onClick={this.onMarkerClick}
       >
       <InfoWindow
-        visible={this.state.showingInfoWindow}
-        onOpen = {this.windowHasOpened}
-        onClose = {this.windowHasClosed}
-        marker={this.state.activeMarker}
+        // visible={this.state.showingInfoWindow}
+        // marker 
+        // marker={this.props.reduxState.
         >
           <div>
             <h3>You are here!</h3>
