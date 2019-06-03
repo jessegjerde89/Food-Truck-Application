@@ -15,20 +15,19 @@ router.get('/', (req, res) => {
     })
 })
 
-    // post the new location of the food truck 
-router.post('/', (req, res) => {
-    console.log("whacha 1" , req.user.id, req.body.latitude, req.body.longitude)
-    const queryText = `INSERT INTO "location" ("user_id", "latitude", "longitude") 
-                        VALUES ($1, $2, $3)`
-    pool.query(queryText, [req.user.id, req.body.latitude, req.body.longitude])
-    .then(response => {
-        console.log('response location post', response)
-        res.sendStatus(201)
-    }).catch(error => {
-        console.log('error post location')
-        res.sendStatus(500)
-    })
-})
+//     // post the new location of the food truck 
+// router.post('/', (req, res) => {
+//     const queryText = `INSERT INTO "user" ("latitude", "longitude") 
+//                         VALUES ($1, $2) WHERE "user"."id" = ($3)`
+//     pool.query(queryText, [ req.body.latitude, req.body.longitude, req.user.id])
+//     .then(response => {
+//         console.log('response location post', response)
+//         res.sendStatus(201)
+//     }).catch(error => {
+//         console.log('error post location')
+//         res.sendStatus(500)
+//     })
+// })
 
 
 module.exports = router;

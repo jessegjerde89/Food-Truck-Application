@@ -5,6 +5,11 @@ import { Marker , InfoWindow} from "react-google-maps";
 
 export class TruckMarker extends Component {
 
+    state =
+        {
+        latitude: 0, 
+        longitude: 0
+         }
 
     componentDidMount(event)  {
 
@@ -24,6 +29,22 @@ export class TruckMarker extends Component {
     delayedMarker() {
 
     }
+    changeLat = (event) => {
+        this.setState({
+            latitude: parseFloat(event.target.value)
+        })
+    }    
+    
+    changeLong = (event) => {
+        this.setState({ 
+            longitude: parseFloat(event.target.value)
+        })
+    }
+
+    handleClick = (event) => {
+        event.preventDefault()
+        {this.props.dispatch({ type: 'ADD_LOCATION', payload: this.state})}
+    }
 
     render() {
         const truckIcon = 
@@ -35,41 +56,77 @@ export class TruckMarker extends Component {
         
         let truckIcons
 
-        // /    if (!this.props.reduxState.locations) {
-            //    truckIcons = (this.state.currentLocal)
-                
-            //   } else {
-            //     truckIcons =  (
-            //     {this.props.reduxState.locations.map(locals =>
+          
+                truckIcons =  (
+                {this.props.reduxState.locations.map(locals =>
            
-            //       return (
-            //       <Marker options={{ icon: truckIcon }}
-            //         position={{ 
-            //               lat: locals.latitude,
-            //               lng: locals.longitude
-            //                   }}
-            //           />
-            //    ))    
-            // })} 
+                  return (
+                  <Marker options={{ icon: truckIcon }}
+                    position={{ 
+                          lat: {locals.latitude},
+                          lng: {locals.longitude}
+                              }}
+                      />
+               ))    
+            })
+        
 
         return (
             <div>
-                {JSON.stringify(this.props.reduxState)}
+                {JSON.stringify(this.state)}
 
-
-
-          {/* <Marker 
-          position={{ lat: this.state.latitude, 
-                        lng: this.state.longitude}} 
+          <Marker 
+          position = {{ 
+              lat: 44, 
+              lng: -93
+                      }} 
           onClick={this.onMarkerClick}
+          icon = {truckIcon}
               >
-          <InfoWindow
-          visible={this.state.showingInfoWindow}
-          onOpen = {this.windowHasOpened}
-          onClose = {this.windowHasClosed}
-          marker={this.state.activeMarker}
-          ></InfoWindow>
-          </Marker> */}
+
+          </Marker>
+
+          <div>
+        <div>
+            <h2>Key: </h2>       
+        
+            Trucks: <img 
+            src= "http://wherethatfoodtruck.com/graphics/default/logo.png" 
+            alt="truck-icon" 
+            width= "10%"
+            height= "5%"
+            />
+            
+            You are here: <img 
+            src="https://png.pngtree.com/element_our/md/20180526/md_5b09436fd0515.png" 
+            alt="fav-icon"
+            width="20%"
+            />
+
+            Favorite : <img 
+            src="http://simpleicon.com/wp-content/uploads/Google-Place-Optimization.png" 
+            alt="you-are-here"
+            width="15%"/>
+        </div>
+        
+          <h3>Add New Spot</h3>
+        
+          <input 
+          type="number" 
+          onChange={this.changeLong} 
+          placeholder="longitude" 
+          />
+          <input 
+          type="number" 
+          onChange={this.changeLat} 
+          placeholder="latitude" 
+          />
+
+          <button onClick={this.handleClick}>Change Location</button>
+
+          {JSON.stringify(this.props.reduxState.locations)}
+         
+      </div>
             </div>
         )
     }
