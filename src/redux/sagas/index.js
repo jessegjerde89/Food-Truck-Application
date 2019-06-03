@@ -18,5 +18,6 @@ export default function* rootSaga() {
     registrationSaga(),
     userSaga(),
     menuItemSaga(),
+    locationSaga()
   ]);
 }

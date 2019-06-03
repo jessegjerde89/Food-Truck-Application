@@ -23,6 +23,8 @@ componentWillUpdate() {
 
 componentDidMount() {
    this.delayedShowMarker() 
+   this.getGeoLocation() 
+   console.log(this.state.currentLocal)
   }
 
 delayedShowMarker() { 
