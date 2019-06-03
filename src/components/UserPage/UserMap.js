@@ -9,10 +9,6 @@ import { connect } from 'react-redux'
 const UserMap = withScriptjs(withGoogleMap((props) =>{
 
 
-    // const markers = props.trucks.map( trucks => <TruckMarker
-    //     trucks={trucks}
-    //     location={{lat: trucks.closestTruck.lat, lng: trucks.closestTruck.lon}}
-    //   />);
    
   return (
       <GoogleMap
@@ -20,7 +16,7 @@ const UserMap = withScriptjs(withGoogleMap((props) =>{
       defaultCenter={{ lat: props.currentLocation.lat, 
                         lng: props.currentLocation.lng }}
     >
-    {/* {markers} */}
+ 
       <CurrentMarker />
       {/* <AllTheTrucks /> */}
       </GoogleMap>
