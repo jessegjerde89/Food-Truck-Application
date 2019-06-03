@@ -1,106 +1,72 @@
-import React, { Component } from "react";
-import { Marker , InfoWindow} from "react-google-maps";
-
-import { connect } from 'react-redux'
-  
-class TruckMarker extends Component{
-
-  state = {
-    latitude: '0',
-    longitude: '0',
-    currentLocal: {
-      lat: 0,
-      lng: 0 
-    },
-    isMarkerShown: false, 
-    showingInfoWindow: false, 
-    activeMarker: {}, 
-    selectedPlace: {},
-    long: '',
-    lati: '',
-  }
-
-changeLat = (event) => {
-    this.setState({
-        latitude: parseFloat(event.target.value)
-    })
-}    
-
-changeLong = (event) => {
-    this.setState({ 
-        longitude: parseFloat(event.target.value)
-    })
-}
-
-handleClick = (event) => {
-    event.preventDefault()
-    console.log(this.state)
-    console.log(this.props.reduxState)
-    {this.props.dispatch({ type: 'ADD_LOCATION', payload: this.state})}
-
-       this.setState({
-         lati: (this.state.latitude), 
-         long: (this.state.longitude)
-       })
-    // this.setState({
-    // lati : (this.props.reduxState.latitude[this.props.reduxState.length - 1]),
-    // long : (this.props.reduxState.longitude[this.props.reduxState.length - 1])
-    // })
-
-    console.log(this.state.lati, this.state.long)
-}
-componentWillUpdate() { 
-  this.getGeoLocation() 
-  // this.props.dispatch({ type: 'SET_LOCATION'})
-}
-
-componentDidMount() {
-   this.delayedShowMarker() 
-   this.props.dispatch({ type: 'SET_LOCATION'})
-  console.log(this.props)
-  }
-
-delayedShowMarker() { this.getGeoLocation() }
-
-  onMarkerClick = (props, marker, event) => {
-    event.preventDefault()
-    this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
-      showingInfoWindow: true
-    })
-  }
-
-getGeoLocation = () => {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-    position => {
-      this.setState(prevState => ({
-        currentLocal: {
-         ...prevState.currentLatLng, 
-     lat: position.coords.latitude,
-      lng: position.coords.longitude
-       }
-      })
-    )
-  } 
-  )
-  }
-}
-
-onMarkerClick = (event) => {
-  
-  console.log("clicked!")
-  
-}
-  render() {
-
-     const truckIcon = { url: 'http://wherethatfoodtruck.com/graphics/default/logo.png', scaledSize: { width: 32, height: 40 } };
-     const favIcon = { url: "http://simpleicon.com/wp-content/uploads/Google-Place-Optimization.png" }
-     let truckIcons =  (this.props.reduxState.locations)
-    // let truckIcons
+import {connect} from 'react-redux'
+import React, {Component} from 'react'
+import {withGoogleMap, GoogleMap, withScriptjs,  Marker , InfoWindow} from "react-google-maps";
 
 
+
+export class TruckMarker extends Component {
+
+    state =
+        {
+        latitude: 0, 
+        longitude: 0
+         }
+
+    componentDidUpdate() {
+        this.props.dispatch({ type: 'SET_LOCATION'})
+    }
+    componentWillUpdate() {
+        this.props.dispatch({ type: 'SET_LOCATION'})
+    }     
+
+    componentDidMount()  {
+        // this.props.dispatch({ type: 'SET_LOCATION'})
+    }
+
+    onMarkerClick = (props, marker, event) => {
+        event.preventDefault()
+        this.setState({
+        selectedPlace: props,
+        activeMarker: marker,
+        showingInfoWindow: true
+        })
+    }
+
+
+    changeLat = (event) => {
+        this.setState({
+            latitude: parseFloat(event.target.value)
+        })
+    }    
+    
+    changeLong = (event) => {
+        this.setState({ 
+            longitude: parseFloat(event.target.value)
+        })
+    }
+
+    handleClick = (event) => {
+        event.preventDefault()
+        // if (this.props.reduxState.user.latitude === null){
+        //     if (this.props.reduxState.user.longitude === null) {
+        //         {this.props.dispatch({ type: 'ADD_LOCATION', payload: this.state})}
+        //     }
+        // }
+        {this.props.dispatch({ type: 'ADD_LOCATION', payload: this.state})}
+        //     else {
+        //     this.props.dispatch({ type: 'UPDATE_LOCATION', payload: this.state})
+        // }
+    }
+
+    render() {
+            const truckIcon = 
+            { url: 'http://wherethatfoodtruck.com/graphics/default/logo.png', 
+                    scaledSize: { width: 32, height: 40 } };
+            
+            const favIcon = 
+            { url: "http://simpleicon.com/wp-content/uploads/Google-Place-Optimization.png" }
+        
+            
 return (
         <div>
 
@@ -158,55 +124,78 @@ return (
                     )
         }            */}
     
-      <div>
+            // const truckMarkers = ({ places }) => {
+            return ( 
                 <div>
-                    <h2>Key: </h2>       
-                
-                    Trucks: <img 
-                    src= "http://wherethatfoodtruck.com/graphics/default/logo.png" 
-                    alt="truck-icon" 
-                    width= "10%"
-                    height= "5%"
-                    />
+                {/* {this.props.reduxState.locations.map(place => {
+                return (
+                    <Marker 
+                    key={place.id} 
+                    position={{ lat: place.lat, lng: place.lng }} />
+                    )
+                })
+            } */}
+                    <Marker 
+                    position = {{ 
+                        lat: this.props.reduxState.user.latitude, 
+                        lng: this.props.reduxState.user.longitude
+                                }} 
+                    onClick={this.onMarkerClick}
+                    icon = {truckIcon}
+                        >
+
+                    </Marker>
+
+                                {JSON.stringify(this.props.reduxState.user.latitude)}
+                                {JSON.stringify(this.props.reduxState.user.longitude)}
+                    <div>
+                    <div>
+                        <h2>Key: </h2>       
                     
-                    You are here: <img 
-                    src="https://png.pngtree.com/element_our/md/20180526/md_5b09436fd0515.png" 
-                    alt="fav-icon"
-                    width="20%"
+                        Trucks: <img 
+                        src= "http://wherethatfoodtruck.com/graphics/default/logo.png" 
+                        alt="truck-icon" 
+                        width= "10%"
+                        height= "5%"
+                        />
+                        
+                        You are here: <img 
+                        src="https://png.pngtree.com/element_our/md/20180526/md_5b09436fd0515.png" 
+                        alt="fav-icon"
+                        width="20%"
+                        />
+
+                        Favorite : <img 
+                        src="http://simpleicon.com/wp-content/uploads/Google-Place-Optimization.png" 
+                        alt="you-are-here"
+                        width="15%"/>
+                    </div>
+                    
+                    <h3>Add New Spot</h3>
+                    
+                    <input 
+                    type="number" 
+                    onChange={this.changeLong} 
+                    placeholder="longitude" 
                     />
-  
-                    Favorite : <img 
-                    src="http://simpleicon.com/wp-content/uploads/Google-Place-Optimization.png" 
-                    alt="you-are-here"
-                    width="15%"/>
+                    <input 
+                    type="number" 
+                    onChange={this.changeLat} 
+                    placeholder="latitude" 
+                    />
+
+                    <button onClick={this.handleClick}>Change Location</button>
+                    
+                    </div>
                 </div>
-        
-        <h3>Add New Spot</h3>
-        
-        <input 
-        type="number" 
-        onChange={this.changeLong} 
-        placeholder="longitude" 
-        />
-        <input 
-        type="number" 
-        onChange={this.changeLat} 
-        placeholder="latitude" 
-        />
+            )
+        }
+    }
 
-        <button onClick={this.handleClick}>Change Location</button>
-         
-  </div>
-</div>
-
-    );
-  }
+const mapRedux = reduxState => {
+    return { reduxState }
 }
 
+// const scripts = (withScriptjs(TruckMarker));
 
-  const mapRedux = reduxState => {
-    return { 
-      reduxState
-   }
-}
 export default connect(mapRedux)(TruckMarker);

@@ -4,7 +4,7 @@ const router = express.Router();
 
     // get the new location of the food truck 
 router.get('/', (req, res) => {
-    const queryText = 'SELECT "latitude", "longitude" FROM "location"'; 
+    const queryText = 'SELECT "latitude", "longitude" FROM "user"'; 
     pool.query(queryText)
     .then(response => {
         console.log('response location get', response.rows)
@@ -17,10 +17,10 @@ router.get('/', (req, res) => {
 
     // post the new location of the food truck 
 router.post('/', (req, res) => {
-    console.log("whacha 1" , req.user.id, req.body.latitude, req.body.longitude)
-    const queryText = `INSERT INTO "location" ("user_id", "latitude", "longitude") 
-                        VALUES ($1, $2, $3)`
-    pool.query(queryText, [req.user.id, req.body.latitude, req.body.longitude])
+    console.log("thisone", req.body, req.user.id)
+    const queryText = `UPDATE "user" SET "latitude" = ($1), "longitude" = ($2) 
+                        WHERE "user".id = ($3); `
+    pool.query(queryText, [ req.body.latitude, req.body.longitude, req.user.id])
     .then(response => {
         console.log('response location post', response)
         res.sendStatus(201)
