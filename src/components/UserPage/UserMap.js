@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import AllTheTrucks from '../UserPage/AllTheTrucks'
 
 
-
 const UserMap = withScriptjs(withGoogleMap((props) =>{
 
   return (
@@ -15,6 +14,7 @@ const UserMap = withScriptjs(withGoogleMap((props) =>{
                         lng: props.currentLocation.lng }}
     >
  
+
       <CurrentMarker />
       <AllTheTrucks />
       </GoogleMap>

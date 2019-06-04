@@ -9,7 +9,8 @@ export class AllTheTrucks extends Component {
         locations: undefined
     }
 
-    componentDidMount() {
+    componentDidMount = (event) => {
+       
         this.props.dispatch({type: 'SET_LOCATION'})
         this.setState ({
             locations: this.props.reduxState.locations
@@ -25,11 +26,13 @@ export class AllTheTrucks extends Component {
     //     console.log(this.props.reduxState.locations)
     // }
 
-    // addLocations() {
-    //     this.setState({ 
-    //         locations: this.props.reduxState.locations
-    //     })
-    // }
+    addLocations = (event) => {
+        event.preventDefault()
+        this.setState({ 
+            locations: true
+        })
+        console.log(this.props.reduxState.locations)
+    }
     goToMenu() {
         
     }
