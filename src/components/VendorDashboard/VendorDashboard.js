@@ -93,9 +93,8 @@ class VendorDashboard extends Component {
             </tr>
                   {/* mapping threw all items */}
                   {this.props.item.map(item => {
-                    let i = 0; 
                     if (item.user_id === this.props.reduxState.user.id) {
-                   return (<tr > 
+                   return (<tr key = {item.id}> 
                             <td> {item.id} </td>
                             <td> {item.item} </td>
                             <td> {item.description} </td>

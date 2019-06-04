@@ -44,8 +44,8 @@ export class AllTheTrucks extends Component {
         { url: 'http://wherethatfoodtruck.com/graphics/default/logo.png', 
                 scaledSize: { width: 32, height: 40 } };
         
-        const favIcon = 
-        { url: "http://simpleicon.com/wp-content/uploads/Google-Place-Optimization.png" }
+        // const favIcon = 
+        // { url: "http://simpleicon.com/wp-content/uploads/Google-Place-Optimization.png" }
 
         
         return (

@@ -44,9 +44,7 @@ export class TruckMarker extends Component {
 
     handleClick = (event) => {
         event.preventDefault()
-       
-        {this.props.dispatch({ type: 'ADD_LOCATION', payload: this.state})}
-      
+        this.props.dispatch({ type: 'ADD_LOCATION', payload: this.state})
     }
 
     render() {

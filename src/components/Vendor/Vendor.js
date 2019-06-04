@@ -17,8 +17,8 @@ componentDidMount() {
 
     render() {
 
-        const favIcon = 
-        { url: "http://simpleicon.com/wp-content/uploads/Google-Place-Optimization.png" }
+        // const favIcon = 
+        // { url: "http://simpleicon.com/wp-content/uploads/Google-Place-Optimization.png" }
 
         return (
             
@@ -40,14 +40,13 @@ componentDidMount() {
                     {/* mapping through menu items */}
                 {this.props.item.map(item => {
                     if (item.user_id === this.props.reduxState.user.id) {
-                return ( <tr >
-                        <td> {item.id} </td>
-                        <td> {item.item} </td>
-                        <td> {item.description} </td>
-                        <td> {item.price} </td> 
-                        
-                        </tr> )
-                        }}
+                        return ( <tr key = {item.id}>
+                                <td> {item.id} </td>
+                                <td> {item.item} </td>
+                                <td> {item.description} </td>
+                                <td> {item.price} </td> 
+                                </tr> )
+                            }}
                         )}
                 </tbody>
                 </table>

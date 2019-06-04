@@ -54,7 +54,7 @@ function* edititems(action) {
 
 function* menuItemSaga(){
 yield takeLatest('FETCH_DASH', fetchitems)
-yield takeLatest('ADD_ITEM', additems)
+yield takeEvery('ADD_ITEM', additems)
 yield takeLatest('DELETE_ITEM', deleteitems)
 yield takeLatest('EDIT_ITEM', edititems)
 }
