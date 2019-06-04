@@ -6,7 +6,7 @@ export class AllTheTrucks extends Component {
 
 
     state = {
-        locations: undefined
+        locations: false
     }
 
     componentDidMount = (event) => {
@@ -55,6 +55,7 @@ export class AllTheTrucks extends Component {
         
            ( this.props.reduxState.locations.map( locals => {
                 return ( <Marker 
+                        key = {locals.id}
                         position = {{
                             lat: locals.latitude,
                             lng: locals.longitude
@@ -63,6 +64,7 @@ export class AllTheTrucks extends Component {
                         icon = {truckIcon}
                         onClick = {this.goToMenu}
                         >
+                            
                             <InfoWindow
                             visible={this.state.showingInfoWindow}
                             marker= {this.state.activeMarker}
