@@ -20,11 +20,9 @@ class VendorDashboard extends Component {
       handleAdd = (event) => {
         event.preventDefault()
         console.log(this.state)
+        // document.getElementById("vendor-form").reset();
         
-        // this.setState({
-        //   user_id: this.props.reduxState.user.id
-        // })
-      // this.props.dispatch({type: 'ADD_ITEM', payload: Promise.all([this.state, this.props.reduxState.user.id])})
+       
       this.props.dispatch({type: 'ADD_ITEM', payload: this.state})
       }
 
@@ -50,13 +48,10 @@ class VendorDashboard extends Component {
               // displays users name onto dashboard
         <div align= "center">
             <h2 > {this.props.reduxState.user.username}'s Dashboard</h2>
-        <button
-            type="button"
-            onClick={this.handleAdd}
-          >
-          Add New Item 
-          </button>
+      <form className = "vendor-form">
+        
           {/* input for menu item */}
+         
           <input 
             type="text"
             placeholder="item"
@@ -80,6 +75,13 @@ class VendorDashboard extends Component {
             value={this.state.price}
             onChange={this.handleInputChangeFor("price")}
           />
+          <button
+            type="button"
+            onClick={this.handleAdd}
+          >
+          Add New Item 
+          </button>
+          </form>
       
       {/* table for menu items */}
         <table className="dashTable">
@@ -91,6 +93,7 @@ class VendorDashboard extends Component {
             </tr>
                   {/* mapping threw all items */}
                   {this.props.item.map(item => {
+                    let i = 0; 
                     if (item.user_id === this.props.reduxState.user.id) {
                    return (<tr > 
                             <td> {item.id} </td>
