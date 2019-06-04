@@ -8,8 +8,8 @@ export class TruckMarker extends Component {
 
     state =
         {
-        latitude: 0, 
-        longitude: 0,
+        lat: 41.559977,
+        lng: -106.611563, 
 
         isMarkerShown: false, 
         showingInfoWindow: false, 
@@ -22,6 +22,7 @@ export class TruckMarker extends Component {
     }
 
     onMarkerClick = (props, marker, event) => {
+        console.log("clicked")
         this.setState({
         selectedPlace: props,
         activeMarker: marker,

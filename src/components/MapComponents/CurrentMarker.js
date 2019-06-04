@@ -42,7 +42,6 @@ componentDidMount() {
   }
 
 getGeoLocation = () => {
-  // if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
     position => {
       this.setState(prevState => ({
@@ -51,9 +50,8 @@ getGeoLocation = () => {
       lng: position.coords.longitude
        }})
     )})
-  // } 
-  console.log(this.state.currentLocal)
 }
+
   render() {
 
 return (
