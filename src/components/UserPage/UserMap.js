@@ -8,8 +8,6 @@ import AllTheTrucks from '../UserPage/AllTheTrucks'
 
 const UserMap = withScriptjs(withGoogleMap((props) =>{
 
-
-   
   return (
       <GoogleMap
       defaultZoom={13}

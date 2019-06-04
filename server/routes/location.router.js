@@ -4,7 +4,7 @@ const router = express.Router();
 
     // get the new location of the food truck 
 router.get('/', (req, res) => {
-    const queryText = 'SELECT "latitude", "longitude" FROM "user"'; 
+    const queryText = 'SELECT "latitude", "longitude", "vendor_name", "id" FROM "user"'; 
     pool.query(queryText)
     .then(response => {
         console.log('response location get', response.rows)
@@ -30,9 +30,8 @@ router.post('/', (req, res) => {
     })
 })
 
-// router.post('/', (req, res) => {
-//     const queryText = `INSERT INTO "locations" (latitude, longitude)
-//                         VALUES ($1, $2)`
+// router.get('/all', (req, res) => {
+//     const queryText = `SELECT lat
 //     pool.query(queryText, [req.body.latitude, req.body.longitude]) 
 
 // })

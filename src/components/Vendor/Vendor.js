@@ -10,19 +10,26 @@ export class Vendor extends Component {
 componentDidMount() {
     // dispatch for getting menu items
     this.props.dispatch({ type:'FETCH_ITEMS'})
-    console.log(this.props)
+    console.log(this.props.reduxState.user.id)
 }
 
 
+
     render() {
+
+        const favIcon = 
+        { url: "http://simpleicon.com/wp-content/uploads/Google-Place-Optimization.png" }
+
         return (
             
             <div>
                 
 
                 <h1>{this.props.reduxState.user.vendor_name} Menu </h1>
+
+               <div></div>
                 {/* table displaying menu items */}
-                <table className="vendorTable">
+                <table className="vendorTable" >
                     <tr>
                     <th> Menu Item </th>
                     <th> Item Number </th>
@@ -30,18 +37,18 @@ componentDidMount() {
                     <th> $ Price </th>
                     </tr>
                 <tbody>
-                    <tr>
-                    </tr>
-                            {/* mapping through menu items */}
-                        {this.props.item.map(item => {
-                        return ( <tr >
-                                <td> {item.id} </td>
-                                <td> {item.item} </td>
-                                <td> {item.description} </td>
-                                <td> {item.price} </td> 
-                               
-                                </tr> )
-                        })}
+                    {/* mapping through menu items */}
+                {this.props.item.map(item => {
+                    if (item.user_id === this.props.reduxState.user.id) {
+                return ( <tr >
+                        <td> {item.id} </td>
+                        <td> {item.item} </td>
+                        <td> {item.description} </td>
+                        <td> {item.price} </td> 
+                        
+                        </tr> )
+                        }}
+                        )}
                 </tbody>
                 </table>
             </div>

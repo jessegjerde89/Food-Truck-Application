@@ -1,16 +1,14 @@
 import React, {Component } from 'react';
 import { connect } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
+
 import UserContainer from '../UserPage/UserContainer'; 
-import TruckMapContainer from '../MapComponents/TruckMapContainer';
+
 
 
 class UserPage extends Component {
 
 render() {
 
-
-const API_KEY = process.env.REACT_APP_GOOGLE_KEY; 
 
   return (
 
@@ -20,8 +18,7 @@ const API_KEY = process.env.REACT_APP_GOOGLE_KEY;
      
      {/* <TruckMapContainer/> */}
      <UserContainer/>
-      <LogOutButton className="log-in" />
-
+      
     </div>
 
     )

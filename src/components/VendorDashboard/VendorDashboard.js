@@ -91,14 +91,16 @@ class VendorDashboard extends Component {
             </tr>
                   {/* mapping threw all items */}
                   {this.props.item.map(item => {
+                    if (item.user_id === this.props.reduxState.user.id) {
                    return (<tr > 
                             <td> {item.id} </td>
                             <td> {item.item} </td>
                             <td> {item.description} </td>
                             <td> {item.price} </td> 
-                            <button onClick={() => this.handleDelete(item.id)}>Delete</button>
-                            <button onClick={() => this.handleEdit(item.id)}>Edit</button>
+                            <td><button onClick={() => this.handleDelete(item.id)}>Delete</button></td>
+                            <td><button onClick={() => this.handleEdit(item.id)}>Edit</button></td>
                             </tr>)
+                    }
                   })}
              
           </table>

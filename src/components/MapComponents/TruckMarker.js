@@ -17,13 +17,6 @@ export class TruckMarker extends Component {
         selectedPlace: {},
          }
 
-    componentDidUpdate() {
-        this.props.dispatch({ type: 'SET_LOCATION'})
-    }
-    componentWillUpdate() {
-        this.props.dispatch({ type: 'SET_LOCATION'})
-    }     
-
     componentDidMount()  {
         this.props.dispatch({ type: 'SET_LOCATION'})
     }
@@ -60,16 +53,13 @@ export class TruckMarker extends Component {
             const truckIcon = 
             { url: 'http://wherethatfoodtruck.com/graphics/default/logo.png', 
                     scaledSize: { width: 32, height: 40 } };
-            
-            const favIcon = 
-            { url: "http://simpleicon.com/wp-content/uploads/Google-Place-Optimization.png" }
         
         return(   
             <div>
                     <Marker 
                     position = {{ 
-                        lat: this.props.reduxState.user.latitude, 
-                        lng: this.props.reduxState.user.longitude
+                        lat: this.state.latitude, 
+                        lng: this.state.longitude
                                 }} 
                     onClick={this.onMarkerClick}
                     icon = {truckIcon}
