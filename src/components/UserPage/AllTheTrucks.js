@@ -7,7 +7,9 @@ export class AllTheTrucks extends Component {
 
 
     state = {
-        locations: false
+        locations: false,
+        
+
     }
 
     componentDidMount = (event) => {
@@ -81,6 +83,7 @@ export class AllTheTrucks extends Component {
                             </h3>
                             <div>
                                 <div>
+                                    
                                 { this.props.reduxState.menuItem.map( items => { 
                                     
                                     if ( items.vendor_name === this.props.reduxState.locations.vendor_name) {
