@@ -21,6 +21,7 @@ export class TruckMarker extends Component {
         this.props.dispatch({ type: 'SET_LOCATION'})
     }
 
+
     onMarkerClick = (props, marker, event) => {
         this.setState({
         selectedPlace: props,
@@ -44,7 +45,6 @@ export class TruckMarker extends Component {
 
     handleClick = (event) => {
         event.preventDefault()
-       
         {this.props.dispatch({ type: 'ADD_LOCATION', payload: this.state})}
       
     }

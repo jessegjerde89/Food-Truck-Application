@@ -13,6 +13,28 @@ class userContainer extends Component{
 			lng: 0, 
 		}
     }
+
+
+    componentDidMount() {
+        this.delayedShowMarker() 
+    }
+
+    delayedShowMarker() { 
+        this.getGeoLocation() 
+      }
+
+    getGeoLocation = () => {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+          position => {
+            this.setState(prevState => ({
+              currentLocal: {
+               ...prevState.currentLatLng, 
+           lat: position.coords.latitude,
+            lng: position.coords.longitude
+             }})
+          )})
+        }}
     
 render() {
 

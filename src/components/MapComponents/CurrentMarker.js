@@ -17,19 +17,20 @@ class CurrentMarker extends Component{
   }
 
 
-componentWillUpdate() { 
-  this.getGeoLocation() 
-}
+// componentWillUpdate() { 
+//   this.getGeoLocation() 
+// }
 
 componentDidMount() {
-   this.delayedShowMarker() 
+  //  this.delayedShowMarker() 
    this.getGeoLocation() 
    console.log(this.state.currentLocal)
+   
   }
 
-delayedShowMarker() { 
-  this.getGeoLocation() 
-}
+// delayedShowMarker() { 
+//   this.getGeoLocation() 
+// }
 
   onMarkerClick = (props, marker, event) => {
    
@@ -41,17 +42,18 @@ delayedShowMarker() {
   }
 
 getGeoLocation = () => {
-  if (navigator.geolocation) {
+  // if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
     position => {
       this.setState(prevState => ({
-        currentLocal: {
-         ...prevState.currentLatLng, 
+        currentLocal: { 
      lat: position.coords.latitude,
       lng: position.coords.longitude
        }})
     )})
-  }}
+  // } 
+  console.log(this.state.currentLocal)
+}
   render() {
 
 return (
