@@ -4,10 +4,11 @@ import './VendorDashboard.css'
 
 class VendorDashboard extends Component {
     state = {
-        user_id: '',
+        vendor_name: '',
         item: '',
         description: '',
         price: ''
+
       }
       
       // dispatch for settin the menu items
@@ -18,12 +19,16 @@ class VendorDashboard extends Component {
       
       // dispatch for adding new menu items
       handleAdd = (event) => {
-        event.preventDefault()
-        console.log(this.state)
-        // document.getElementById("vendor-form").reset();
-        
-       
-      this.props.dispatch({type: 'ADD_ITEM', payload: this.state})
+        console.log('here', this.props.reduxState)
+        this.setState({ 
+          vendor_name: (this.props.reduxState.user.vendor_name)
+        }) 
+        this.sendDispatch()
+
+      }
+      sendDispatch = () => {
+    
+        this.props.dispatch({type: 'ADD_ITEM', payload: this.state})
       }
 
       // dispatch for deleting menu items
@@ -93,7 +98,7 @@ class VendorDashboard extends Component {
             </tr>
                   {/* mapping threw all items */}
                   {this.props.item.map(item => {
-                    if (item.user_id === this.props.reduxState.user.id) {
+                    if (item.vendor_name === this.props.reduxState.user.vendor_name) {
                    return (<tr key = {item.id}> 
                             <td> {item.id} </td>
                             <td> {item.item} </td>

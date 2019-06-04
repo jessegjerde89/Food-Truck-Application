@@ -8,7 +8,7 @@ function* fetchitems() {
     try {
         let menuResponse = yield axios.get('/api/vendor'); 
         yield put({ type: 'SET_ITEMS', payload: menuResponse.data})
-        console.log(menuResponse.data)
+        console.log('the, response', menuResponse.data)
     } 
     catch(error) {
         console.log(error)

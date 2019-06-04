@@ -39,7 +39,7 @@ componentDidMount() {
                 <tbody>
                     {/* mapping through menu items */}
                 {this.props.item.map(item => {
-                    if (item.user_id === this.props.reduxState.user.id) {
+                    if (item.vendor_name === this.props.reduxState.user.vendor_name) {
                         return ( <tr key = {item.id}>
                                 <td> {item.id} </td>
                                 <td> {item.item} </td>
