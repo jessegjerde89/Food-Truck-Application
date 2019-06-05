@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './VendorDashboard.css'
+import { MuiThemeProvider } from "@material-ui/core/styles";
+import { Close, Delete, Edit, Search } from "@material-ui/icons";
 
 class VendorDashboard extends Component {
     state = {
@@ -96,6 +98,7 @@ class VendorDashboard extends Component {
               <th> Description </th>
               <th> Price </th>
             </tr>
+            <tbody>
                   {/* mapping threw all items */}
                   {this.props.item.map(item => {
                     if (item.vendor_name === this.props.reduxState.user.vendor_name) {
@@ -104,12 +107,12 @@ class VendorDashboard extends Component {
                             <td> {item.item} </td>
                             <td> {item.description} </td>
                             <td> {item.price} </td> 
-                            <td><button onClick={() => this.handleDelete(item.id)}>Delete</button></td>
-                            <td><button onClick={() => this.handleEdit(item.id)}>Edit</button></td>
+                            <td><Delete onClick={() => this.handleDelete(item.id)}/></td>
+                            <td><Edit onClick={() => this.handleEdit(item.id)}/></td>
                             </tr>)
                     }
                   })}
-             
+             </tbody>
           </table>
         </div>
       
