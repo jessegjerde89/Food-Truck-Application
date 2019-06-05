@@ -37,8 +37,9 @@ componentDidMount() {
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
-      showingInfoWindow: true
+      isInfoboxVisible: false
     })
+    console.log(this.state.isInfoboxVisible)
   }
 
 getGeoLocation = () => {
@@ -63,9 +64,7 @@ return (
       onClick={this.onMarkerClick}
       >
       <InfoWindow
-        // visible={this.state.showingInfoWindow}
-        // marker 
-        // marker={this.props.reduxState.
+        infoboxMessage={!this.state.showingInfoWindow}
         >
           <div>
             <h3>You are here!</h3>
