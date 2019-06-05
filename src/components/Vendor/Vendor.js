@@ -7,10 +7,10 @@ import { Favorite } from "@material-ui/icons";
 export class Vendor extends Component {
 
 state = {
-    favorite: false
+    favorite: false,
+    menu_id: 0
 }
 
-    
 componentDidMount() {
     // dispatch for getting menu items
     this.props.dispatch({ type:'FETCH_ITEMS'})
@@ -18,34 +18,25 @@ componentDidMount() {
 }
 
 favoriteItem = (event) => {
-event.preventDefault() 
-this.setState({ favorite: !this.state.favorite})
-// if (this.state.favorite === false){
-//     this.setState({
-//         favorite: true
-//     })
-// } else {
-//     this.setState({
-//         favorite: false
-//     })
-
-console.log(this.state)
+    event.preventDefault() 
+    
+    if (!this.state.favorite) {
+        this.props.dispatch({ type:'ADD_FAVORITE'})
+    } else if(this.state.favorite) {
+        this.props.dispatch({ type:'REMOVE_FAVORITE'})
+    }
+    this.setState({ favorite: !this.state.favorite})
+    console.log(this.state)
 }
 
 
     render() {
-
-       
-
         return (
-            
             <div>
-
                     <Favorite onClick={this.favoriteItem} />
 
                 <h1>{this.props.reduxState.user.vendor_name} Menu </h1>
 
-               <div></div>
                 {/* table displaying menu items */}
                 <table className="vendorTable" >
                     <tr>
