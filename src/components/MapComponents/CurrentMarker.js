@@ -1,3 +1,5 @@
+//currentmarker
+
 import React, { Component } from "react";
 import { Marker , InfoWindow} from "react-google-maps";
 
@@ -14,7 +16,6 @@ class CurrentMarker extends Component{
     showingInfoWindow: false, 
     activeMarker: {}, 
     selectedPlace: {},
-    isOpen: false
   }
 
 
@@ -29,21 +30,21 @@ componentDidMount() {
    
   }
 
-delayedShowMarker() { 
-  this.getGeoLocation() 
-}
- // selectedPlace: props,
-      // activeMarker: marker,
-      // isInfoboxVisible: false
+// delayedShowMarker() { 
+//   this.getGeoLocation() 
 // }
 
-  onMarkerClick= () => {
+  onMarkerClick = (props, marker, event) => {
    
-    this.setState({ isOpen: true })
-
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    })
   }
 
 getGeoLocation = () => {
+  // if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
     position => {
       this.setState(prevState => ({
@@ -52,27 +53,31 @@ getGeoLocation = () => {
       lng: position.coords.longitude
        }})
     )})
+  // } 
+  console.log(this.state.currentLocal)
 }
-
   render() {
 
 return (
     <div>
-      <Marker
+      <Marker 
       position={{ lat: this.state.currentLocal.lat,
                   lng: this.state.currentLocal.lng
                 }}
-      onClick={this.onMarkerClick}>
-      {this.state.isOpen && <InfoWindow onCloseClick={this.onMarkerClick}>
-        infoboxMessage={!this.state.showingInfoWindow}
+      onClick={this.onMarkerClick}
+      >
+      <InfoWindow
+        // visible={this.state.showingInfoWindow}
+        // marker 
+        // marker={this.props.reduxState.
+        >
           <div>
             <h3>You are here!</h3>
           </div>
       </InfoWindow> 
-      }
     </Marker>
-  
-    </div>
+  </div>
+
     );
   }
 }
@@ -82,3 +87,4 @@ return (
    }
 }
 export default connect(mapRedux)(CurrentMarker);
+
