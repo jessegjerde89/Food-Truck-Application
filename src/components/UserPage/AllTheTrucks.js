@@ -12,9 +12,9 @@ export class AllTheTrucks extends Component {
 
     }
 
-    componentDidMount = (event) => {
+    componentDidMount(){
        
-        this.props.dispatch({type: 'SET_LOCATION'})
+        this.props.dispatch({type: 'FETCH_LOCATION'})
         this.setState ({
             locations: this.props.reduxState.locations
         })
@@ -36,8 +36,8 @@ export class AllTheTrucks extends Component {
         })
         console.log(this.props.reduxState.locations)
     }
-    goToMenu() {
-        
+    goToMenu = (event) => {
+        console.log("this truck", event)
     }
 
 
@@ -70,6 +70,7 @@ export class AllTheTrucks extends Component {
                         }}
                     //    onClick={this.displayMenu}
                         icon = {truckIcon}
+                        value={locals.id}
                         onClick = {this.goToMenu}
                         >
                             

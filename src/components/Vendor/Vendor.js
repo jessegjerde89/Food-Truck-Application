@@ -8,7 +8,8 @@ export class Vendor extends Component {
 
 state = {
     favorite: false,
-    menu_id: 0
+    menu_id: 0,
+    user_name: ''
 }
 
 componentDidMount() {
@@ -17,16 +18,22 @@ componentDidMount() {
     console.log(this.props.reduxState.user.id)
 }
 
-favoriteItem = (event) => {
+favoriteItem = (event, thisid) => {
     event.preventDefault() 
     
+    this.props.reduxState.
+    this.setState({ 
+        // menu_id: ,
+        user_name: this.props.reduxState.username
+    })
     if (!this.state.favorite) {
-        this.props.dispatch({ type:'ADD_FAVORITE'})
+        this.props.dispatch({ type:'ADD_FAVORITE', payload: this.state})
     } else if(this.state.favorite) {
-        this.props.dispatch({ type:'REMOVE_FAVORITE'})
+        this.props.dispatch({ type:'REMOVE_FAVORITE', payload:{id:thisid}})
     }
     this.setState({ favorite: !this.state.favorite})
     console.log(this.state)
+    console.log(this.props.reduxState)
 }
 
 

@@ -2,7 +2,7 @@ import axios from 'axios'
 import { put, takeLatest, takeEvery} from 'redux-saga/effects'
 
 
-function* addfavorite(action) {
+function* addfav(action) {
 
     try {
         console.log('fav payload', action.payload)
@@ -14,7 +14,7 @@ function* addfavorite(action) {
     }
 }
 
-function* fetchfavorite() {
+function* fetchfav() {
 
     try{ 
         let favoriteResponse = yield axios.get('/api/vendor');
@@ -25,10 +25,10 @@ function* fetchfavorite() {
         console.log(error)
 }
 
-function* removefavorite(action) {
+function* removefav(action) {
 
     try{
-        yield axios.defaults(`/api/favorite/${action.payload.id}`)
+        yield axios.delete(`/api/favorite/${action.payload.id}`)
         yield put({type: 'FETCH_FAVORITE'})
     }
     catch(error) {
@@ -39,7 +39,7 @@ function* removefavorite(action) {
 
 
 function* favoriteSaga(){
-    yield takeLatest('ADD_FAVORITE', addfavorite)
-    yield takeLatest('REMOVE_FAVORITE', removefavorite)
-    yield takeEvery('FETCH_FAVORITE', fetchfavorite)
+    yield takeLatest('ADD_FAVORITE', addfav)
+    yield takeLatest('REMOVE_FAVORITE', removefav)
+    yield takeEvery('FETCH_FAVORITE', fetchfav)
 }
