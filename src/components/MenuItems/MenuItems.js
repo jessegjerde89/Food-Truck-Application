@@ -10,12 +10,15 @@ export class MenuItems extends Component {
             { this.props.reduxState.menuItem.map( items => { 
                 console.log(this.props.reduxState.menuItem.user_id)
 
-                if ( items.user_id === this.props.reduxState.user.id) {
+                // if ( items.vendor_name === this.props.reduxState.user.vendor_name) {
+                    // console.log({items.vendor_name)
                 return ( <div>
                     {items.item}   
                     {items.description} 
-                    {items.price} </div> )} 
-                    })
+                    {items.price} </div> 
+                        )} 
+                    // }
+                    )
                 }
             </div>
         </div>
