@@ -8,8 +8,8 @@ export class TruckMarker extends Component {
 
     state =
         {
-        latitude: 0, 
-        longitude: 0,
+        lat: 41.559977,
+        lng: -106.611563, 
 
         isMarkerShown: false, 
         showingInfoWindow: false, 
@@ -22,6 +22,7 @@ export class TruckMarker extends Component {
     }
 
     onMarkerClick = (props, marker, event) => {
+        console.log("clicked")
         this.setState({
         selectedPlace: props,
         activeMarker: marker,
@@ -44,9 +45,8 @@ export class TruckMarker extends Component {
 
     handleClick = (event) => {
         event.preventDefault()
-       
-        {this.props.dispatch({ type: 'ADD_LOCATION', payload: this.state})}
-      
+        console.log(this.reduxState)
+        this.props.dispatch({ type: 'ADD_LOCATION', payload: this.state})
     }
 
     render() {
@@ -54,6 +54,14 @@ export class TruckMarker extends Component {
             { url: 'http://wherethatfoodtruck.com/graphics/default/logo.png', 
                     scaledSize: { width: 32, height: 40 } };
         
+            
+            // const vendorInfo =  ( this.props.reduxState.menuItem.map( items => { 
+            //                      return ( <div>
+            //                             {items.item}   
+            //                             {items.description} 
+            //                             {items.price} </div> )} ))
+
+
         return(   
             <div>
                     <Marker 
@@ -69,14 +77,20 @@ export class TruckMarker extends Component {
                           
                             marker={this.state.activeMarker}
                             >
-                                <div>
-                                    <h3>{this.props.reduxState.user.vendor_name}</h3>
-                                </div>
+                            <div>
+                                <h3 className= "vendor_name">
+                                    
+                                {this.props.reduxState.user.vendor_name}
+                                </h3>
+                                {/* <div>
+                                    {vendorInfo}
+                                </div> */}
+                            </div>
                             </InfoWindow>
 
                     </Marker>
 
-                                {JSON.stringify(this.props.reduxState.user.vendor_name)}
+                               <pre>{JSON.stringify(this.props.reduxState.user)}</pre> 
                                 {/* {JSON.stringify(this.props.reduxState.user.latitude)} */}
                                 {/* {JSON.stringify(this.props.reduxState.user.longitude)} */}
                     
@@ -117,7 +131,7 @@ export class TruckMarker extends Component {
 
                     <button onClick={this.handleClick}>Change Location</button>
                     
-                    </div>
+            </div>
             )
             
         }

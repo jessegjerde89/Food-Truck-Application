@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './VendorDashboard.css'
+import { MuiThemeProvider } from "@material-ui/core/styles";
+import { Close, Delete, Edit, Search } from "@material-ui/icons";
 
 class VendorDashboard extends Component {
     state = {
-        user_id: '',
+        vendor_name: '',
         item: '',
         description: '',
         price: ''
+
       }
       
       // dispatch for settin the menu items
@@ -18,12 +21,16 @@ class VendorDashboard extends Component {
       
       // dispatch for adding new menu items
       handleAdd = (event) => {
-        event.preventDefault()
-        console.log(this.state)
-        // document.getElementById("vendor-form").reset();
-        
-       
-      this.props.dispatch({type: 'ADD_ITEM', payload: this.state})
+        console.log('here', this.props.reduxState)
+        this.setState({ 
+          vendor_name: (this.props.reduxState.user.vendor_name)
+        }) 
+        this.sendDispatch()
+
+      }
+      sendDispatch = () => {
+    
+        this.props.dispatch({type: 'ADD_ITEM', payload: this.state})
       }
 
       // dispatch for deleting menu items
@@ -91,21 +98,21 @@ class VendorDashboard extends Component {
               <th> Description </th>
               <th> Price </th>
             </tr>
+            <tbody>
                   {/* mapping threw all items */}
                   {this.props.item.map(item => {
-                    let i = 0; 
-                    if (item.user_id === this.props.reduxState.user.id) {
-                   return (<tr > 
+                    if (item.vendor_name === this.props.reduxState.user.vendor_name) {
+                   return (<tr key = {item.id}> 
                             <td> {item.id} </td>
                             <td> {item.item} </td>
                             <td> {item.description} </td>
                             <td> {item.price} </td> 
-                            <td><button onClick={() => this.handleDelete(item.id)}>Delete</button></td>
-                            <td><button onClick={() => this.handleEdit(item.id)}>Edit</button></td>
+                            <td><Delete onClick={() => this.handleDelete(item.id)}/></td>
+                            <td><Edit onClick={() => this.handleEdit(item.id)}/></td>
                             </tr>)
                     }
                   })}
-             
+             </tbody>
           </table>
         </div>
       

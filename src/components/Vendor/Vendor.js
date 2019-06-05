@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './Vendor.css'
+import { MuiThemeProvider } from "@material-ui/core/styles";
+import { Favorite } from "@material-ui/icons";
 
 export class Vendor extends Component {
 
-
+state = {
+    favorite: false
+}
 
     
 componentDidMount() {
@@ -13,17 +17,31 @@ componentDidMount() {
     console.log(this.props.reduxState.user.id)
 }
 
+favoriteItem = (event) => {
+event.preventDefault() 
+this.setState({ favorite: !this.state.favorite})
+// if (this.state.favorite === false){
+//     this.setState({
+//         favorite: true
+//     })
+// } else {
+//     this.setState({
+//         favorite: false
+//     })
+
+console.log(this.state)
+}
 
 
     render() {
 
-        const favIcon = 
-        { url: "http://simpleicon.com/wp-content/uploads/Google-Place-Optimization.png" }
+       
 
         return (
             
             <div>
-                
+
+                    <Favorite onClick={this.favoriteItem} />
 
                 <h1>{this.props.reduxState.user.vendor_name} Menu </h1>
 
@@ -39,15 +57,14 @@ componentDidMount() {
                 <tbody>
                     {/* mapping through menu items */}
                 {this.props.item.map(item => {
-                    if (item.user_id === this.props.reduxState.user.id) {
-                return ( <tr >
-                        <td> {item.id} </td>
-                        <td> {item.item} </td>
-                        <td> {item.description} </td>
-                        <td> {item.price} </td> 
-                        
-                        </tr> )
-                        }}
+                    if (item.vendor_name === this.props.reduxState.user.vendor_name) {
+                        return ( <tr key = {item.id}>
+                                <td> {item.id} </td>
+                                <td> {item.item} </td>
+                                <td> {item.description} </td>
+                                <td> {item.price} </td> 
+                                </tr> )
+                            }}
                         )}
                 </tbody>
                 </table>

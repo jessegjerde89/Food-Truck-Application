@@ -9,10 +9,15 @@ const sessionMiddleware = require('./modules/session-middleware');
 const passport = require('./strategies/user.strategy');
 
 // Route includes
+
 const userRouter = require('./routes/user.router');
 const vendorRouter = require('./routes/vendor.router'); 
 const locationRouter = require('./routes/location.router'); 
+<<<<<<< HEAD
 const favoriteRouter = require('./routes/favorite.router')
+=======
+// const favoriteRouter = require('./routes/favorites.router');
+>>>>>>> vendor
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -26,10 +31,16 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 /* Routes */
+
 app.use('/api/user', userRouter);
 app.use('/api/vendor', vendorRouter); 
 app.use('/api/location', locationRouter); 
+<<<<<<< HEAD
 app.use('/api/favorite', favoriteRouter); 
+=======
+// app.use('/api/location', favoriteRouter); 
+
+>>>>>>> vendor
 
 
 // Serve static files

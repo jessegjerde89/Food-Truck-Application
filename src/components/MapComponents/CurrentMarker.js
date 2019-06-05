@@ -1,3 +1,5 @@
+//currentmarker
+
 import React, { Component } from "react";
 import { Marker , InfoWindow} from "react-google-maps";
 
@@ -85,3 +87,4 @@ return (
    }
 }
 export default connect(mapRedux)(CurrentMarker);
+
