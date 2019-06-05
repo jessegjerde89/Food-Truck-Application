@@ -14,6 +14,7 @@ class CurrentMarker extends Component{
     showingInfoWindow: false, 
     activeMarker: {}, 
     selectedPlace: {},
+    isOpen: false
   }
 
 
@@ -28,18 +29,18 @@ componentDidMount() {
    
   }
 
-// delayedShowMarker() { 
-//   this.getGeoLocation() 
+delayedShowMarker() { 
+  this.getGeoLocation() 
+}
+ // selectedPlace: props,
+      // activeMarker: marker,
+      // isInfoboxVisible: false
 // }
 
-  onMarkerClick = (props, marker, event) => {
+  onMarkerClick= () => {
    
-    this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
-      isInfoboxVisible: false
-    })
-    console.log(this.state.isInfoboxVisible)
+    this.setState({ isOpen: true })
+
   }
 
 getGeoLocation = () => {
@@ -57,22 +58,21 @@ getGeoLocation = () => {
 
 return (
     <div>
-      <Marker 
+      <Marker
       position={{ lat: this.state.currentLocal.lat,
                   lng: this.state.currentLocal.lng
                 }}
-      onClick={this.onMarkerClick}
-      >
-      <InfoWindow
+      onClick={this.onMarkerClick}>
+      {this.state.isOpen && <InfoWindow onCloseClick={this.onMarkerClick}>
         infoboxMessage={!this.state.showingInfoWindow}
-        >
           <div>
             <h3>You are here!</h3>
           </div>
       </InfoWindow> 
+      }
     </Marker>
-  </div>
-
+  
+    </div>
     );
   }
 }
