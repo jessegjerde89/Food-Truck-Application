@@ -19,6 +19,7 @@ export class TruckMarker extends Component {
 
     componentDidMount()  {
         this.props.dispatch({ type: 'SET_LOCATION'})
+        this.props.dispatch({ type:'FETCH_ITEMS'})
     }
 
     onMarkerClick = (props, marker, event) => {
