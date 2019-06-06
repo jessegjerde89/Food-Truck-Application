@@ -104,6 +104,27 @@ export class AllTheTrucks extends Component {
                )  
                : <button onClick = {this.addLocations}>Click to Refresh</button>
             }
+             <div>
+                        <h2>Key: </h2>       
+                    
+                        Trucks: <img 
+                        src= "http://wherethatfoodtruck.com/graphics/default/logo.png" 
+                        alt="truck-icon" 
+                        width= "10%"
+                        height= "5%"
+                        />
+                        
+                        You are here: <img 
+                        src="https://png.pngtree.com/element_our/md/20180526/md_5b09436fd0515.png" 
+                        alt="fav-icon"
+                        width="20%"
+                        />
+
+                        Favorite : <img 
+                        src="http://simpleicon.com/wp-content/uploads/Google-Place-Optimization.png" 
+                        alt="you-are-here"
+                        width="15%"/>
+                 </div>
            
             </div>
     )
