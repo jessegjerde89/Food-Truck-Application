@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { withGoogleMap, GoogleMap, Marker, InfoWindow, withScriptjs } from 'react-google-maps';
 import { compose, withProps, withStateHandlers } from 'recompose';
 import CurrentMarker from '../MapComponents/CurrentMarker';
+import VendorMarker from './VendorMarker';
 
 
 require('dotenv').config()
@@ -23,34 +24,23 @@ class userContainer extends Component{
        
       this.props.dispatch({type: 'FETCH_LOCATION'})
       this.props.dispatch({type: 'FETCH_DASH'})
+      this.props.dispatch({type: 'SET_LOCATION'})
       this.setState ({
           locations: this.props.reduxState.locations
       })
       console.log(this.state.locations)
   }
 
-  // componentDidUpdate() {
-  //     this.props.dispatch({type: 'SET_LOCATION'})
-  //     this.setState ({
-  //         locations: this.props.reduxState.locations
-  //     })
-  //     console.log(this.props.reduxState.locations)
-  // }
-
-
-
-
     addLocations = (event) => {
         event.preventDefault()
         this.setState({ 
             locations: true
         })
-        
     }
     
 render() {
   console.log(this.props.reduxState)
-  console.log(this.state)
+  
   
 
     const API_KEY = process.env.REACT_APP_GOOGLE_KEY;
@@ -62,7 +52,8 @@ render() {
     const GoogleMapContainer = (compose(
       withStateHandlers(() => ({
         isOpen: false,
-      }), {
+      }), 
+      {
         onToggleOpen: ({ isOpen }) => () => ({
           isOpen: !isOpen,
         })
@@ -82,44 +73,9 @@ render() {
     
          this.props.reduxState.locations.map( locals => {
           console.log(locals.id)
-           return(  <Marker 
-            key = {locals.id}
-            position = {{
-                lat: locals.latitude,
-                lng: locals.longitude
-            }}
-        //    onClick={this.displayMenu}
-            icon = {truckIcon}
-            value={locals.id}
-            onClick = {props.onToggleOpen}
-            >
-              
-                
-            { props.isOpen &&  <InfoWindow onCloseClick={props.onToggleOpen}>
-                
-                <div>
-                  <h3 className= "vendor_name">
-                      {locals.vendor_name}
-                  </h3>
-                    <div>
-                        
-                    { this.props.reduxState.menuItem.map( items => { 
-                        
-                        if ( items.vendor_name === this.props.reduxState.locations.vendor_name) {
-                        return ( <div>
-                            {items.item}   
-                            {items.description} 
-                            {items.price} </div> )} 
-                            })
-                        }
-                    </div>
-                    
-                </div>
-                </InfoWindow> } 
-                </Marker>
-            )
-            }        
-            )
+           return( 
+             <VendorMarker locals= {locals} />
+            )})
         
         : <button onClick = {this.addLocations}>Click to Refresh</button>  
   }
