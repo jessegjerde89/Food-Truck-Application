@@ -6,7 +6,6 @@ const router = express.Router();
 router.get('/', (req, res) => {
     console.log('in get', req.body)
     const queryText = `SELECT * FROM "menu" `
-                        // WHERE "menu"."number" = 1`
     pool.query(queryText)
     .then( response => {
         console.log('response from get', response.rows)
@@ -21,9 +20,9 @@ router.get('/', (req, res) => {
 // post route for inserting new menu items
 router.post('/', (req, res) => {
     console.log('line 23', req.user.id, req.body.item, req.body.price, req.body.description)
-    const queryText = `INSERT INTO "menu" ( "user_id", "item", "price", "description")
+    const queryText = `INSERT INTO "menu" ( "item", "price", "description", "user_id")
                         VALUES ($1, $2, $3, $4)`
-    pool.query(queryText, [req.user.id, req.body.item, req.body.price, req.body.description])
+    pool.query(queryText, [req.body.vendor_name, req.body.item, req.body.price, req.user.id])
     .then( response => {
         console.log('response from post', response)
         res.sendStatus(201)

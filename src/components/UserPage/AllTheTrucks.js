@@ -1,16 +1,20 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Marker, InfoWindow } from 'react-google-maps';
+import MenuItems from '../MenuItems/MenuItems'
 
 export class AllTheTrucks extends Component {
 
 
     state = {
-        locations: undefined
+        locations: false,
+        
+
     }
 
-    componentDidMount() {
-        this.props.dispatch({type: 'SET_LOCATION'})
+    componentDidMount(){
+       
+        this.props.dispatch({type: 'FETCH_LOCATION'})
         this.setState ({
             locations: this.props.reduxState.locations
         })
@@ -25,13 +29,15 @@ export class AllTheTrucks extends Component {
     //     console.log(this.props.reduxState.locations)
     // }
 
-    // addLocations() {
-    //     this.setState({ 
-    //         locations: this.props.reduxState.locations
-    //     })
-    // }
-    goToMenu() {
-        
+    addLocations = (event) => {
+        event.preventDefault()
+        this.setState({ 
+            locations: true
+        })
+        console.log(this.props.reduxState.locations)
+    }
+    goToMenu = (event) => {
+        console.log("this truck", event)
     }
 
 
@@ -41,9 +47,14 @@ export class AllTheTrucks extends Component {
         { url: 'http://wherethatfoodtruck.com/graphics/default/logo.png', 
                 scaledSize: { width: 32, height: 40 } };
         
-        const favIcon = 
-        { url: "http://simpleicon.com/wp-content/uploads/Google-Place-Optimization.png" }
+        // const favIcon = 
+        // { url: "http://simpleicon.com/wp-content/uploads/Google-Place-Optimization.png" }
 
+        const vendorInfo =  ( this.props.reduxState.menuItem.map( items => { 
+            return ( <div>
+                   {items.item}   
+                   {items.description} 
+                   {items.price} </div> )} ))
         
         return (
 
@@ -52,20 +63,39 @@ export class AllTheTrucks extends Component {
         
            ( this.props.reduxState.locations.map( locals => {
                 return ( <Marker 
+                        key = {locals.id}
                         position = {{
                             lat: locals.latitude,
                             lng: locals.longitude
                         }}
                     //    onClick={this.displayMenu}
                         icon = {truckIcon}
+                        value={locals.id}
                         onClick = {this.goToMenu}
                         >
+                            
                             <InfoWindow
                             visible={this.state.showingInfoWindow}
                             marker= {this.state.activeMarker}
-                        >
+                        >   
                             <div>
-                                <h3> {locals.vendor_name} </h3>
+                            <h3 className= "vendor_name">
+                                {locals.vendor_name}
+                            </h3>
+                            <div>
+                                <div>
+                                    
+                                { this.props.reduxState.menuItem.map( items => { 
+                                    
+                                    if ( items.vendor_name === this.props.reduxState.locations.vendor_name) {
+                                    return ( <div>
+                                        {items.item}   
+                                        {items.description} 
+                                        {items.price} </div> )} 
+                                        })
+                                  }
+                              </div>
+                             </div>
                             </div>
                         </InfoWindow>
                         </Marker>

@@ -8,7 +8,7 @@ function* fetchitems() {
     try {
         let menuResponse = yield axios.get('/api/vendor'); 
         yield put({ type: 'SET_ITEMS', payload: menuResponse.data})
-        console.log(menuResponse.data)
+        console.log('the, response', menuResponse.data)
     } 
     catch(error) {
         console.log(error)
@@ -54,7 +54,7 @@ function* edititems(action) {
 
 function* menuItemSaga(){
 yield takeLatest('FETCH_DASH', fetchitems)
-yield takeLatest('ADD_ITEM', additems)
+yield takeEvery('ADD_ITEM', additems)
 yield takeLatest('DELETE_ITEM', deleteitems)
 yield takeLatest('EDIT_ITEM', edititems)
 }

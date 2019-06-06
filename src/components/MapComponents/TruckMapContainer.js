@@ -2,17 +2,17 @@ import React, { Component } from "react";
 import TrucksMap from "../MapComponents/TrucksMap"
 import { connect } from 'react-redux'
 require('dotenv').config()
-// import '../../../en'
+
 
 class TruckMapContainer extends Component {
 
-
 	state = {
 		currentLatLng: {
-			lat: 0,
-			lng: 0, 
+			lat: 41.559977,
+			lng: -106.611563, 
 		}
 	}
+
 	
 	  render() {
 
