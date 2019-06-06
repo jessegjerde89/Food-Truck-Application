@@ -38,6 +38,8 @@ class userContainer extends Component{
   // }
 
 
+
+
     addLocations = (event) => {
         event.preventDefault()
         this.setState({ 
@@ -79,7 +81,7 @@ render() {
         { this.state.locations === true ?  
     
          this.props.reduxState.locations.map( locals => {
-
+          console.log(locals.id)
            return(  <Marker 
             key = {locals.id}
             position = {{
@@ -91,8 +93,9 @@ render() {
             value={locals.id}
             onClick = {props.onToggleOpen}
             >
+              
                 
-            { props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}>
+            { props.isOpen &&  <InfoWindow onCloseClick={props.onToggleOpen}>
                 
                 <div>
                   <h3 className= "vendor_name">
