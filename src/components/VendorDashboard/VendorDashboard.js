@@ -20,12 +20,18 @@ class VendorDashboard extends Component {
           vendor_name: (this.props.reduxState.user.vendor_name)
         }) 
         console.log(this.props)
+        this.setState({ 
+          vendor_name: (this.props.reduxState.user.vendor_name)
+        }) 
       }
       
       // dispatch for adding new menu items
       handleAdd = (event) => {
         console.log('here', this.props.reduxState)
+<<<<<<< HEAD
       
+=======
+>>>>>>> vendordashboard
         this.sendDispatch()
 
       }

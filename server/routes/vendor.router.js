@@ -20,9 +20,15 @@ router.get('/', (req, res) => {
 // post route for inserting new menu items
 router.post('/', (req, res) => {
     console.log('line 23', req.user.id, req.body)
+<<<<<<< HEAD
     const queryText = `INSERT INTO "menu" ( "item", "price", "description", "vendor_name", "user_id")
                         VALUES ($1, $2, $3, $4, $5)`
     pool.query(queryText, [req.body.item, req.body.price, req.body.description, req.body.vendor_name, req.user.id])
+=======
+    const queryText = `INSERT INTO "menu" ( "item", "price", "description","vendor_name", "user_id")
+                        VALUES ($1, $2, $3, $4, $5)`
+    pool.query(queryText, [ req.body.item, req.body.price,req.body.description, req.body.vendor_name, req.user.id])
+>>>>>>> vendordashboard
     .then( response => {
         console.log('response from post', response)
         res.sendStatus(201)

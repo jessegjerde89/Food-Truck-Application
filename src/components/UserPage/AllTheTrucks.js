@@ -15,6 +15,7 @@ export class AllTheTrucks extends Component {
     componentDidMount(){
        
         this.props.dispatch({type: 'FETCH_LOCATION'})
+        this.props.dispatch({type: 'FETCH_DASH'})
         this.setState ({
             locations: this.props.reduxState.locations
         })

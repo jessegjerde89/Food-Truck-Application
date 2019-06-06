@@ -19,7 +19,7 @@ export class TruckMarker extends Component {
 
     componentDidMount()  {
         this.props.dispatch({ type: 'SET_LOCATION'})
-        this.props.dispatch({ type:'FETCH_ITEMS'})
+        this.props.dispatch({ type:'FETCH_DASH'})
     }
 
     onMarkerClick = (props, marker, event) => {
@@ -70,7 +70,6 @@ export class TruckMarker extends Component {
                         lat: this.state.latitude, 
                         lng: this.state.longitude
                                 }} 
-                    onClick={this.onMarkerClick}
                     icon = {truckIcon}
                         >
                             <InfoWindow
@@ -90,9 +89,13 @@ export class TruckMarker extends Component {
                             </InfoWindow>
 
                     </Marker>
+<<<<<<< HEAD
 
                                {/* <pre>{JSON.stringify(this.props.reduxState.user)}</pre>  */}
                      
+=======
+                    
+>>>>>>> vendordashboard
                     <h3>Add New Spot</h3>
                     
                     <input 
