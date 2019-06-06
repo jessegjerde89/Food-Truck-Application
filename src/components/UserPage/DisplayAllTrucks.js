@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withGoogleMap, GoogleMap, Marker, InfoWindow, withScriptjs } from 'react-google-maps';
 import { compose, withProps, withStateHandlers } from 'recompose';
+import CurrentMarker from '../MapComponents/CurrentMarker';
 
 
 require('dotenv').config()
@@ -120,7 +121,8 @@ render() {
         : <button onClick = {this.addLocations}>Click to Refresh</button>  
   }
     </div>
-    
+
+    <CurrentMarker />
       </GoogleMap>
     )))
   
