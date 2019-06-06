@@ -1,7 +1,8 @@
 import React, {Component } from 'react';
 import { connect } from 'react-redux';
-
 import UserContainer from '../UserPage/UserContainer'; 
+import DisplayAllTrucks from './DisplayAllTrucks';
+import CurrentMarker from '../MapComponents/CurrentMarker';
 
 
 
@@ -17,8 +18,9 @@ render() {
         Welcome, { this.props.reduxState.user.username }! </h1>
      
      {/* <TruckMapContainer/> */}
-     <UserContainer/>
-      
+     {/* <UserContainer/> */}
+      <DisplayAllTrucks />
+      {/* <CurrentMarker /> */}
     </div>
 
     )
