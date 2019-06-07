@@ -66,6 +66,7 @@ export class TruckMarker extends Component {
         return(   
             <div>
                     <Marker 
+                    key = {this.state.id}
                     position = {{ 
                         lat: this.state.latitude, 
                         lng: this.state.longitude

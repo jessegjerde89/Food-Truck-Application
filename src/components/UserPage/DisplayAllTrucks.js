@@ -45,10 +45,7 @@ render() {
 
     const API_KEY = process.env.REACT_APP_GOOGLE_KEY;
 
-    const truckIcon = 
-    { url: 'http://wherethatfoodtruck.com/graphics/default/logo.png', 
-            scaledSize: { width: 32, height: 40 } };
-    
+
     const GoogleMapContainer = (compose(
       withStateHandlers(() => ({
         isOpen: false,
@@ -69,16 +66,16 @@ render() {
                         lng: -93 }}
       >
         <div>
-        { this.state.locations === true ?  
+        {/* { this.state.locations === true ?   */}
     
-         this.props.reduxState.locations.map( locals => {
+         {this.props.reduxState.locations.map( locals => {
           console.log(locals.id)
            return( 
              <VendorMarker locals= {locals} />
-            )})
+            )})}
         
-        : <button onClick = {this.addLocations}>Click to Refresh</button>  
-  }
+        {/* : <button onClick = {this.addLocations}>Click to Refresh</button>  
+  } */}
     </div>
 
     <CurrentMarker />
@@ -112,10 +109,10 @@ render() {
                         width="20%"
                         />
 
-                        Favorite : <img 
+                        {/* Favorite : <img 
                         src="http://simpleicon.com/wp-content/uploads/Google-Place-Optimization.png" 
                         alt="you-are-here"
-                        width="15%"/>
+                        width="15%"/> */}
                     </div>
         </div>
         

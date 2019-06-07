@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withGoogleMap, GoogleMap, Marker, InfoWindow, withScriptjs } from 'react-google-maps';
 import MenuItems from '../UserPage/MenutItems'
+import { Link } from 'react-router-dom'
 
 
 export class VendorMarker extends Component {
@@ -9,6 +10,7 @@ export class VendorMarker extends Component {
 
 state = {
     isOpen : false    
+
 }
 
 toggleOn = () => {
@@ -25,6 +27,9 @@ console.log(this.props.reduxState)
         { url: 'http://wherethatfoodtruck.com/graphics/default/logo.png', 
                 scaledSize: { width: 32, height: 40 } };
 
+        const favIcon = 
+        { url: 'http://simpleicon.com/wp-content/uploads/Google-Place-Optimization.png',
+                scaledSize: { width: 32, height: 40 } };
 
         return (
             <div>
@@ -41,14 +46,19 @@ console.log(this.props.reduxState)
               
                 
             { this.state.isOpen &&  <InfoWindow>
-                
+                {/* {this.props.dispatch({type: 'INSERT_CURRENT'})} */}
                 <div>
                   <h3 className= "vendor_name">
                       {this.props.locals.vendor_name}
+                <div>
+                      <Link className="link_to" to="/vendor">
+                        Vendor
+                      </Link>
+                      </div>
                   </h3>
                     <div>
                         
-                    { this.props.reduxState.menuItem.map( items => { 
+                    {/* { this.props.reduxState.menuItem.map( items => { 
                         // console.log(items)
                         if(items.vendor_name === this.props.reduxState.user.vendor_name)
                         {
@@ -62,7 +72,7 @@ console.log(this.props.reduxState)
                             
                             )} 
                             })
-                        }
+                        } */}
                         
                     </div>
                     

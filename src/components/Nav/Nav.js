@@ -23,9 +23,6 @@ const Nav = (props) => (
         About
       </Link>
    
-      <Link className="nav-link" to="/map">
-      Map
-      </Link>
       <Link className="nav-link" to="/vendor">
       Vendor
       </Link>
@@ -35,6 +32,10 @@ const Nav = (props) => (
       <Link className="nav-link" to="/vendordash">
       VendorDash
       </Link>
+      <Link className="nav-link" to="/map">
+      Map
+      </Link>
+     
       </>
       )}
       <LogOutButton className="nav-link"/>

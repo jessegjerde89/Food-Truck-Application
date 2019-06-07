@@ -8,9 +8,9 @@
 .dashTable {
     width: 80%; 
     border-collapse: collapse;
-}
+} 
 
-
-/* .dashTable  > :not(button) {
+/* 
+ .dashTable  > :not(button) {
     border: 1px solid black;
 } */
