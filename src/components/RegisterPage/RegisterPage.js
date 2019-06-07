@@ -81,7 +81,7 @@ class RegisterPage extends Component {
           </div>
           <div>
             <label htmlFor="isvendor">
-            Are You A Vendor :
+            Are You A Vendor:
             <input 
             type="boolean"
             name="isvendor"
