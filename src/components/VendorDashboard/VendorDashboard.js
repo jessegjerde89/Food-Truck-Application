@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import './VendorDashboard.css'
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import { Close, Delete, Edit, Search } from "@material-ui/icons";
+import VendorDashboardForm from './VendorDashboardForm'
 
 class VendorDashboard extends Component {
     state = {
@@ -33,7 +34,7 @@ class VendorDashboard extends Component {
 
       sendDispatch = (editthis) => {
         if (this.state.isediting){
-          this.props.dispatch({type:'EDIT_ITEM', payload: this.state, id:editthis})
+          this.props.dispatch({type:'EDIT_ITEM', payload: this.state })
         } else {
             this.props.dispatch({type: 'ADD_ITEM', payload: this.state})
           }
