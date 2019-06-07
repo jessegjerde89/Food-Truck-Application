@@ -6,32 +6,42 @@ import { Close, Delete, Edit, Search } from "@material-ui/icons";
 
 class VendorDashboard extends Component {
     state = {
-        vendor_name: '',
-        item: '',
-        description: '',
-        price: ''
-
+        vendor_name: this.props.item.vendor_name || '',
+        item: this.props.item.item || '',
+        description: this.props.item.description || '',
+        price: this.props.item.price || '',
+        id: this.props.item.id || '',
       }
       
       // dispatch for settin the menu items
       componentDidMount() {
         this.props.dispatch({ type: 'FETCH_DASH'})
         console.log(this.props)
-        this.setState({ 
-          vendor_name: (this.props.reduxState.user.vendor_name)
-        }) 
       }
       
       // dispatch for adding new menu items
       handleAdd = (event) => {
+        event.preventDefault(); 
         console.log('here', this.props.reduxState)
+        this.setState({ 
+          vendor_name: this.props.reduxState.user.vendor_name,
+          id: this.props.reduxState.menuItem.id
+        }) 
         this.sendDispatch()
 
       }
-      sendDispatch = () => {
-    
-        this.props.dispatch({type: 'ADD_ITEM', payload: this.state})
-      }
+
+      sendDispatch = (editthis) => {
+        if (this.state.isediting){
+          this.props.dispatch({type:'EDIT_ITEM', payload: this.state, id:editthis})
+        } else {
+            this.props.dispatch({type: 'ADD_ITEM', payload: this.state})
+          }
+        this.setState({
+            isediting: false
+          })
+          console.log(this.state)
+        }
 
       // dispatch for deleting menu items
       handleDelete = (deletethis) => {
@@ -40,7 +50,11 @@ class VendorDashboard extends Component {
 
       // dispatch for editing menu items
       handleEdit = (editthis) => {
-        this.props.dispatch({type:'EDIT_ITEM', payload: {id:editthis}})
+        this.setState({
+          isediting: true,
+          id: editthis
+        })
+        console.log(this.state)
       }
       
       // handles all changes for all inputs 
@@ -125,7 +139,6 @@ class VendorDashboard extends Component {
             item: reduxState.menuItem, 
            
             reduxState
-
             }   
         }
         export default connect(mapState)(VendorDashboard)

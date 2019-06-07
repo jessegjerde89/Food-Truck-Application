@@ -6,6 +6,10 @@ import { withGoogleMap, GoogleMap, Marker, InfoWindow, withScriptjs } from 'reac
 export class MenutItems extends Component {
 
 
+    state = {
+        
+    }
+
 
 
     render() {
@@ -16,10 +20,10 @@ export class MenutItems extends Component {
 
             <div>
                 <h4>
-                    {this.props.items}
-                    {/* {this.props.items.item}
+                    
+                    {this.props.items.item}
                     {this.props.items.price}
-                    {this.props.items.description} */}
+                    {this.props.items.description}
                   </h4>  
             </div>
         )

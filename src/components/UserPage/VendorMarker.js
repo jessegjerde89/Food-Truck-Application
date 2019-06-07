@@ -50,10 +50,15 @@ console.log(this.props.reduxState)
                         
                     { this.props.reduxState.menuItem.map( items => { 
                         // console.log(items)
+                        if(items.vendor_name === this.props.reduxState.user.vendor_name)
                         {
                         return ( 
                             
-                                <MenuItems items={items} />
+                            <div>
+                            {items.item}   
+                            {items.description} 
+                            {items.price} 
+                            </div> 
                             
                             )} 
                             })
