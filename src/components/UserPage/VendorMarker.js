@@ -9,17 +9,21 @@ export class VendorMarker extends Component {
 
 
 state = {
-    isOpen : false    
-
+    isOpen : false,
+    currentVendor: ''
 }
 
-toggleOn = () => {
+toggleOn = (vendor) => {
     this.setState({
-        isOpen: !this.state.isOpen
+        isOpen: !this.state.isOpen,
+        currentVendor: vendor
     })
-
-console.log(this.props.reduxState)
 }
+
+componentDidUpdate(){
+    this.props.dispatch({ type: "CURRENT_MARKER", payload: this.state.currentVendor})
+}
+
 
     render() {
 
@@ -36,20 +40,25 @@ console.log(this.props.reduxState)
 
                 <Marker 
             key = {this.props.locals.id}
+            
             position = {{
                 lat: this.props.locals.latitude,
                 lng: this.props.locals.longitude
             }}
             icon = {truckIcon}
-            onClick = {this.toggleOn}
+            onClick = {() => this.toggleOn(this.props.locals.vendor_name)}
             >
-              
+
+            
+
                 
             { this.state.isOpen &&  <InfoWindow>
-                {/* {this.props.dispatch({type: 'INSERT_CURRENT'})} */}
+                
                 <div>
                   <h3 className= "vendor_name">
+                      
                       {this.props.locals.vendor_name}
+                    
                 <div>
                       <Link className="link_to" to="/vendor">
                         Vendor
@@ -58,7 +67,7 @@ console.log(this.props.reduxState)
                   </h3>
                     <div>
                         
-                    {/* { this.props.reduxState.menuItem.map( items => { 
+                    { this.props.reduxState.menuItem.map( items => { 
                         // console.log(items)
                         if(items.vendor_name === this.props.reduxState.user.vendor_name)
                         {
@@ -72,7 +81,7 @@ console.log(this.props.reduxState)
                             
                             )} 
                             })
-                        } */}
+                        }
                         
                     </div>
                     

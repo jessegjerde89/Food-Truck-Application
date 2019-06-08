@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import './VendorDashboard.css'
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import { Close, Delete, Edit, Search } from "@material-ui/icons";
+import Button from '@material-ui/core/Button';
 
 class VendorDashboard extends Component {
   state = {

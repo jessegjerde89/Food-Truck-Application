@@ -9,26 +9,29 @@ export class Vendor extends Component {
 state = {
     favorite: false,
     menu_id: 0,
-    user_name: ''
+    user_name: '',
+    currentTruck: '',
+    menusItems: {}
 }
 
 componentDidMount() {
     // dispatch for getting menu items
-    this.props.dispatch({ type:'FETCH_ITEMS'})
+    this.props.dispatch({ type:'FETCH_DASH'})
     console.log(this.props.reduxState.user.id)
 }
 
 favoriteItem = (event, thisid) => {
     event.preventDefault() 
-    
+    console.log(this.props.reduxState.menuItem)
     // this.props.reduxState.
     this.setState({ 
-        // menu_id: ,
-        user_name: this.props.reduxState.username
+        menu_id: this.props.reduxState.menuItem.user_id,
+        user_name: this.props.reduxState.user.username
     })
 
     if (!this.state.favorite) {
         this.props.dispatch({ type:'ADD_FAVORITE', payload: this.state})
+        this.setState({ favorite: !this.state.favorite})
     } else if(this.state.favorite) {
         this.props.dispatch({ type:'REMOVE_FAVORITE', payload:{id:thisid}})
     }

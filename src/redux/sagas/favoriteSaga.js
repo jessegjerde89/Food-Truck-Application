@@ -21,8 +21,9 @@ function* fetchfav() {
         yield put({ type:'SET_FAVS', payload:favoriteResponse.data})
         console.log('fetch_fav res', favoriteResponse.data)
     } 
-    catch {error}
-        console.log(error)
+    catch (error) {
+        console.log(error)}
+     
 }
 
 function* removefav(action) {
@@ -43,3 +44,5 @@ function* favoriteSaga(){
     yield takeLatest('REMOVE_FAVORITE', removefav)
     yield takeEvery('FETCH_FAVORITE', fetchfav)
 }
+
+export default favoriteSaga; 

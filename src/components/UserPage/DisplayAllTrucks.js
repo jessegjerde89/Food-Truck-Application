@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withGoogleMap, GoogleMap, Marker, InfoWindow, withScriptjs } from 'react-google-maps';
+import { withGoogleMap, GoogleMap, withScriptjs } from 'react-google-maps';
 import { compose, withProps, withStateHandlers } from 'recompose';
 import CurrentMarker from '../MapComponents/CurrentMarker';
 import VendorMarker from './VendorMarker';
@@ -17,7 +17,7 @@ class userContainer extends Component{
       lng: 0, 
     },
     locations: false,
- 
+    
     }
 
     componentDidMount(){
@@ -31,20 +31,11 @@ class userContainer extends Component{
       console.log(this.state.locations)
   }
 
-    addLocations = (event) => {
-        event.preventDefault()
-        this.setState({ 
-            locations: true
-        })
-    }
     
 render() {
   console.log(this.props.reduxState)
   
-  
-
     const API_KEY = process.env.REACT_APP_GOOGLE_KEY;
-
 
     const GoogleMapContainer = (compose(
       withStateHandlers(() => ({
@@ -66,16 +57,15 @@ render() {
                         lng: -93 }}
       >
         <div>
-        {/* { this.state.locations === true ?   */}
+        
     
          {this.props.reduxState.locations.map( locals => {
-          console.log(locals.id)
+          console.log(locals)
            return( 
              <VendorMarker locals= {locals} />
             )})}
         
-        {/* : <button onClick = {this.addLocations}>Click to Refresh</button>  
-  } */}
+       
     </div>
 
     <CurrentMarker />
@@ -83,7 +73,7 @@ render() {
     )))
   
     return (
-      <div>
+      <div className = "home_map">
         <GoogleMapContainer
             
             googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
