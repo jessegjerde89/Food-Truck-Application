@@ -52,11 +52,24 @@ function* edititems(action) {
 }
 
 
+function* getedit(action) {
+    try {
+        let editResponse = 
+        yield axios.get(`/api/edit/${action.payload}`); 
+        yield put({ type: 'GET_CURRENT', payload: editResponse.data})
+        console.log('the response', editResponse.data)
+    } catch(error) {
+
+    }
+}
+
+
 function* menuItemSaga(){
 yield takeLatest('FETCH_DASH', fetchitems)
 yield takeEvery('ADD_ITEM', additems)
 yield takeLatest('DELETE_ITEM', deleteitems)
 yield takeLatest('EDIT_ITEM', edititems)
+yield takeLatest('SEND_EDIT', getedit)
 }
 
 export default menuItemSaga

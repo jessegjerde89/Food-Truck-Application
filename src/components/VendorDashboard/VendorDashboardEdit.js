@@ -3,45 +3,39 @@ import { connect } from 'react-redux'
 import './VendorDashboard.css'
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import { Close, Delete, Edit, Search } from "@material-ui/icons";
-import Button from '@material-ui/core/Button';
+import VendorItems from './VendorItems'
+
 
 class VendorDashboard extends Component {
-  state = {
-      vendor_name: this.props.item.vendor_name || '',
-      item: this.props.item.item || '',
-      description: this.props.item.description || '',
-      price: this.props.item.price || '',
-      id: this.props.item.id || '',
-      isediting: false
-    }
-
+    state = {
+        vendor_name: this.props.item.vendor_name || '',
+        item: this.props.item.item || '',
+        description: this.props.item.description || '',
+        price: this.props.item.price || '',
+        id: this.props.item.id || '',
+      }
       
       // dispatch for settin the menu items
       componentDidMount() {
         this.props.dispatch({ type: 'FETCH_DASH'})
-        this.setState({ 
-          vendor_name: (this.props.reduxState.user.vendor_name)
-        }) 
         console.log(this.props)
       }
       
       // dispatch for adding new menu items
       handleAdd = (event) => {
+        event.preventDefault(); 
         console.log('here', this.props.reduxState)
-<<<<<<< HEAD
-<<<<<<< HEAD
-      
-=======
->>>>>>> vendordashboard
-=======
         this.setState({ 
-          vendor_name: (this.props.reduxState.user.vendor_name)
+          vendor_name: this.props.reduxState.user.vendor_name,
+          id: this.props.reduxState.menuItem.id
         }) 
->>>>>>> vendordashboard
         this.sendDispatch()
+        this.props.dispatch({ type: 'FETCH_DASH'})
+        this.props.dispatch({ type: 'SET_DASH'})
 
       }
-      sendDispatch = () => {
+
+      sendDispatch = (editthis) => {
         if (this.state.isediting){
           this.props.dispatch({type:'EDIT_ITEM', payload: this.state })
         } else {
@@ -50,7 +44,8 @@ class VendorDashboard extends Component {
         this.setState({
             isediting: false
           })
-      }
+          console.log(this.state)
+        }
     }
 
       // dispatch for deleting menu items
@@ -60,15 +55,11 @@ class VendorDashboard extends Component {
 
       // dispatch for editing menu items
       handleEdit = (editthis) => {
-        this.props.dispatch({type: 'SEND_EDIT', payload: {id:editthis}})
-        console.log({id:editthis})
-        // this.setState({
-        //   vendor_name: 'bob',
-        //   item: 'hotdog',
-        //   description: 'hotdog',
-        //   price: '12',
-        //   isediting: true
-        // })
+        this.setState({
+          isediting: true,
+          id: editthis
+        })
+        console.log(this.state)
       }
       
       // handles all changes for all inputs 
@@ -81,8 +72,9 @@ class VendorDashboard extends Component {
         render() {
             return (
               // displays users name onto dashboard
-        <div align= "center">
-            <h2 > {this.props.reduxState.user.username}'s Dashboard</h2>
+       <div>
+        <div >
+            <h2> {this.props.reduxState.user.username}'s Dashboard</h2>
       <form className = "vendor-form">
         
           {/* input for menu item */}
@@ -117,36 +109,38 @@ class VendorDashboard extends Component {
           Add New Item 
           </button>
           </form>
+      </div>
       
+      <div>
       {/* table for menu items */}
-        <table className="dashTable">
-            <tr>
-              <th> Item Number </th>
-              <th> Item </th>
-              <th> Description </th>
-              <th> Price </th>
-            </tr>
-            <tbody>
-                  {/* mapping threw all items */}
+        <form onSubmit={this.handleSubmit}>
+            
+              <div> Item Number </div> 
+              <div> Item </div>
+              <div> Description </div> 
+              <div> Price </div>
+           
+
                   {this.props.item.map(item => {
                     if (item.vendor_name === this.props.reduxState.user.vendor_name) {
-                   return (<tr key = {item.id}> 
-                            <td> {item.id} </td>
-                            <td> {item.item} </td>
-                            <td> {item.description} </td>
-                            <td> {item.price} </td> 
-                            <td><Delete onClick={() => this.handleDelete(item.id)}/></td>
-                            <td><Edit onClick={() => this.handleEdit(item.id)}/></td>
-                            </tr>)
+                   return <div><div key = {item.id} />
+                            <div> <VendorItems toggleInput={this.toggleInput} isClicked={this.state.isClicked} handleChange={this.handleChange} valueToChange="item" item={item.id} /></div>
+                            <div> <VendorItems toggleInput={this.toggleInput} isClicked={this.state.isClicked} handleChange={this.handleChange} valueToChange="item" item={item.item} /></div>
+                            <div> <VendorItems toggleInput={this.toggleInput} isClicked={this.state.isClicked} handleChange={this.handleChange} valueToChange="item" item={item.description} /></div>
+                            <div> <VendorItems toggleInput={this.toggleInput} isClicked={this.state.isClicked} handleChange={this.handleChange} valueToChange="item" item={item.price} /></div>
+                            <div><Delete onClick={() => this.handleDelete(item.id)}/></div>
+                            {/* <td><Edit onClick={() => this.handleEdit(item.id)}/></td> */}
+                    </div>
                     }
                   })}
-             </tbody>
-          </table>
-        </div>
+                  <button type="submit">keep</button>
+            </form>
+       </div>
+       </div>
+       )
+    }
+}
       
-          )
-        }
-      }
       
       const mapState = reduxState => {
         return {

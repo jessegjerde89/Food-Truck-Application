@@ -1,7 +1,8 @@
 import {connect} from 'react-redux'
 import React, {Component} from 'react'
 import {Marker , InfoWindow} from "react-google-maps";
-
+import { makeStyles } from '@material-ui/styles';
+import Button from '@material-ui/core/Button';
 
 
 export class TruckMarker extends Component {
@@ -66,11 +67,13 @@ export class TruckMarker extends Component {
         return(   
             <div>
                     <Marker 
+                    key = {this.state.id}
                     position = {{ 
                         lat: this.state.latitude, 
                         lng: this.state.longitude
                                 }} 
                     icon = {truckIcon}
+                    // value= {this.state.}
                         >
                             <InfoWindow
                             visible={this.state.showingInfoWindow}
@@ -109,7 +112,7 @@ export class TruckMarker extends Component {
                     placeholder="latitude" 
                     />
 
-                    <button onClick={this.handleClick}>Change Location</button>
+                    <Button onClick={this.handleClick}>Change Location</Button>
                     
             </div>
             )
@@ -123,4 +126,5 @@ const mapRedux = reduxState => {
 
 // const scripts = (withScriptjs(TruckMarker));
 
-export default connect(mapRedux)(TruckMarker);
+export default connect(mapRedux)(TruckMarker)
+

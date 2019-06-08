@@ -9,25 +9,29 @@ export class Vendor extends Component {
 state = {
     favorite: false,
     menu_id: 0,
-    user_name: ''
+    user_name: '',
+    currentTruck: '',
+    menusItems: {}
 }
 
 componentDidMount() {
     // dispatch for getting menu items
-    this.props.dispatch({ type:'FETCH_ITEMS'})
+    this.props.dispatch({ type:'FETCH_DASH'})
     console.log(this.props.reduxState.user.id)
 }
 
 favoriteItem = (event, thisid) => {
     event.preventDefault() 
-    
-    this.props.reduxState.
+    console.log(this.props.reduxState.menuItem)
+    // this.props.reduxState.
     this.setState({ 
-        // menu_id: ,
-        user_name: this.props.reduxState.username
+        menu_id: this.props.reduxState.menuItem.user_id,
+        user_name: this.props.reduxState.user.username
     })
+
     if (!this.state.favorite) {
         this.props.dispatch({ type:'ADD_FAVORITE', payload: this.state})
+        this.setState({ favorite: !this.state.favorite})
     } else if(this.state.favorite) {
         this.props.dispatch({ type:'REMOVE_FAVORITE', payload:{id:thisid}})
     }
@@ -42,6 +46,10 @@ favoriteItem = (event, thisid) => {
             <div>
                     <Favorite onClick={this.favoriteItem} />
 
+                {this.state.favorite === true ?  
+                
+                <h2>Your favorite truck </h2> : <div></div>}
+                
                 <h1>{this.props.reduxState.user.vendor_name} Menu </h1>
 
                 {/* table displaying menu items */}
@@ -55,17 +63,19 @@ favoriteItem = (event, thisid) => {
                 <tbody>
                     {/* mapping through menu items */}
                 {this.props.item.map(item => {
-                    if (item.vendor_name === this.props.reduxState.user.vendor_name) {
-                        return ( <tr key = {item.id}>
-                                <td> {item.id} </td>
-                                <td> {item.item} </td>
-                                <td> {item.description} </td>
-                                <td> {item.price} </td> 
-                                </tr> )
-                            }}
-                        )}
+                    
+                        if (item.vendor_name === this.props.reduxState.user.vendor_name) {
+                            return ( <tr key = {item.id}>
+                                    <td> {item.id} </td>
+                                    <td> {item.item} </td>
+                                    <td> {item.description} </td>
+                                    <td> {item.price} </td> 
+                                    </tr> )
+                                }}
+                            )}
                 </tbody>
                 </table>
+            
             </div>
         )
     }

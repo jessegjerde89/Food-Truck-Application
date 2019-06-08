@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withGoogleMap, GoogleMap, Marker, InfoWindow, withScriptjs } from 'react-google-maps';
+import { withGoogleMap, GoogleMap, withScriptjs } from 'react-google-maps';
 import { compose, withProps, withStateHandlers } from 'recompose';
 import CurrentMarker from '../MapComponents/CurrentMarker';
 import VendorMarker from './VendorMarker';
@@ -17,7 +17,7 @@ class userContainer extends Component{
       lng: 0, 
     },
     locations: false,
- 
+    
     }
 
     componentDidMount(){
@@ -31,24 +31,12 @@ class userContainer extends Component{
       console.log(this.state.locations)
   }
 
-    addLocations = (event) => {
-        event.preventDefault()
-        this.setState({ 
-            locations: true
-        })
-    }
     
 render() {
   console.log(this.props.reduxState)
   
-  
-
     const API_KEY = process.env.REACT_APP_GOOGLE_KEY;
 
-    const truckIcon = 
-    { url: 'http://wherethatfoodtruck.com/graphics/default/logo.png', 
-            scaledSize: { width: 32, height: 40 } };
-    
     const GoogleMapContainer = (compose(
       withStateHandlers(() => ({
         isOpen: false,
@@ -69,16 +57,15 @@ render() {
                         lng: -93 }}
       >
         <div>
-        { this.state.locations === true ?  
+        
     
-         this.props.reduxState.locations.map( locals => {
-          console.log(locals.id)
+         {this.props.reduxState.locations.map( locals => {
+          console.log(locals)
            return( 
              <VendorMarker locals= {locals} />
-            )})
+            )})}
         
-        : <button onClick = {this.addLocations}>Click to Refresh</button>  
-  }
+       
     </div>
 
     <CurrentMarker />
@@ -86,7 +73,7 @@ render() {
     )))
   
     return (
-      <div>
+      <div className = "home_map">
         <GoogleMapContainer
             
             googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
@@ -112,10 +99,10 @@ render() {
                         width="20%"
                         />
 
-                        Favorite : <img 
+                        {/* Favorite : <img 
                         src="http://simpleicon.com/wp-content/uploads/Google-Place-Optimization.png" 
                         alt="you-are-here"
-                        width="15%"/>
+                        width="15%"/> */}
                     </div>
         </div>
         
