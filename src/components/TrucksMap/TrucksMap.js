@@ -1,9 +1,11 @@
 import React from "react";
-import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps";
-import CurrentMarker from '../MapComponents/CurrentMarker'
 import { connect } from 'react-redux'
-import TruckMarker from '../MapComponents/TruckMarker'
+import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps";
 
+
+import CurrentMarker from '../CurrentMarker/CurrentMarker'
+import TruckMarker from '../TruckMarker/TruckMarker'
+import './TrucksMap.css'
 
 
 const TrucksMap = withScriptjs(withGoogleMap((props) =>{
@@ -11,7 +13,8 @@ const TrucksMap = withScriptjs(withGoogleMap((props) =>{
 
 
   return (
-      <GoogleMap
+      <div className="map">
+      <GoogleMap 
       defaultZoom={13}
       defaultCenter={{ lat: props.currentLocation.lat, 
                         lng: props.currentLocation.lng }}
@@ -20,6 +23,7 @@ const TrucksMap = withScriptjs(withGoogleMap((props) =>{
       <CurrentMarker />
       <TruckMarker />
       </GoogleMap>
+      </div>
     );
   }
 ))

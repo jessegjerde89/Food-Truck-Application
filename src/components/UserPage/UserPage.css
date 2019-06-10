@@ -1,0 +1,16 @@
+
+
+.welcome {
+    text-align: center; 
+}
+.welcome span { 
+    background-color:whitesmoke; 
+    font-size: 65px;
+    line-height: 70px;
+    letter-spacing: -2px;
+    font-weight: bold;
+    font-family: Lato;   
+    font-style: italic; 
+    font-variant: normal; 
+    font-weight: 700; 
+}

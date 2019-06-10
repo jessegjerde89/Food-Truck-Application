@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { TextField, Button, Grid } from '@material-ui/core';
+
+import './LoginPage.css'
+
 class LoginPage extends Component {
   state = {
     username: '',
@@ -30,8 +34,10 @@ class LoginPage extends Component {
   }
 
   render() {
+
+
     return (
-      <div>
+      <div className="wrapper">
         {this.props.errors.loginMessage && (
           <h2
             className="alert"
@@ -40,48 +46,65 @@ class LoginPage extends Component {
             {this.props.errors.loginMessage}
           </h2>
         )}
+        <div className="form">
         <form onSubmit={this.login}>
-          <h1>Login</h1>
+          <div className="title">
+          <span>Login</span>
+          </div>
           <div>
-            <label htmlFor="username">
-              Username:
-              <input
+           
+         
+              <TextField
                 type="text"
                 name="username"
+                label="username"
+                variant="outlined"
+                required
+                autoFocus
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
               />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="password">
-              Password:
-              <input
+              
+              <TextField
                 type="password"
                 name="password"
+                label="password"
+                variant="outlined"
+                required
+                autoFocus
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
               />
-            </label>
+           
           </div>
           <div>
-            <input
+            <Button
               className="log-in"
               type="submit"
               name="submit"
+              color="secondary"
+              variant ="contained"
               value="Log In"
-            />
+            >
+              Submit
+              </Button>
           </div>
+          {/* </FormControl> */}
         </form>
-        <center>
-          <button
+      
+        <div className = "button"
+              >
+          <Button
             type="button"
             className="link-button"
+            color="primary"
+            variant="contained"
             onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}
           >
             Register
-          </button>
-        </center>
+          </Button>
+          </div>
+        </div> 
       </div>
     );
   }

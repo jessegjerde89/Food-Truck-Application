@@ -1,7 +1,29 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
+    background-image: url("./imageedit_14_4147169630.png");
+    /* background-color: #cccccc; */
+  
 }
+
+.my-container {
+    position: relative;
+    overflow: hidden;
+}
+/* .my-container {
+    padding: 200px;
+    position: relative;
+    z-index: 2;
+}  */
+.my-container img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    opacity: 0.6;
+}
+
 
 .alert {
     /* background-color: #ff4545; */

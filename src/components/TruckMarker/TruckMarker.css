@@ -1,0 +1,13 @@
+.location-input {
+    grid-area: 1 / col4-start / last-line / 6;
+    background-color: whitesmoke;
+    outline-color: rgb(191, 191, 191); 
+
+}
+
+.wrapper{
+    display:grid;
+    max-width: 940px;
+    margin: 0 auto;
+
+}

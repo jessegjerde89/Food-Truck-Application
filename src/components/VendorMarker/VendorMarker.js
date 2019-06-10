@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withGoogleMap, GoogleMap, Marker, InfoWindow, withScriptjs } from 'react-google-maps';
-import MenuItems from '../UserPage/MenutItems'
 import { Link } from 'react-router-dom'
 
+import MiddleMarker from './MiddleMarker'; 
 
-export class VendorMarker extends Component {
+
+class VendorMarker extends Component {
 
 
 state = {
@@ -13,17 +14,19 @@ state = {
     currentVendor: ''
 }
 
+// componentDidMount() {
+//     this.props.dispatch({type: "GET_CURRENT"})
+// }
+
+// {/* <Toggle /> */}
 toggleOn = (vendor) => {
     this.setState({
         isOpen: !this.state.isOpen,
         currentVendor: vendor
     })
+    console.log(this.props.locals)
+    this.props.dispatch({ type: "CURRENT_MARKER", payload: this.state})
 }
-
-componentDidUpdate(){
-    this.props.dispatch({ type: "CURRENT_MARKER", payload: this.state.currentVendor})
-}
-
 
     render() {
 
@@ -31,12 +34,15 @@ componentDidUpdate(){
         { url: 'http://wherethatfoodtruck.com/graphics/default/logo.png', 
                 scaledSize: { width: 32, height: 40 } };
 
-        const favIcon = 
-        { url: 'http://simpleicon.com/wp-content/uploads/Google-Place-Optimization.png',
-                scaledSize: { width: 32, height: 40 } };
+        // const favIcon = 
+        // { url: 'http://simpleicon.com/wp-content/uploads/Google-Place-Optimization.png',
+        //         scaledSize: { width: 32, height: 40 } };
 
         return (
+
+           
             <div>
+
 
                 <Marker 
             key = {this.props.locals.id}
@@ -49,50 +55,42 @@ componentDidUpdate(){
             onClick = {() => this.toggleOn(this.props.locals.vendor_name)}
             >
 
-            
-
-                
             { this.state.isOpen &&  <InfoWindow>
                 
                 <div>
                   <h3 className= "vendor_name">
-                      
                       {this.props.locals.vendor_name}
-                    
+                </h3>
+                {/* <MiddleMarker /> */}
                 <div>
                       <Link className="link_to" to="/vendor">
-                        Vendor
+                        Menu 
                       </Link>
                       </div>
-                  </h3>
+                 
                     <div>
                         
                     { this.props.reduxState.menuItem.map( items => { 
                         // console.log(items)
-                        if(items.vendor_name === this.props.reduxState.user.vendor_name)
+                        if(items.vendor_name === this.state.currentVendor)
                         {
-                        return ( 
-                            
+                        return (   
                             <div>
                             {items.item}   
                             {items.description} 
                             {items.price} 
-                            </div> 
-                            
+                            </div>            
                             )} 
-                            })
-                        }
-                        
+                          })
+                        }       
                     </div>
-                    
+
                 </div>
                 </InfoWindow> 
               } 
                 </Marker>
 
-
-
-
+                
             </div>
         )
     }

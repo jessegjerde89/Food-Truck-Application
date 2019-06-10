@@ -1,4 +1,4 @@
-//currentmarker
+
 
 import React, { Component } from "react";
 import { Marker , InfoWindow} from "react-google-maps";
@@ -24,7 +24,7 @@ componentDidMount() {
   
 
 getGeoLocation = () => {
-  // if (navigator.geolocation) {
+  
     navigator.geolocation.getCurrentPosition(
     position => {
       this.setState(prevState => ({
@@ -33,12 +33,11 @@ getGeoLocation = () => {
       lng: position.coords.longitude
        }})
     )})
-  // } 
+
   console.log(this.state.currentLocal)
 }
   render() {
     
-
 
 return (
     <div>

@@ -1,14 +1,21 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import TruckMapContainer from '../MapComponents/TruckMapContainer'
+
+import './MapPage.css'
+
+//change route
+import TruckMapContainer from '../TruckMapContainer/TruckMapContainer'
 
 export class MapPage extends Component {
     render() {
         return (
             <div>
-                <h1>The Map !</h1>
+                <div className ="title" align="center"><span>
+                The Map !
+                </span>
+                </div>
                  <TruckMapContainer />
-                 {/* <VendorLocationPage /> */}
+                 
             </div>
         )
     }
