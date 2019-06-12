@@ -1,9 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+
 import './VendorDashboard.css'
+// import VendorDashboardTable from '../VendorDashboardTable/VendorDashboardTable';
+
 import { MuiThemeProvider } from "@material-ui/core/styles";
-import { Close, Delete, Edit, Search } from "@material-ui/icons";
-import Button from '@material-ui/core/Button';
+import { Delete, Edit, Search } from "@material-ui/icons";
+import { makeStyles } from '@material-ui/core/styles';
+import { TextField, Button, Grid, Table } from '@material-ui/core';
+import { TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
+import Paper from '@material-ui/core/Paper';
+
+
 
 class VendorDashboard extends Component {
   state = {
@@ -12,16 +20,27 @@ class VendorDashboard extends Component {
       description: this.props.item.description || '',
       price: this.props.item.price || '',
       id: this.props.item.id || '',
-      isediting: false
+      isediting: false,
+      currentVendor: ''
     }
+    
 
       
       // dispatch for settin the menu items
       componentDidMount() {
+       
         this.props.dispatch({ type: 'FETCH_DASH'})
+<<<<<<< HEAD
         this.setState({ 
           vendor_name: (this.props.reduxState.user.vendor_name)
         }) 
+=======
+        this.props.dispatch({ type: 'GET_CURRENT'})
+        // this.setState({ 
+        //   vendorPage: true
+        // })
+        this.props.dispatch({ type: 'GET_CURRENT'})
+>>>>>>> 9941dc88ffc9e84ada9d8b8a0739a72d393a97d3
         console.log(this.props)
       }
       
@@ -73,75 +92,112 @@ class VendorDashboard extends Component {
       
       // handles all changes for all inputs 
         handleInputChangeFor = propertyName => (event) => {
+          event.preventDefault(); 
             this.setState({
               [propertyName]: event.target.value,
             });
           }
 
         render() {
+
+          
             return (
               // displays users name onto dashboard
-        <div align= "center">
-            <h2 > {this.props.reduxState.user.username}'s Dashboard</h2>
+        <div className= "wrapper">
+          <div className="title" align="center"><span>
+           {this.props.reduxState.user.username}'s Dashboard
+
+          </span></div>
       <form className = "vendor-form">
         
           {/* input for menu item */}
-         
-          <input 
+         <div align= "center" 
+              className= "textfields">
+           
+         <TextField
+            p={15}
+            m={5}
             type="text"
-            placeholder="item"
             name="item"
+            label="item"
+            variant="outlined"
+            required
+            autoFocus
             value={this.state.item}
             onChange={this.handleInputChangeFor("item")}
             />
+        
             {/* input for description of item */}
-          <input 
+          <TextField
+            p={15}
+            m={5}
             type="text"
-            placeholder="description"
             name="description"
+            label="description"
+            variant="outlined"
+            required
+            autoFocus
             value={this.state.description}
             onChange={this.handleInputChangeFor("description")}
           />
+           
           {/* input for price of item */}
-          <input 
-            type="number"
-            placeholder="price"
+          <TextField
+            p={15}
+            m={5}
+            type="text"
             name="price"
+            label="price"
+            variant="outlined"
+            required
+            autoFocus
             value={this.state.price}
             onChange={this.handleInputChangeFor("price")}
           />
-          <button
+            </div>
+          <Button 
+        
             type="button"
             onClick={this.handleAdd}
+            color = "primary"
+            variant = "contained"
           >
           Add New Item 
-          </button>
+          </Button>
           </form>
       
-      {/* table for menu items */}
-        <table className="dashTable">
-            <tr>
-              <th> Item Number </th>
-              <th> Item </th>
-              <th> Description </th>
-              <th> Price </th>
-            </tr>
-            <tbody>
-                  {/* mapping threw all items */}
-                  {this.props.item.map(item => {
-                    if (item.vendor_name === this.props.reduxState.user.vendor_name) {
-                   return (<tr key = {item.id}> 
-                            <td> {item.id} </td>
-                            <td> {item.item} </td>
-                            <td> {item.description} </td>
-                            <td> {item.price} </td> 
-                            <td><Delete onClick={() => this.handleDelete(item.id)}/></td>
-                            <td><Edit onClick={() => this.handleEdit(item.id)}/></td>
-                            </tr>)
-                    }
-                  })}
-             </tbody>
-          </table>
+      <div>
+
+      <Paper >
+      <Table >
+        <TableHead>
+          <TableRow>
+            <TableCell align="right">Item Number</TableCell>
+            <TableCell align="right">Menu Item</TableCell>
+            <TableCell align="right">Description</TableCell>
+            <TableCell align="right">Price</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+        {this.props.item.map(item => {
+          if (item.vendor_name === this.props.reduxState.user.vendor_name) {
+             return (
+            <TableRow key={item.id}>
+            
+              <TableCell align="right">{item.id}</TableCell>
+              <TableCell align="right">{item.item}</TableCell>
+              <TableCell align="right">{item.description}</TableCell>
+              <TableCell align="right">{item.price}</TableCell>
+              <TableCell align="right"><Delete onClick={() => this.handleDelete(item.id)}/></TableCell>
+              <TableCell align="right"><Edit onClick={() => this.handleEdit(item.id)}/></TableCell>
+            </TableRow>
+             )}}
+          )}
+        </TableBody>
+      </Table>
+    </Paper>
+
+          </div>
         </div>
       
           )

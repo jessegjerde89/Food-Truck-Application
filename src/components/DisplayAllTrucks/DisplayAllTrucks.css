@@ -1,0 +1,43 @@
+.keys {
+
+    grid-column: 3 / 5;
+    background-color: whitesmoke;
+    outline-color: rgb(191, 191, 191); 
+    background-color: whitesmoke; 
+    color: rgb(0, 0, 0);
+}
+
+.header span{
+    font-size: 51px;
+    line-height: 50px;
+    letter-spacing: -2px;
+    font-weight: bold;
+    font-family: Lato;   
+    font-style: italic; 
+    font-variant: normal; 
+    font-weight: 700; 
+  }
+
+  .sub{
+    font-size: 32px;
+    line-height: 50px;
+    letter-spacing: -2px;
+    font-weight: bold;
+    font-family: Lato;   
+    font-style: italic; 
+    font-variant: normal; 
+    font-weight: 700; 
+
+  }
+
+  .wrapper {
+    display:grid;
+    max-width: 940px;
+    margin: 0 auto;
+
+  }
+
+  .map {
+      align-content: center; 
+  }
+

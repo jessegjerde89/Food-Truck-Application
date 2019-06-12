@@ -14,8 +14,6 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 
 
-
-
 // Handles POST request with new user data
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted
@@ -44,6 +42,21 @@ router.post('/logout', (req, res) => {
   req.logout();
   res.sendStatus(200);
 });
+
+
+// router.post('/', (req, res) => {
+//   console.log("thisone", req.body, req.user.id)
+//   const queryText = `UPDATE "user" SET "current_user" = ($1), 
+//                       WHERE "vendor_name" = ($2); `
+//   pool.query(queryText, [ req.body.current_user, req.body.vendor_name])
+//   .then(response => {
+//       console.log('response location post', response)
+//       res.sendStatus(201)
+//   }).catch(error => {
+//       console.log('error post location')
+//       res.sendStatus(500)
+//   })
+// })
 
 // router.put('/:id', rejectUnauthenticated, (req, res) => {
 //   let queryText = `UPDATE FROM "user" WHERE ("user"."id"=$1)`

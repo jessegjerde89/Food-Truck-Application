@@ -27,15 +27,16 @@ function* fetchlocation() {
 
 function* currentlocation(action) {
 
-    try {
-        
+    
+    try {      
         yield put({type: "GET_CURRENT", payload: action.payload })
         console.log(action.payload)
     }   
     catch(error) {
         console.log("error in current saga", error)
-    }
-}
+      }
+  
+} 
 
 
 function* locationSaga() {

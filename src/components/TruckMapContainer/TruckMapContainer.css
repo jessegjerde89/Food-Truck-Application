@@ -1,0 +1,6 @@
+.wrapper {
+    display:grid;
+    max-width: 940px;
+    margin: 0 auto;
+}
+

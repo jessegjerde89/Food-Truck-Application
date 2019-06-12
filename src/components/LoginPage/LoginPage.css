@@ -1,0 +1,24 @@
+.wrapper {
+    display:grid;
+    max-width: 940px;
+    margin: 0 auto;
+}
+
+
+.form {
+    background-color: whitesmoke;
+    grid-area: 1 / col2-start / last-line / 4;
+}
+
+.title {
+
+    background-color:whitesmoke; 
+    font-size: 65px;
+    line-height: 70px;
+    letter-spacing: -2px;
+    font-weight: bold;
+    font-family: Lato;   
+    font-style: italic; 
+    font-variant: normal; 
+    font-weight: 700; 
+}
