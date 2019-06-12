@@ -56,8 +56,8 @@ function* getedit(action) {
     try {
         let editResponse = 
         yield axios.get(`/api/edit/${action.payload}`); 
-        yield put({ type: '', payload: editResponse.data})
-        console.log('the, response', editResponse.data)
+        yield put({ type: 'GET_CURRENT', payload: editResponse.data})
+        console.log('the response', editResponse.data)
     } catch(error) {
 
     }

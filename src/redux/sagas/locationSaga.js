@@ -25,9 +25,24 @@ function* fetchlocation() {
 }
 
 
+function* currentlocation(action) {
+
+    
+    try {      
+        yield put({type: "GET_CURRENT", payload: action.payload })
+        console.log(action.payload)
+    }   
+    catch(error) {
+        console.log("error in current saga", error)
+      }
+  
+} 
+
+
 function* locationSaga() {
     yield takeLatest('ADD_LOCATION', addlocation)
     yield takeEvery('FETCH_LOCATION', fetchlocation)
+    yield takeLatest('CURRENT_MARKER', currentlocation)
 }
 
 export default locationSaga

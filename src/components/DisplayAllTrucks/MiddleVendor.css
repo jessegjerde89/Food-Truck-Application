@@ -1,0 +1,23 @@
+.keys {
+
+    grid-column: 3 / 5;
+    background-color: whitesmoke;
+    outline-color: rgb(191, 191, 191); 
+  }
+
+  .wrapper {
+    display:grid;
+    max-width: 940px;
+    margin: 0 auto;
+
+  }
+
+  .map {
+      align-content: center; 
+  }
+
+.textfields {
+    align-content: center;
+    background-color:whitesmoke; 
+    outline-color: blue
+}

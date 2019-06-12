@@ -1,15 +1,20 @@
 import {connect} from 'react-redux'
 import React, {Component} from 'react'
+
 import {Marker , InfoWindow} from "react-google-maps";
 
+import { makeStyles } from '@material-ui/styles';
+import { TextField, Button, Grid } from '@material-ui/core';
+
+import './TruckMarker.css'
 
 
 export class TruckMarker extends Component {
 
     state =
         {
-        lat: 41.559977,
-        lng: -106.611563, 
+        lat: 0,
+        lng: 0, 
 
         isMarkerShown: false, 
         showingInfoWindow: false, 
@@ -19,16 +24,7 @@ export class TruckMarker extends Component {
 
     componentDidMount()  {
         this.props.dispatch({ type: 'SET_LOCATION'})
-        this.props.dispatch({ type:'FETCH_DASH'})
-    }
-
-    onMarkerClick = (props, marker, event) => {
-        console.log("clicked")
-        this.setState({
-        selectedPlace: props,
-        activeMarker: marker,
-        showingInfoWindow: true
-        })
+        // this.props.dispatch({ type:'FETCH_DASH'})
     }
 
 
@@ -55,16 +51,39 @@ export class TruckMarker extends Component {
             { url: 'http://wherethatfoodtruck.com/graphics/default/logo.png', 
                     scaledSize: { width: 32, height: 40 } };
         
-            
-            // const vendorInfo =  ( this.props.reduxState.menuItem.map( items => { 
-            //                      return ( <div>
-            //                             {items.item}   
-            //                             {items.description} 
-            //                             {items.price} </div> )} ))
-
 
         return(   
-            <div>
+            <div className ="wrapper">
+                <div className="location-input">
+                    <div>
+                    <h3>Add New Spot</h3>
+                    <Button 
+                    className="location"
+                    type="submit"
+                    variant="contained"
+                   color="primary"
+                    onClick={this.handleClick}>
+                        Change Location
+                    </Button>
+                    </div>
+                    <TextField
+                    type="number" 
+                    name="longitude"
+                    label="longitude"
+                    required
+                    autoFocus
+                    onChange={this.changeLong} 
+                    />
+
+                    <TextField
+                    type="number" 
+                    name="latitude"
+                    label="latitude"
+                    required
+                    autoFocus
+                    onChange={this.changeLat} 
+                    />
+            </div>
                     <Marker 
                     key = {this.state.id}
                     position = {{ 
@@ -72,6 +91,7 @@ export class TruckMarker extends Component {
                         lng: this.state.longitude
                                 }} 
                     icon = {truckIcon}
+                    // value= {this.state.}
                         >
                             <InfoWindow
                             visible={this.state.showingInfoWindow}
@@ -90,25 +110,8 @@ export class TruckMarker extends Component {
                             </InfoWindow>
 
                     </Marker>
-                    
-                    <h3>Add New Spot</h3>
-                    
-                    <input 
-                    type="number" 
-                    onChange={this.changeLong} 
-                    placeholder="longitude" 
-                    />
-                    <input 
-                    type="number" 
-                    onChange={this.changeLat} 
-                    placeholder="latitude" 
-                    />
-
-                    <button onClick={this.handleClick}>Change Location</button>
-                    
-            </div>
+                    </div>
             )
-            
         }
     }
 
@@ -118,4 +121,5 @@ const mapRedux = reduxState => {
 
 // const scripts = (withScriptjs(TruckMarker));
 
-export default connect(mapRedux)(TruckMarker);
+export default connect(mapRedux)(TruckMarker)
+

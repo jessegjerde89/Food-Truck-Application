@@ -7,17 +7,16 @@ import {
 } from 'react-router-dom';
 
 import {connect} from 'react-redux';
-
-import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
-
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-
-import MapPage from '../MapComponents/MapPage'; 
+import MapPage from '../MapPage/MapPage'; 
 import Vendor from '../Vendor/Vendor';
+
+import Nav from '../Nav/Nav';
+import Footer from '../Footer/Footer';
+
 import VendorDashboard from '../VendorDashboard/VendorDashboard';
 import './App.css';
 
@@ -31,6 +30,9 @@ class App extends Component {
     return (
       <Router>
         <div>
+            <div class="my-container">
+                <img src="http://cdn3.vox-cdn.com/uploads/chorus_asset/file/1047738/food_20trucks_20head.0.jpg" />
+             </div>
           <Nav />
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}

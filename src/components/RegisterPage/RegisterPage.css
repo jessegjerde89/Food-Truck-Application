@@ -1,0 +1,35 @@
+.title span {
+
+        background-color:whitesmoke; 
+        font-size: 65px;
+        line-height: 70px;
+        letter-spacing: -2px;
+        font-weight: bold;
+        font-family: Lato;   
+        font-style: italic; 
+        font-variant: normal; 
+        font-weight: 700; 
+    
+}
+
+.fields span {
+    background-color: whitesmoke;
+  
+    justify-items: center;
+    align-items: center; 
+}
+
+.form {
+    background-color: whitesmoke;
+
+    justify-items: center;
+    align-items: center; 
+    
+
+}
+
+.wrapper {
+    display:grid;
+    max-width: 940px;
+    margin: 0 auto;
+}
