@@ -1,10 +1,8 @@
-# Saga-Mood-Ring
+# Food-Truck-Application
 
-The purpose of this application is for a user to be displayed images that rotate based on which button is pressed, with 
-previous and next as the controllers. The use also has the ability to toggle a drop down with premade tags for 
-describing each image that is displayed. You may add a tag with the add tag button and it will applear below under
-the tag list. 
-
+  The purpose of this application is for a vendors and customers to help one another in finding local food trucks on a map. The vendor is able to make a profile where they can update a menu page with items they are selling, along with a description and price. They may also input a location on a map diplaying themselves to users. 
+  When a user logs in, they are taken to a map page displaying all the vendors. The user may tap on the vendors pin 
+and an info window is diplayed with the vendor name and brief description on the truck. They may click on the link inside the pin and are taken to the vendors menu page with all the items that vendor is selling. 
 
 ## Built With
  - Node JS
