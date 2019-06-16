@@ -30,35 +30,23 @@ class VendorDashboard extends Component {
       componentDidMount() {
        
         this.props.dispatch({ type: 'FETCH_DASH'})
-<<<<<<< HEAD
         this.setState({ 
           vendor_name: (this.props.reduxState.user.vendor_name)
         }) 
-=======
         this.props.dispatch({ type: 'GET_CURRENT'})
         // this.setState({ 
         //   vendorPage: true
         // })
         this.props.dispatch({ type: 'GET_CURRENT'})
->>>>>>> 9941dc88ffc9e84ada9d8b8a0739a72d393a97d3
         console.log(this.props)
       }
       
       // dispatch for adding new menu items
       handleAdd = (event) => {
-        console.log('here', this.props.reduxState)
-<<<<<<< HEAD
-<<<<<<< HEAD
-      
-=======
->>>>>>> vendordashboard
-=======
-        this.setState({ 
+      this.setState({ 
           vendor_name: (this.props.reduxState.user.vendor_name)
         }) 
->>>>>>> vendordashboard
         this.sendDispatch()
-
       }
       sendDispatch = () => {
         if (this.state.isediting){

@@ -110,14 +110,11 @@ export class TruckMarker extends Component {
                             </InfoWindow>
 
                     </Marker>
-<<<<<<< HEAD:src/components/MapComponents/TruckMarker.js
-<<<<<<< HEAD
 
                                {/* <pre>{JSON.stringify(this.props.reduxState.user)}</pre>  */}
                      
-=======
                     
->>>>>>> vendordashboard
+
                     <h3>Add New Spot</h3>
                     
                     <input 
@@ -134,9 +131,7 @@ export class TruckMarker extends Component {
                     <Button onClick={this.handleClick}>Change Location</Button>
                     
             </div>
-=======
-                    </div>
->>>>>>> 9941dc88ffc9e84ada9d8b8a0739a72d393a97d3:src/components/TruckMarker/TruckMarker.js
+ 
             )
         }
     }

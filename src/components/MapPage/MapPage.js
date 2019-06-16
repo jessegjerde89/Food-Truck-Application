@@ -17,10 +17,7 @@ export class MapPage extends Component {
                 </span>
                 </div>
                  <TruckMapContainer />
-<<<<<<< HEAD:src/components/MapComponents/MapPage.js
                  {/* <VendorLocationPage /> */}
-=======
->>>>>>> 9941dc88ffc9e84ada9d8b8a0739a72d393a97d3:src/components/MapPage/MapPage.js
                  
             </div>
         )
