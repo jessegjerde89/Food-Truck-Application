@@ -1,6 +1,9 @@
 .keys {
 
-    grid-column: 3 / 5;
+    grid-column: 1 ;
+    grid-row: 2 ;
+    height: 200px;
+    width: 500px;
     background-color: whitesmoke;
     outline-color: rgb(191, 191, 191); 
     background-color: whitesmoke; 
@@ -32,7 +35,6 @@
 
   .wrapper {
     display:grid;
-    max-width: 940px;
     margin: 0 auto;
 
   }

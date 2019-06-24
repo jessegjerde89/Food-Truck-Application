@@ -49,10 +49,10 @@ router.delete('/:id', (req, res) => {
 }); 
 
 // put route for editing existing menu items
-router.put('/:id', (req, res) => {
+router.put('/', (req, res) => {
     console.log(req.body)
-    let queryText = `UPDATE "menus" SET "item" = $1, "price" = $2, "description" = $3,  WHERE "menu"."id"=$4 AND "user"."id" =$5`; 
-    pool.query(queryText, [req.body.item, req.body.price, req.body.description, req.params.id, req.user.id ])
+    let queryText = `UPDATE "menu" SET "item" = ($1), "price" = ($2), "description" = ($3) WHERE "menu"."id"=($4)`; 
+    pool.query(queryText, [req.body.item, req.body.price, req.body.description, req.body.id])
     .then(response => {
         console.log(response)
         res.sendStatus(201)

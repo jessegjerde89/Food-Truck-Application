@@ -44,7 +44,8 @@ function* deleteitems(action) {
 
 function* edititems(action) {
     try {
-        yield axios.put(`/api/vendor/${action.payload}`)
+        console.log("line 47", action.payload)
+        yield axios.put(`/api/vendor/`, action.payload)
         yield put({type:'FETCH_DASH'})
     }catch(error) {
         console.log(error)

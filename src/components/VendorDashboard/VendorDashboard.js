@@ -33,62 +33,72 @@ class VendorDashboard extends Component {
         this.setState({ 
           vendor_name: (this.props.reduxState.user.vendor_name)
         }) 
-        this.props.dispatch({ type: 'GET_CURRENT'})
-        // this.setState({ 
-        //   vendorPage: true
-        // })
-        this.props.dispatch({ type: 'GET_CURRENT'})
         console.log(this.props)
       }
       
       // dispatch for adding new menu items
-      handleAdd = (event) => {
-      this.setState({ 
-          vendor_name: (this.props.reduxState.user.vendor_name)
-        }) 
-        this.sendDispatch()
-      }
+      // handleAdd = (event) => {
+      // this.setState({ 
+      //     vendor_name: (this.props.reduxState.user.vendor_name)
+      //   }) 
+      //   this.sendDispatch()
+      // }
+
       sendDispatch = () => {
         if (this.state.isediting){
           this.props.dispatch({type:'EDIT_ITEM', payload: this.state })
+          console.log(this.state)
+          this.setState({ 
+              isediting: false
+          })
         } else {
             this.props.dispatch({type: 'ADD_ITEM', payload: this.state})
-          // }
-        this.setState({
-            isediting: false
-          })
       }
+
+      // this.clearInputs()
     }
 
       // dispatch for deleting menu items
       handleDelete = (deletethis) => {
+        console.log(this.state)
         this.props.dispatch({type: 'DELETE_ITEM', payload: {id:deletethis}})
       }
 
       // dispatch for editing menu items
-      handleEdit = (editthis) => {
-        this.props.dispatch({type: 'SEND_EDIT', payload: {id:editthis}})
-        console.log({id:editthis})
-        // this.setState({
-        //   vendor_name: 'bob',
-        //   item: 'hotdog',
-        //   description: 'hotdog',
-        //   price: '12',
-        //   isediting: true
-        // })
+      handleEdit = (item) => {
+        console.log('the item', item); 
+        this.setState({
+          id: item.id,
+          vendor_name: item.vendor_name,
+          item: item.item,
+          description: item.description,
+          price: item.price,
+          isediting: true
+        })
+        // this.props.dispatch({type: 'SEND_EDIT', payload: item })
+        // this.sendDispatch(); 
       }
       
       // handles all changes for all inputs 
-        handleInputChangeFor = propertyName => (event) => {
+        handleInputChangeFor = name => (event) => {
           event.preventDefault(); 
             this.setState({
-              [propertyName]: event.target.value,
+              [name]: event.target.value,
             });
           }
 
+        clearInputs = () => {
+          this.setState({
+          vendor_name: '' ,
+          item: '' ,
+          description: '' ,
+          price:'' 
+          })
+        }
+
         render() {
 
-          
+          console.log(this.state)
             return (
               // displays users name onto dashboard
         <div className= "wrapper">
@@ -103,8 +113,6 @@ class VendorDashboard extends Component {
               className= "textfields">
            
          <TextField
-            p={15}
-            m={5}
             type="text"
             name="item"
             label="item"
@@ -114,11 +122,9 @@ class VendorDashboard extends Component {
             value={this.state.item}
             onChange={this.handleInputChangeFor("item")}
             />
-        
+          
             {/* input for description of item */}
           <TextField
-            p={15}
-            m={5}
             type="text"
             name="description"
             label="description"
@@ -131,8 +137,6 @@ class VendorDashboard extends Component {
            
           {/* input for price of item */}
           <TextField
-            p={15}
-            m={5}
             type="text"
             name="price"
             label="price"
@@ -144,9 +148,8 @@ class VendorDashboard extends Component {
           />
             </div>
           <Button 
-        
             type="button"
-            onClick={this.handleAdd}
+            onClick={this.sendDispatch}
             color = "primary"
             variant = "contained"
           >
@@ -177,7 +180,7 @@ class VendorDashboard extends Component {
               <TableCell align="right">{item.description}</TableCell>
               <TableCell align="right">{item.price}</TableCell>
               <TableCell align="right"><Delete onClick={() => this.handleDelete(item.id)}/></TableCell>
-              <TableCell align="right"><Edit onClick={() => this.handleEdit(item.id)}/></TableCell>
+              <TableCell align="right"><Edit onClick={(event) => this.handleEdit(item)}/></TableCell>
             </TableRow>
              )}}
           )}

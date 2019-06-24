@@ -2,6 +2,8 @@
     grid-area: 1 / col4-start / last-line / 6;
     background-color: whitesmoke;
     outline-color: rgb(191, 191, 191); 
+    width: 500px;
+    height: 250px;
 
 }
 

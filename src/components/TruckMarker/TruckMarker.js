@@ -52,84 +52,61 @@ export class TruckMarker extends Component {
                     scaledSize: { width: 32, height: 40 } };
         
 
-        return(   
-            <div className ="wrapper">
-                <div className="location-input">
-                    <div>
-                    <h3>Add New Spot</h3>
-                    <Button 
-                    className="location"
-                    type="submit"
-                    variant="contained"
-                   color="primary"
-                    onClick={this.handleClick}>
-                        Change Location
-                    </Button>
-                    </div>
-                    <TextField
-                    type="number" 
-                    name="longitude"
-                    label="longitude"
-                    required
-                    autoFocus
-                    onChange={this.changeLong} 
-                    />
+    return(   
+      <div className ="wrapper">
+          <div className="location-input">
+            <div>
+                <h3>Add New Spot</h3>
+                <Button 
+                className="location"
+                type="submit"
+                variant="contained"
+                color="primary"
+                onClick={this.handleClick}>
+                    Change Location
+                </Button>
+                </div>
+                <TextField
+                type="number" 
+                name="longitude"
+                label="longitude"
+                required
+                autoFocus
+                onChange={this.changeLong} 
+                />
 
-                    <TextField
-                    type="number" 
-                    name="latitude"
-                    label="latitude"
-                    required
-                    autoFocus
-                    onChange={this.changeLat} 
-                    />
+                <TextField
+                type="number" 
+                name="latitude"
+                label="latitude"
+                required
+                autoFocus
+                onChange={this.changeLat} 
+                />
             </div>
-                    <Marker 
-                    key = {this.state.id}
-                    position = {{ 
-                        lat: this.state.latitude, 
-                        lng: this.state.longitude
-                                }} 
-                    icon = {truckIcon}
-                    // value= {this.state.}
-                        >
-                            <InfoWindow
-                            visible={this.state.showingInfoWindow}
-                          
-                            marker={this.state.activeMarker}
-                            >
-                            <div>
-                                <h3 className= "vendor_name">
-                                    
-                                {this.props.reduxState.user.vendor_name}
-                                </h3>
-                                {/* <div>
-                                    {vendorInfo}
-                                </div> */}
-                            </div>
-                            </InfoWindow>
-
-                    </Marker>
-
-                               {/* <pre>{JSON.stringify(this.props.reduxState.user)}</pre>  */}
-                     
-                    
-
-                    <h3>Add New Spot</h3>
-                    
-                    <input 
-                    type="number" 
-                    onChange={this.changeLong} 
-                    placeholder="longitude" 
-                    />
-                    <input 
-                    type="number" 
-                    onChange={this.changeLat} 
-                    placeholder="latitude" 
-                    />
-
-                    <Button onClick={this.handleClick}>Change Location</Button>
-                    
+                <Marker 
+                key = {this.state.id}
+                position = {{ 
+                    lat: this.state.latitude, 
+                    lng: this.state.longitude
+                            }} 
+                icon = {truckIcon}
+                >
+                    <InfoWindow
+                    visible={this.state.showingInfoWindow}
+                    marker={this.state.activeMarker}
+                    >
+                    <div>
+                        <h3 className= "vendor_name">
+                            
+                        {this.props.reduxState.user.vendor_name}
+                        </h3>
+                        {/* <div>
+                            {vendorInfo}
+                        </div> */}
+                    </div>
+                    </InfoWindow>
+                </Marker>
             </div>
  
             )
