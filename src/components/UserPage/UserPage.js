@@ -39,7 +39,6 @@ render() {
         Welcome, { this.props.reduxState.user.username }!</span> </h1>
      
      <DisplayAllTrucks />
-      
     </div>
 
     )

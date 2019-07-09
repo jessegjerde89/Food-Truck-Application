@@ -22,7 +22,7 @@ componentDidMount() {
    
   }
   
-
+// sets the current location 
 getGeoLocation = () => {
   
     navigator.geolocation.getCurrentPosition(
@@ -41,6 +41,7 @@ getGeoLocation = () => {
 
 return (
     <div>
+      {/* Marker for the current location */}
       <Marker 
       position={{ lat: this.state.currentLocal.lat,
                   lng: this.state.currentLocal.lng

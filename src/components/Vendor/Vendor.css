@@ -14,7 +14,7 @@
      
     background-color: rgba(245, 245, 245, 0.651); 
     color: rgb(0, 0, 0);
-
+    padding-left: 80px; 
     font-size: 51px;
     line-height: 44px;
     letter-spacing: -2px;
@@ -24,4 +24,14 @@
     font-variant: normal; 
     font-weight: 700; 
     
+}
+
+/* .title2{
+   align-content: center; 
+} */
+
+.menuItem {
+    padding: 100px; 
+    height: 40px; 
+    column-rule-style: groove;
 }

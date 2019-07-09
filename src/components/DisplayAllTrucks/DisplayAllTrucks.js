@@ -18,23 +18,26 @@ class userContainer extends Component{
 
 render() {
 
+  //api key talk to goog maps
   const API_KEY = process.env.REACT_APP_GOOGLE_KEY;
 
-
-
+  //compose helps write a nested function
     const GoogleMapContainer = (compose(
      
     withScriptjs,
     withGoogleMap)
 
+    //handing props to google map
     (props => (
       <GoogleMap
       defaultZoom={13}
       defaultCenter={{ lat: 44, 
                         lng: -93 }}
       >
-       
+      
+      {/* marker component */}
     <GoogleMaps />
+      {/*current marker component*/}
     <CurrentMarker />
       </GoogleMap>
     )))
@@ -56,8 +59,8 @@ render() {
                     <img 
                     src= "http://wherethatfoodtruck.com/graphics/default/logo.png" 
                     alt="truck-icon" 
-                    width= "8%" 
-                    height= "8%"
+                    width= "15%" 
+                    height= "20%"
                     /> 
                   </span>
                 </div>
@@ -70,18 +73,21 @@ render() {
                       <img 
                       src="https://png.pngtree.com/element_our/md/20180526/md_5b09436fd0515.png" 
                       alt="fav-icon"
-                      width="15%"
+                      width="24%"
+                      height="80%"
                       />
                    </span>  
               </div>
               
             </div>
         <div className = "map">
+
+        {/* display map on dom */}
         <GoogleMapContainer
             
             googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
             loadingElement={<div style={{ height: `100%` }} />}
-            containerElement={<div style={{ height: `400px`, width: `500px` }} />}
+            containerElement={<div style={{ height: `600px`, width: `600px` }} />}
             mapElement={<div style={{ height: `100%` }} />}
             
         />

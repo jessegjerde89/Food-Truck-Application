@@ -98,8 +98,8 @@ favoriteItem = (event, thisid) => {
             </>
             : */}
             <>
-                <div className="title">
-                <span>
+                <div className="title" align="center">
+                <span className= "title2">
                 {this.props.reduxState.user.vendor_name} Menu 
                 </span>
                 </div>
@@ -108,8 +108,9 @@ favoriteItem = (event, thisid) => {
                 {this.props.item.map(item => {
                     if (item.vendor_name === this.props.reduxState.user.vendor_name) {
                         return (
-
-            <Card className>
+          <div  
+          className= "menuItem" align="center" >                 
+            <Card style={{width: 400, height: 200}} align="center">
                 <CardActionArea>
                     <CardMedia
                      
@@ -121,19 +122,18 @@ favoriteItem = (event, thisid) => {
                          {item.item}
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
-                          <div>${item.price} </div>
+                          <div>$ {item.price} </div>
                           <div> {item.description} </div>
                         </Typography>
                       </CardContent>
                 </CardActionArea>
                  
             </Card>
+        </div>  
                 )
                 }
             })}
             </>
-                }
-
         </div>
         )
     }

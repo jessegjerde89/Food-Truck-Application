@@ -39,58 +39,50 @@ toggleOn = (vendor) => {
         //         scaledSize: { width: 32, height: 40 } };
 
         return (
-
-           
             <div>
-
-
                 <Marker 
-            key = {this.props.locals.id}
-            
-            position = {{
-                lat: this.props.locals.latitude,
-                lng: this.props.locals.longitude
-            }}
-            icon = {truckIcon}
-            onClick = {() => this.toggleOn(this.props.locals.vendor_name)}
-            >
-
-            { this.state.isOpen &&  <InfoWindow>
-                
-                <div>
-                  <h3 className= "vendor_name">
-                      {this.props.locals.vendor_name}
-                </h3>
-                {/* <MiddleMarker /> */}
-                <div>
-                      <Link className="link_to" to="/vendor">
-                        Menu 
-                      </Link>
-                      </div>
-                 
-                    <div>
+                    key = {this.props.locals.id}
+                    
+                    position = {{
+                        lat: this.props.locals.latitude,
+                        lng: this.props.locals.longitude
+                    }}
+                    icon = {truckIcon}
+                    onClick = {() => this.toggleOn(this.props.locals.vendor_name)}
+                    >
+                    {/* If vendor is map icon is clicked on */}
+                    { this.state.isOpen &&  <InfoWindow>
                         
-                    { this.props.reduxState.menuItem.map( items => { 
-                        // console.log(items)
-                        if(items.vendor_name === this.state.currentVendor)
-                        {
-                        return (   
+                        <div>
+                        <h3 className= "vendor_name">
+                            {this.props.locals.vendor_name}
+                        </h3>
+                        {/* <MiddleMarker /> */}
+                        <div>
+                            <Link className="link_to" to="/vendor">
+                                Menu 
+                            </Link>
+                            </div>
+                        
                             <div>
-                            {items.item}   
-                            {items.description} 
-                            {items.price} 
-                            </div>            
-                            )} 
-                          })
-                        }       
-                    </div>
-
-                </div>
-                </InfoWindow> 
-              } 
-                </Marker>
-
-                
+                            { this.props.reduxState.menuItem.map( items => { 
+                                // console.log(items)
+                                if(items.vendor_name === this.state.currentVendor)
+                                {
+                                return (   
+                                    <div>
+                                    {items.item}   
+                                    {items.description} 
+                                    {items.price} 
+                                    </div>            
+                                    )} 
+                                })
+                                }       
+                            </div>
+                        </div>
+                    </InfoWindow> 
+                } 
+                </Marker>        
             </div>
         )
     }
