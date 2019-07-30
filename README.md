@@ -38,6 +38,8 @@ Use the sequal document located in the repo to name the database and create the 
     
     The second will help create your password and keep is safe, can be filled with random characters, numbers, and symbals.
     
+    You should create your own keys but you may use these keys to get started. 
+    
     REACT_APP_GOOGLE_KEY = AIzaSyAzJ19_bp7AKuQZ9wkX6vBrSxL4P03HdG8
     
     SERVER_SESSION_SECRET = \C5aw(Xa%h8}fL.f
