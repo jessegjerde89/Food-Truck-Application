@@ -32,11 +32,14 @@ Use the sequal document located in the repo to name the database and create the 
 
 1. Download project with git clone
 2. npm install
-3. Open postgreSQL and create a database with the sequal file given
-4. Killall node if necessary
-5. npm install --save react-google-maps 
-6. npm run server 
-7. npm run client on one terminal
+3. create a .env file with REACT_APP_GOOGLE_KEY and SERVER_SESSION_SECRET keys. 
+    The first will be your google react key, to get one you may follow this link,                            https://developers.google.com/maps/documentation/javascript/get-api-key#get-the-api-key
+    The second will help create your password and keep is safe, be filled with random characters, numbers, and symbals 
+4. Open postgreSQL and create a database with the sequal file given
+5. Killall node if necessary
+6. npm install --save react-google-maps 
+7. npm run server 
+8. npm run client on one terminal
 
 
 ### Completed Features
