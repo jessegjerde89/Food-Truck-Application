@@ -32,8 +32,10 @@ Use the sequal document located in the repo to name the database and create the 
 
 1. Download project with git clone
 2. npm install
-3. create a .env file with REACT_APP_GOOGLE_KEY and SERVER_SESSION_SECRET keys. 
-    The first will be your google react key, to get one you may follow this link,                            https://developers.google.com/maps/documentation/javascript/get-api-key#get-the-api-key
+3. Create a .env file same level as your node file, with REACT_APP_GOOGLE_KEY and SERVER_SESSION_SECRET keys. 
+    The first will be your google react key, to get one you may follow this link,
+    https://developers.google.com/maps/documentation/javascript/get-api-key#get-the-api-key.
+    
     The second will help create your password and keep is safe, be filled with random characters, numbers, and symbals 
 4. Open postgreSQL and create a database with the sequal file given
 5. Killall node if necessary
