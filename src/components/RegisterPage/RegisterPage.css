@@ -1,5 +1,4 @@
-.title span {
-
+/* .title span {
         background-color:whitesmoke; 
         font-size: 65px;
         line-height: 70px;
@@ -9,27 +8,24 @@
         font-style: italic; 
         font-variant: normal; 
         font-weight: 700; 
-    
 }
 
 .fields span {
     background-color: whitesmoke;
-  
     justify-items: center;
     align-items: center; 
 }
 
 .form {
     background-color: whitesmoke;
-
     justify-items: center;
     align-items: center; 
-    
+    height: 600px; 
+    grid-area: 1 / col2-start / last-line / 4;
+} */
 
-}
-
-.wrapper {
+/* .wrapper {
     display:grid;
     max-width: 940px;
     margin: 0 auto;
-}
+} */
