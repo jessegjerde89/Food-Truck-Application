@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
-import MenuItem from '@material-ui/core/MenuItem';
 import { TextField, Button, Grid, Table } from '@material-ui/core';
 
+import './RegisterPage.css'
 
 class RegisterPage extends Component {
   state = {
@@ -39,9 +39,6 @@ class RegisterPage extends Component {
 
   render() {
 
-    
-   
-
     return (
       <div className="wrapper">
         {this.props.errors.registrationMessage && (
@@ -54,16 +51,14 @@ class RegisterPage extends Component {
         )}
          <div className="box">
            <span>
-        <form className="form" 
-        onSubmit={this.registerUser}>
+        <form className="form" onSubmit={this.registerUser}>
 
-          <div className="title"> <span>
+          <div className="title">
             Register User / Vendor
-            </span>
-            </div>
+          </div>
+            <div className = "fields">
           <div>
        
-             
               <TextField
                 type="text"
                 // name="username"
@@ -90,10 +85,6 @@ class RegisterPage extends Component {
               />
   
           </div>
-
-
-          <div className = "fields">
-            <span>
           <div> 
             
             <TextField
@@ -108,7 +99,7 @@ class RegisterPage extends Component {
            
           </div>
           <div>
-       
+            
             <TextField 
             type="boolean"
             // name="isvendor"
@@ -120,33 +111,33 @@ class RegisterPage extends Component {
             />
          
           </div>
-          <div>
+          <div id="button">
             <Button
-              className="register"
               type="submit"
               color="secondary"
               variant="contained"
-              
               value="Register"
               >
                 Register
               </Button>
           </div>
-          </span>
-        </div>
-        </form>
-        {/* <center> */}
+       
+        <div id="button">
           <Button
             type="button"
-            className="link-button"
             color="primary"
             variant = "contained"
             onClick={() => {this.props.dispatch({type: 'SET_TO_LOGIN_MODE'})}}
           >
             Login
           </Button>
+          </div>
+
+        </div>
+          </form>
            </span>
           </div>
+          
           {/* <button
             type="button"
             className="link-button"

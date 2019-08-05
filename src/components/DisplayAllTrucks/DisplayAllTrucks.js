@@ -46,39 +46,34 @@ render() {
       // <MiddleVendor />
       <div className = "wrapper">
           <div className="keys"> 
-          <div className= "header">
-          <span>
-                The Key      
-                </span>
-                </div>
+            <div className= "header">
+            The Key      
+            </div>
               <div>
 
               <div className= "sub">
-                  <span>
-                      Trucks :    
-                    <img 
-                    src= "http://wherethatfoodtruck.com/graphics/default/logo.png" 
-                    alt="truck-icon" 
-                    width= "15%" 
-                    height= "20%"
-                    /> 
-                  </span>
-                </div>
-
-                </div>
-
-                <div className= "sub">
-                   <span>
-                    You : 
+                        Trucks :    
                       <img 
-                      src="https://png.pngtree.com/element_our/md/20180526/md_5b09436fd0515.png" 
-                      alt="fav-icon"
-                      width="24%"
-                      height="80%"
-                      />
-                   </span>  
-              </div>
-              
+                      id="truckIcons"
+                      src= "http://wherethatfoodtruck.com/graphics/default/logo.png" 
+                      alt="truck-icon" 
+                      width= "15%" 
+                      height= "20%"
+                      /> 
+                  </div>
+                </div>
+                  
+                <div className= "sub">          
+                      You : 
+                        <img 
+                        id="icons"
+                        src="https://png.pngtree.com/element_our/md/20180526/md_5b09436fd0515.png" 
+                        alt="fav-icon"
+                        width="30%"
+                        height="80%"
+                        />  
+                </div>
+                
             </div>
         <div className = "map">
 
@@ -87,7 +82,7 @@ render() {
             
             googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
             loadingElement={<div style={{ height: `100%` }} />}
-            containerElement={<div style={{ height: `600px`, width: `600px` }} />}
+            containerElement={<div style={{ height: `700px`, width: `700px` }} />}
             mapElement={<div style={{ height: `100%` }} />}
             
         />

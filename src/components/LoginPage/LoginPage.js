@@ -46,57 +46,50 @@ class LoginPage extends Component {
             {this.props.errors.loginMessage}
           </h2>
         )}
-        <div className="form">
+        <div className="loginForm">
         <form onSubmit={this.login}>
           <div className="title">
-          <span>Login</span>
+         Login
           </div>
-          <div>
-           
-         
+          <div id="textfields">
+           <div>
               <TextField
                 type="text"
-                name="username"
                 label="username"
                 variant="outlined"
                 required
-                autoFocus
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
               />
-              
+              </div><div>
               <TextField
                 type="password"
-                name="password"
                 label="password"
                 variant="outlined"
                 required
-                autoFocus
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
               />
-           
+           </div>
           </div>
-          <div>
+          <div id="button">
             <Button
-              className="log-in"
               type="submit"
               name="submit"
               color="secondary"
               variant ="contained"
               value="Log In"
+              style={{}}
             >
               Submit
               </Button>
           </div>
           {/* </FormControl> */}
-        </form>
+       
       
-        <div className = "button"
-              >
+        <div id="button">
           <Button
             type="button"
-            className="link-button"
             color="primary"
             variant="contained"
             onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}
@@ -104,6 +97,8 @@ class LoginPage extends Component {
             Register
           </Button>
           </div>
+
+          </form>
         </div> 
       </div>
     );

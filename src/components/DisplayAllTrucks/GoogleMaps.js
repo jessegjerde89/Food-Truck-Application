@@ -17,8 +17,7 @@ export class GoogleMaps extends Component {
              <VendorMarker locals= {locals} />
             )})}
     </div>
-
-            </div>
+ </div>
         )
     }
 }
@@ -27,5 +26,5 @@ const mapRedux = reduxState => {
     
     return { reduxState }
     }
-    
-    export default connect(mapRedux)(GoogleMaps)
+
+export default connect(mapRedux)(GoogleMaps)

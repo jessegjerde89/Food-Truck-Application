@@ -2,14 +2,24 @@
     grid-area: 1 / col4-start / last-line / 6;
     background-color: whitesmoke;
     outline-color: rgb(191, 191, 191); 
-    width: 500px;
-    height: 250px;
-
+    width: 700px;
+    height: 500px;
 }
 
 .wrapper{
     display:grid;
     max-width: 940px;
     margin: 0 auto;
+}
 
+.current{
+    padding: 2em; 
+}
+
+#fields {
+    padding: 1em; 
+}
+
+.location-btn {
+    padding-bottom: 1em; 
 }

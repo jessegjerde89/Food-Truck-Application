@@ -57,6 +57,7 @@ export class TruckMarker extends Component {
           <div className="location-input">
             <div>
                 <h3>Add New Spot</h3>
+                <div className="location-btn">
                 <Button 
                 className="location"
                 type="submit"
@@ -66,6 +67,9 @@ export class TruckMarker extends Component {
                     Change Location
                 </Button>
                 </div>
+           
+                  </div>
+                  <div id="fields">
                 <TextField
                 type="number" 
                 name="longitude"
@@ -75,6 +79,8 @@ export class TruckMarker extends Component {
                 onChange={this.changeLong} 
                 />
 
+                </div> 
+                <div id ="fields">
                 <TextField
                 type="number" 
                 name="latitude"
@@ -83,6 +89,15 @@ export class TruckMarker extends Component {
                 autoFocus
                 onChange={this.changeLat} 
                 />
+                </div>
+            <div  className="current">
+                 <Button
+                variant="contained"
+                color="secondary"
+                onClick={this.getCurrent}>
+                    Get Current Location
+                 </Button>   
+             </div> 
             </div>
                 <Marker 
                 key = {this.state.id}
@@ -107,6 +122,7 @@ export class TruckMarker extends Component {
                     </div>
                     </InfoWindow>
                 </Marker>
+                
             </div>
  
             )

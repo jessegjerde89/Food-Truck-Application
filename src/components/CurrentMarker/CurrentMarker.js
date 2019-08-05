@@ -38,7 +38,7 @@ getGeoLocation = () => {
 }
   render() {
     
-
+console.log(this.state);
 return (
     <div>
       {/* Marker for the current location */}

@@ -1,17 +1,17 @@
 .wrapper {
     display:grid;
-    max-width: 940px;
     margin: 0 auto;
 }
 
 
-.form {
-    background-color: whitesmoke;
-    grid-area: 1 / col2-start / last-line / 4;
+.loginForm {
+    background-color:whitesmoke;
+    /* grid-area: 1 / col2-start / last-line / 4; */
+    height: 500px; 
+    width:800px; 
 }
 
 .title {
-
     background-color:whitesmoke; 
     font-size: 65px;
     line-height: 70px;
@@ -21,4 +21,14 @@
     font-style: italic; 
     font-variant: normal; 
     font-weight: 700; 
+    text-align: center; 
+}
+
+#button {
+    padding: 20px; 
+    text-align: center; 
+}
+
+#textfields div {
+    padding: 5px; 
 }
