@@ -1,0 +1,9 @@
+
+.cover {
+    display:flex; 
+}
+
+.mapUpdate  {
+
+    flex: 1;
+}

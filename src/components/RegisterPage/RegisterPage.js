@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
-import { TextField, Button, Grid, Table } from '@material-ui/core';
+import { TextField, Button } from '@material-ui/core';
 
 import './RegisterPage.css'
 
@@ -99,7 +99,7 @@ class RegisterPage extends Component {
            
           </div>
           <div>
-            
+
             <TextField 
             type="boolean"
             // name="isvendor"

@@ -4,7 +4,7 @@ import loginMode from './loginModeReducer';
 import user from './userReducer';
 import locations from './locationReducer'; 
 import menuItem from './menuItemReducer'; 
-import current from './currentRuducer'; 
+import current from './currentReducer'; 
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.

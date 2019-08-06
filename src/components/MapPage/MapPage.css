@@ -1,7 +1,5 @@
-.title span {
-    text-align: center; 
+.title {
     background-color: rgba(228, 220, 220, 0.879); 
-    color: rgb(0, 0, 0);
     font-size: 51px;
     line-height: 50px;
     letter-spacing: -2px;
@@ -11,5 +9,17 @@
     font-variant: normal; 
     font-weight: 700; 
     
-   
+}
+
+.mapBackground {
+    background-color: white;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+    width: 50%;
+    /* text-align: center; 
+    align-content: center;  */
+    display:flex; 
+}
+
+.mapContainer{
+   flex: 3;
+
 }

@@ -11,15 +11,18 @@ export class MapPage extends Component {
 
         console.log(this.props.reduxState)
         return (
-            <div>
-                <div className ="title" align="center"><span>
-                The Map !
-                </span>
+            <>
+        <div className ="title" align="center">
+            The Map !
+         </div>
+            <div className="mapBackground" align="center">
+                <div className="mapContainer">
+                    <TruckMapContainer />
                 </div>
-                 <TruckMapContainer />
                  {/* <VendorLocationPage /> */}
                  
             </div>
+        </>
         )
     }
 }

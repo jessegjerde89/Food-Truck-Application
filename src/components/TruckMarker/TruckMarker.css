@@ -1,19 +1,26 @@
-.location-input {
-    grid-area: 1 / col4-start / last-line / 6;
-    background-color: whitesmoke;
-    outline-color: rgb(191, 191, 191); 
-    width: 700px;
-    height: 500px;
+.wrappers {
+   display: flex; 
+   align-items: center;
+  text-align: center; 
 }
 
-.wrapper{
-    display:grid;
-    max-width: 940px;
-    margin: 0 auto;
+.location-input {
+    /* grid-area: 1 / col4-start / last-line / 6; */
+    background-color: whitesmoke;
+    outline-color: rgb(191, 191, 191); 
+    width: 800px;
+    height: 500px;
+    /* justify-content: flex-end;  */
+    /* align-content: center;
+    text-align: center; */
+}
+
+.column1 {
+   align-self: flex-start; 
 }
 
 .current{
-    padding: 2em; 
+    align-self: flex-end; 
 }
 
 #fields {

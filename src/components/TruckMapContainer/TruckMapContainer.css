@@ -1,6 +1,10 @@
-.wrapper {
+.wrap {
     display:grid;
-    max-width: 940px;
     margin: 0 auto;
 }
 
+.upMan {
+
+    align-content: center; 
+    text-align: center; 
+}

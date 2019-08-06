@@ -18,7 +18,8 @@
 .whiteback {
     background-color: white;
     align-content: center; 
-    height: 95%; 
+    height: 900px; 
     width: 85%;
-    /* grid-column-start: 2;  */
+    grid-column-start: 3; 
+    grid-column-end: 8; 
 }
