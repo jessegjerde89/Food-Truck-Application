@@ -1,10 +1,9 @@
-
-
-.welcome {
-    text-align: center; 
+.grid{
+    display: grid; 
 }
-.welcome span { 
-    background-color:whitesmoke; 
+
+.welcome { 
+    text-align: center; 
     font-size: 65px;
     line-height: 70px;
     letter-spacing: -2px;
@@ -13,8 +12,14 @@
     font-style: italic; 
     font-variant: normal; 
     font-weight: 700; 
+
 }
 
-.map{
-    align-content: center;
+.whiteback {
+    background-color: white;
+    align-content: center; 
+    height: 900px; 
+    width: 85%;
+    grid-column-start: 3; 
+    grid-column-end: 8; 
 }

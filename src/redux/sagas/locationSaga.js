@@ -27,7 +27,6 @@ function* fetchlocation() {
 
 function* currentlocation(action) {
 
-    
     try {      
         yield put({type: "GET_CURRENT", payload: action.payload })
         console.log(action.payload)

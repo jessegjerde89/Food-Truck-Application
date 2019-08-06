@@ -1,5 +1,3 @@
-
-
 import React, { Component } from "react";
 import { Marker , InfoWindow} from "react-google-maps";
 
@@ -10,18 +8,21 @@ class CurrentMarker extends Component{
   state = {
     currentLocal: {
         lat: 0,
-        lng: 0 
+        lng: 0,
+        current: false
     }
   }
-
-  
 
 componentDidMount() {
    this.getGeoLocation() 
    console.log(this.state.currentLocal)
-   
   }
-  
+
+// componentWillUpdate() {
+//   if (this.state.currentLocal.lat != 0) {
+//     this.props.dispatch({type: 'GET_CURRENT', payload: this.state.currentLocal})
+//   }
+// }
 // sets the current location 
 getGeoLocation = () => {
   
@@ -33,12 +34,11 @@ getGeoLocation = () => {
       lng: position.coords.longitude
        }})
     )})
-
   console.log(this.state.currentLocal)
 }
   render() {
     
-
+console.log(this.state);
 return (
     <div>
       {/* Marker for the current location */}
@@ -46,7 +46,6 @@ return (
       position={{ lat: this.state.currentLocal.lat,
                   lng: this.state.currentLocal.lng
                 }}
-      onClick={this.onMarkerClick}
       >
       <InfoWindow>
           <div>

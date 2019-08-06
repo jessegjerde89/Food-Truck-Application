@@ -67,15 +67,15 @@ toggleOn = (vendor) => {
                             <div>
                             { this.props.reduxState.menuItem.map( items => { 
                                 // console.log(items)
-                                if(items.vendor_name === this.state.currentVendor)
-                                {
-                                return (   
-                                    <div>
-                                    {items.item}   
-                                    {items.description} 
-                                    {items.price} 
-                                    </div>            
-                                    )} 
+                                if(items.vendor_name === this.state.currentVendor) {
+                                    return (   
+                                        <div>
+                                        {items.item}   
+                                        {items.description} 
+                                        {items.price} 
+                                        </div>            
+                                    )
+                                } 
                                 })
                                 }       
                             </div>

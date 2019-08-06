@@ -33,23 +33,24 @@ render() {
   const API_KEY = process.env.REACT_APP_GOOGLE_KEY;
 
   return (
-
-      <div >
-      <h1 className="welcome"><span>
-        Welcome, { this.props.reduxState.user.username }!</span> </h1>
-     
-     <DisplayAllTrucks />
+    <div className="grid">
+      <div className="whiteback" >
+        <h1 className="welcome"><span>
+          Welcome, { this.props.reduxState.user.username }!</span> </h1>
+        
+        {this.props.vendors[0] && 
+        <DisplayAllTrucks history={this.props.history}/>
+        }
+      </div>
     </div>
-
     )
   }
 }
 
-
-
 const mapStateToProps = reduxState => {
  return {
-  reduxState
+  reduxState, 
+  vendors : reduxState.locations
  }
 };
 

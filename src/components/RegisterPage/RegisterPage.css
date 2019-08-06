@@ -1,4 +1,4 @@
-/* .title span {
+.title {
         background-color:whitesmoke; 
         font-size: 65px;
         line-height: 70px;
@@ -8,24 +8,36 @@
         font-style: italic; 
         font-variant: normal; 
         font-weight: 700; 
+        padding: 15px; 
+        text-align: center;
 }
 
-.fields span {
-    background-color: whitesmoke;
+.title div {
+        padding: 20px; 
+}
+
+.fields div {
+    text-align: center; 
     justify-items: center;
     align-items: center; 
-}
+    padding: 5px; 
+} 
+
+/* .buttons {
+    padding: 10px; 
+} */
 
 .form {
     background-color: whitesmoke;
     justify-items: center;
     align-items: center; 
-    height: 600px; 
     grid-area: 1 / col2-start / last-line / 4;
-} */
+    height: 700px; 
+    width: 800px; 
+} 
 
-/* .wrapper {
+ .wrapper {
     display:grid;
     max-width: 940px;
     margin: 0 auto;
-} */
+} 
