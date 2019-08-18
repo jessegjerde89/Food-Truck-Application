@@ -1,4 +1,4 @@
-# Food-Truck-Application
+# Foodaholic
 
   The purpose of this application is for a vendors and customers to help one another in finding local food trucks on a map. The vendor is able to make a profile where they can update a menu page with items they are selling, along with a description and price. They may also input a location on a map diplaying themselves to users. 
   When a user logs in, they are taken to a map page displaying all the vendors. The user may tap on the vendors pin 
