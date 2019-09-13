@@ -1,4 +1,4 @@
-# Food-Truck-Application
+# Foodaholic
 
   The purpose of this application is for a vendors and customers to help one another in finding local food trucks on a map. The vendor is able to make a profile where they can update a menu page with items they are selling, along with a description and price. They may also input a location on a map diplaying themselves to users. 
   When a user logs in, they are taken to a map page displaying all the vendors. The user may tap on the vendors pin 
@@ -43,10 +43,10 @@ Use the sequal document located in the repo to name the database and create the 
     SERVER_SESSION_SECRET = (key)
 
 4. Open postgreSQL and create a database with the sequal file given
-5. Killall node if necessary
-6. npm install --save react-google-maps 
-7. npm run server 
-8. npm run client on one terminal
+5. run ``killall node`` if necessary
+6. run ``npm install --save react-google-maps``
+7. ``npm run server `` on new terminal
+8. ``npm run client`` on new terminal
 
 
 ### Completed Features
