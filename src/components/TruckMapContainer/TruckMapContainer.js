@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import TrucksMap from "../TrucksMap/TrucksMap"
 import './TruckMapContainer'
+import { TextField } from "@material-ui/core";
 
 require('dotenv').config()
 
@@ -24,7 +25,7 @@ class TruckMapContainer extends Component {
 		
 		return (
 			<div className = "wrap" > 
-				<div className  ="upMan" >
+				<div className = "upMan" >
 					<TrucksMap
 						trucks={this.props.trucks}
 						googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&v=3.exp&libraries=geometry,drawing,places`}

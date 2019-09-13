@@ -1,7 +1,5 @@
-.wrappers {
+.wrapperss {
    display: flex; 
-   align-items: center;
-  text-align: center; 
 }
 
 .location-input {
@@ -9,24 +7,19 @@
     background-color: whitesmoke;
     outline-color: rgb(191, 191, 191); 
     width: 800px;
-    height: 500px;
-    /* justify-content: flex-end;  */
-    /* align-content: center;
-    text-align: center; */
+    height: 570px;
+   flex-direction: row; 
+   
 }
 
-.column1 {
+/* .column1 {
    align-self: flex-start; 
-}
+} */
 
 .current{
-    align-self: flex-end; 
+    /* align-self: auto  */
 }
 
 #fields {
     padding: 1em; 
-}
-
-.location-btn {
-    padding-bottom: 1em; 
 }

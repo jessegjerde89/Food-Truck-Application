@@ -17,8 +17,9 @@
 
 .whiteback {
     background-color: white;
+    opacity: 0.9;
     align-content: center; 
-    height: 900px; 
+    height: 1000px; 
     width: 85%;
     grid-column-start: 3; 
     grid-column-end: 8; 

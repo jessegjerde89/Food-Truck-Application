@@ -1,16 +1,37 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import {withStyles} from '@material-ui/core/styles'; 
 import './VendorDashboard.css'
 // import VendorDashboardTable from '../VendorDashboardTable/VendorDashboardTable';
 
-import { MuiThemeProvider } from "@material-ui/core/styles";
-import { Delete, Edit, Search } from "@material-ui/icons";
-import { makeStyles } from '@material-ui/core/styles';
-import { TextField, Button, Grid, Table } from '@material-ui/core';
-import { TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
+import {ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary,
+        ExpansionPanelActions } from '@material-ui/core'
+
+import Checkbox from '@material-ui/core/Checkbox';
+import { Delete, Edit } from "@material-ui/icons";
+import { TextField, Divider, Button, Chip, Table } from '@material-ui/core';
+import { TableBody, TableCell, TableHead, TableRow, Typography } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 
+
+const styles = {
+  root: {
+    width: '100%'
+  },
+  input:
+  {
+    width: "150px",
+    padding: "20px"
+  },
+  description: 
+  {
+    width: "200px",
+  },
+  column: {
+    width: '33.33%',
+  }
+}
 
 
 class VendorDashboard extends Component {
@@ -21,14 +42,14 @@ class VendorDashboard extends Component {
       price: this.props.item.price || '',
       id: this.props.item.id || '',
       isediting: false,
-      currentVendor: ''
+      currentVendor: '', 
+      tag: ''
     }
     
-
-      
       // dispatch for settin the menu items
       componentDidMount() {
        
+        this.props.dispatch({ type: 'FETCH_TAGS'})
         this.props.dispatch({ type: 'FETCH_DASH'})
         this.setState({ 
           vendor_name: (this.props.reduxState.user.vendor_name)
@@ -36,6 +57,12 @@ class VendorDashboard extends Component {
         console.log(this.props)
       }
       
+      // boxChecked = name = event => {
+      //   event.preventDefault(); 
+      //  setState({...this.state,[name]: event.target.checked})
+      //  console.log(this.state)
+      // }
+
       // dispatch for adding new menu items
       // handleAdd = (event) => {
       // this.setState({ 
@@ -51,11 +78,11 @@ class VendorDashboard extends Component {
           this.setState({ 
               isediting: false
           })
+          this.clearInputs(); 
         } else {
             this.props.dispatch({type: 'ADD_ITEM', payload: this.state})
+            this.clearInputs(); 
       }
-
-      // this.clearInputs()
     }
 
       // dispatch for deleting menu items
@@ -75,9 +102,12 @@ class VendorDashboard extends Component {
           price: item.price,
           isediting: true
         })
-        // this.props.dispatch({type: 'SEND_EDIT', payload: item })
-        // this.sendDispatch(); 
       }
+
+      // handleChange = () => {
+      //   event.preventDefault(); 
+
+      // }
       
       // handles all changes for all inputs 
         handleInputChangeFor = name => (event) => {
@@ -89,7 +119,6 @@ class VendorDashboard extends Component {
 
         clearInputs = () => {
           this.setState({
-          vendor_name: '' ,
           item: '' ,
           description: '' ,
           price:'' 
@@ -98,66 +127,180 @@ class VendorDashboard extends Component {
 
         render() {
 
+          const {classes} = this.props; 
+
           console.log(this.state)
             return (
               // displays users name onto dashboard
         <div className= "wrapper">
-          <div className="title" align="center"><span>
+          <div className="title" align="center">
            {this.props.reduxState.user.username}'s Dashboard
 
-          </span></div>
-      <form className = "vendor-form">
-        
+          </div>
+          <div className="allInputs">
+            <div className={classes.root}>
+        <ExpansionPanel defaultExpanded>
+       
           {/* input for menu item */}
-         <div align= "center" 
-              className= "textfields">
-           
-         <TextField
-            type="text"
-            name="item"
-            label="item"
-            variant="outlined"
-            required
-            autoFocus
-            value={this.state.item}
-            onChange={this.handleInputChangeFor("item")}
-            />
-          
-            {/* input for description of item */}
-          <TextField
-            type="text"
-            name="description"
-            label="description"
-            variant="outlined"
-            required
-            autoFocus
-            value={this.state.description}
-            onChange={this.handleInputChangeFor("description")}
-          />
-           
-          {/* input for price of item */}
-          <TextField
-            type="text"
-            name="price"
-            label="price"
-            variant="outlined"
-            required
-            autoFocus
-            value={this.state.price}
-            onChange={this.handleInputChangeFor("price")}
-          />
+         <div  className= {classes.column}>
+          <div className="ovr1">
+           <div className={classes.input}>
+            <TextField
+                type="text"
+                name="item"
+                label="item"
+                variant="filled"
+                required
+                value={this.state.item}
+                onChange={this.handleInputChangeFor("item")}
+                />
+            
+              {/* input for description of item */}
+            
+         
+              <TextField
+                type="text"
+                name="price"
+                label="price"
+                variant="filled"
+                required
+                value={this.state.price}
+                onChange={this.handleInputChangeFor("price")}
+              />
+             
             </div>
-          <Button 
-            type="button"
-            onClick={this.sendDispatch}
-            color = "primary"
-            variant = "contained"
-          >
-          Add New Item 
-          </Button>
-          </form>
-      
-      <div>
+            </div>
+            </div>
+            <div className={classes.column} >
+            <div className="ovr2">
+           <div className={classes.description}>
+              <TextField
+                type="text"
+                name="description"
+                label="description"
+                variant="filled"
+                required
+                value={this.state.description}
+                onChange={this.handleInputChangeFor("description")}
+              />
+          
+            {/* input for price of item */}
+            </div>
+        </div>
+        </div>
+      <div className={classes.column} >
+      <div className="ovr3">
+      <div className="checkBoxes">
+            <div>
+              <Checkbox
+                  // checked={state.checkedA}
+                  // onChange={handleChange('box1')}
+                  value="atkinsApproved"
+                  inputProps={{
+                    'aria-label': 'primary checkbox',
+                  }}
+                /> Atkins Approved |
+                <Checkbox
+                  // checked={state.checkedA}
+                  // onChange={handleChange('checkedA')}
+                  value="atkinsApproved"
+                  inputProps={{
+                    'aria-label': 'primary checkbox',
+                  }}
+                /> Contains Peanuts |
+                <Checkbox
+                // checked={state.checkedA}
+                // onChange={handleChange('checkedA')}
+                value="atkinsApproved"
+                inputProps={{
+                  'aria-label': 'primary checkbox',
+                }}
+              /> Kosher |
+            </div>
+              <Checkbox
+                // checked={state.checkedA}
+                // onChange={handleChange('checkedA')}
+                value="atkinsApproved"
+                inputProps={{
+                  'aria-label': 'primary checkbox',
+                }}
+              /> Gluten-Free |
+              <Checkbox
+                // checked={state.checkedA}
+                // onChange={handleChange('checkedA')}
+                value="atkinsApproved"
+                inputProps={{
+                  'aria-label': 'primary checkbox',
+                }}
+              /> Contains Dairy |
+              <Checkbox
+                // checked={state.checkedA}
+                // onChange={handleChange('checkedA')}
+                value="atkinsApproved"
+                inputProps={{
+                  'aria-label': 'primary checkbox',
+                }}
+              />  Halal Approved |
+            
+                  {/* <FormControlLabel
+                    value="atkinsApproved"
+                    control={<Radio color="primary" />}
+                    label="Atkins Approved"
+                    labelPlacement="start"
+                  />
+                  <FormControlLabel
+                    value="containsPeanuts"
+                    control={<Radio color="primary" />}
+                    label="Contains-Peanuts"
+                    labelPlacement="start"
+                  />
+                  <FormControlLabel
+                    value="kosherr"
+                    control={<Radio color="primary" />}
+                    label="Kosher"
+                    labelPlacement="start"
+                  />
+                  <FormControlLabel
+                    value="halalApproved"
+                    control={<Radio color="primary" />}
+                    label="Halal Approved"
+                    labelPlacement="start"
+                  />
+                  <FormControlLabel
+                    value="glutenFree"
+                    control={<Radio color="primary" />}
+                    label="Gluten-Free"
+                    labelPlacement="start"
+                  />
+                  <FormControlLabel
+                    value="containsDairy"
+                    control={<Radio color="primary" />}
+                    label="Contains-Dairy" 
+                    labelPlacement="start"
+                  />
+                </RadioGroup>
+              </FormControl> */}
+            {/* </div> */}
+          </div>
+        </div>
+        </div>
+        <Divider />
+        <ExpansionPanelActions>
+          <div className= "submit-btn">
+              <Button 
+                type="button"
+                onClick={this.sendDispatch}
+                color = "primary"
+                variant = "contained"
+              >
+            Add New Item 
+            </Button>
+        </div>
+        </ExpansionPanelActions>
+      </ExpansionPanel>
+      </div>
+      </div>
+      <div className="vendor-table">
 
       <Paper >
       <Table >
@@ -197,9 +340,9 @@ class VendorDashboard extends Component {
       
       const mapState = reduxState => {
         return {
+            // tags: redusState.tags,
             item: reduxState.menuItem, 
-           
-            reduxState
+                  reduxState
             }   
         }
-        export default connect(mapState)(VendorDashboard)
+        export default withStyles(styles)(connect(mapState)(VendorDashboard)); 

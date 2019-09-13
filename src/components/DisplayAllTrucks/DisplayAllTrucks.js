@@ -46,43 +46,41 @@ render() {
       // <MiddleVendor />
       <div className = "wrapper">
           <div className="keys"> 
-            <div className= "header">
+            <div className= "head">
             The Key      
             </div>
-              <div>
-
-              <div className= "sub">
-                        Trucks :    
+             <div>
+              <div className= "subs">
+                      Trucks
                       <img 
                       id="truckIcons"
                       src= "http://wherethatfoodtruck.com/graphics/default/logo.png" 
                       alt="truck-icon" 
-                      width= "15%" 
-                      height= "20%"
+                      width= "25%" 
+                      height= "30%"
                       /> 
                   </div>
-                </div>
                   
-                <div className= "sub">          
-                      You : 
+                <div className= "subs">          
+                      You 
                         <img 
                         id="icons"
                         src="https://png.pngtree.com/element_our/md/20180526/md_5b09436fd0515.png" 
                         alt="fav-icon"
-                        width="30%"
+                        width="40%"
                         height="80%"
                         />  
                 </div>
-                
+              </div>
             </div>
-        <div className = "map">
+        <div className = "map1">
 
         {/* display map on dom */}
         <GoogleMapContainer
             
             googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
             loadingElement={<div style={{ height: `100%` }} />}
-            containerElement={<div style={{ height: `675px`, width: `600px` }} />}
+            containerElement={<div style={{ height: `580px`, width: `500px` }} />}
             mapElement={<div style={{ height: `100%` }} />}
             
         />

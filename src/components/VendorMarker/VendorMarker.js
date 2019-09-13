@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
+
 import { connect } from 'react-redux'
 import { withGoogleMap, GoogleMap, Marker, InfoWindow, withScriptjs } from 'react-google-maps';
 import { Link } from 'react-router-dom'
 
 import MiddleMarker from './MiddleMarker'; 
+
+import { Button } from '@material-ui/core'; 
 
 
 class VendorMarker extends Component {
@@ -11,7 +14,8 @@ class VendorMarker extends Component {
 
 state = {
     isOpen : false,
-    currentVendor: ''
+    currentVendor: '',
+    linked: ''
 }
 
 // componentDidMount() {
@@ -19,13 +23,20 @@ state = {
 // }
 
 // {/* <Toggle /> */}
+
 toggleOn = (vendor) => {
     this.setState({
         isOpen: !this.state.isOpen,
         currentVendor: vendor
     })
     console.log(this.props.locals)
-    this.props.dispatch({ type: "CURRENT_MARKER", payload: this.state})
+}
+
+handleLink = (currentVendor) => {
+    console.log(currentVendor); 
+    this.props.dispatch({ type: "CURRENT_MARKER", payload: currentVendor})
+    // this.props.history.push('/vendor')
+
 }
 
     render() {
@@ -59,9 +70,15 @@ toggleOn = (vendor) => {
                         </h3>
                         {/* <MiddleMarker /> */}
                         <div>
-                            <Link className="link_to" to="/vendor">
-                                Menu 
-                            </Link>
+                            <Button className="link_to" 
+                                    onClick = {() => this.handleLink(this.props.locals.vendor_name)}
+                                    // value = {this.state.currentVendor}
+                                    // {this.props.history(this.state.vendor_name)}
+                                    >
+                                        <Link  to="/vendor">
+                                            Menu
+                                        </Link>
+                            </Button>
                             </div>
                         
                             <div>

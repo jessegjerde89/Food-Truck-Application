@@ -5,7 +5,6 @@ import { MuiThemeProvider } from "@material-ui/core/styles";
 import { Favorite } from "@material-ui/icons";
 import { makeStyles } from '@material-ui/core/styles';
 import {Card, CardActionArea, CardActions, CardContent, CardMedia } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 export class Vendor extends Component {
@@ -22,7 +21,7 @@ state = {
 componentDidMount() {
     // dispatch for getting menu items
     this.props.dispatch({ type:'FETCH_DASH'})
-    this.props.dispatch({ type: 'GET_CURRENT'})
+    // this.props.dispatch({ type: 'GET_CURRENT'})
     console.log(this.props.reduxState)
     console.log(this.state)
 }
@@ -100,36 +99,34 @@ favoriteItem = (event, thisid) => {
             <>
                 <div className="title" align="center">
                 <span className= "title2">
-                {this.props.reduxState.user.vendor_name} Menu 
+                {this.props.reduxState.current} Menu 
                 </span>
                 </div>
 
 
                 {this.props.item.map(item => {
-                    if (item.vendor_name === this.props.reduxState.user.vendor_name) {
+                    if (item.vendor_name === this.props.reduxState.current) {
                         return (
-          <div  
-          className= "menuItem" align="center" >                 
-            <Card style={{width: 400, height: 200}} align="center">
-                <CardActionArea>
-                    <CardMedia
-                     
-                    //   image="/static/images/cards/contemplative-reptile.jpg"
-                    title={item.item}
-                    />
-                      <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
-                         {item.item}
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                          <div>$ {item.price} </div>
-                          <div> {item.description} </div>
-                        </Typography>
-                      </CardContent>
-                </CardActionArea>
-                 
-            </Card>
-        </div>  
+
+                <div className= "menuItem" align="center" >                 
+                    <Card style={{width: 400, height: 200}} align="center">
+                        <CardActionArea>
+                            <CardMedia
+                            title={item.item}
+                            />
+                            <CardContent>
+                                <Typography gutterBottom variant="h4" component="h2">
+                                {item.item}
+                                </Typography>
+                                <Typography variant="body2" color="textSecondary" component="p">
+                                <div>$ {item.price} </div>
+                                <div>{item.description} </div>
+                                </Typography>
+                            </CardContent>
+                        </CardActionArea>
+                        
+                    </Card>
+                </div>  
                 )
                 }
             })}

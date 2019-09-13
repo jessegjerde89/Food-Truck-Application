@@ -1,33 +1,50 @@
 
-
-.title span {
-     
+.title {
     background-color: rgba(245, 245, 245, 0.651); 
     color: rgb(0, 0, 0);
-
     text-align: center; 
     font-size: 51px;
     line-height: 44px;
     letter-spacing: -2px;
     font-weight: bold;
-    
 }
 
 .button {
     color: blue; 
 }
 
+.vendor-table {
+    padding : 200px; 
+}
+
+.ovr1{
+    flex-direction:row-reverse;
+}
+
+.ovr2{
+    flex-direction:row-reverse;
+}
+
+.ovr3{
+    flex-direction:row-reverse;
+}
+
+.radio-btn {
+    font-size: 20px; 
+    color: green; 
+    background-color: whitesmoke; 
+}
+
 .textfields {
     background-color: whitesmoke;
     border: 2em blue; 
-    grid-column-start: 2;
-    grid-column-end: five;
-    grid-row-start: row1-start;
-    grid-row-end: 3;
+}
+
+.allInputs {
+    display: flex;
 }
 
 .wrapper {
-    display:grid;
-    max-width: 940px;
+    /* max-width: 700px; */
     margin: 0 auto;
 }

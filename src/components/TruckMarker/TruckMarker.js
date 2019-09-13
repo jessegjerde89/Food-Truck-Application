@@ -3,7 +3,6 @@ import React, {Component} from 'react'
 
 import {Marker , InfoWindow} from "react-google-maps";
 
-import { makeStyles } from '@material-ui/styles';
 import { TextField, Button, Grid } from '@material-ui/core';
 
 import './TruckMarker.css'
@@ -28,17 +27,9 @@ export class TruckMarker extends Component {
 
     componentDidMount()  {
         this.props.dispatch({ type: 'SET_LOCATION'}); 
-        // this.props.dispatch({ type:'FETCH_DASH'})
         this.getGeoLocation(); 
     }
    
-     
-     // componentWillUpdate() {
-     //   if (this.state.currentLocal.lat != 0) {
-     //     this.props.dispatch({type: 'GET_CURRENT', payload: this.state.currentLocal})
-     //   }
-     // }
-     // sets the current location 
      getGeoLocation = () => {
        
          navigator.geolocation.getCurrentPosition(
@@ -52,6 +43,7 @@ export class TruckMarker extends Component {
        console.log(this.state.currentLocal)
      }
 
+     
 
     changeLat = (event) => {
         this.setState({
@@ -66,7 +58,6 @@ export class TruckMarker extends Component {
     }
 
     handleClick = () => {
-        
         console.log(this.reduxState); 
         this.props.dispatch({ type: 'ADD_LOCATION', payload: this.state}); 
     }
@@ -98,45 +89,43 @@ export class TruckMarker extends Component {
         }
 
     return(   
-      <div className ="wrappers">
+      <div className ="wrapperss">
           <div className="location-input">
               <div className="column1">
-            <div>
-                <h3>Add New Spot</h3>
-                    <div className="location-btn">
-                        <Button 
-                        className="location"
-                        type="submit"
-                        variant="contained"
-                        color="primary"
-                        onClick={this.handleClick}>
-                            Change Location
-                        </Button>
-                    </div>
-           
-                  </div>
-                    <div id="fields">
-                        <TextField
-                        type="number" 
-                        name="longitude"
-                        label="longitude"
-                        required
-                        autoFocus
-                        onChange={this.changeLong} 
-                        />
-
-                    {/* </div> 
-                    <div id="fields"> */}
-                        <TextField
-                        type="number" 
-                        name="latitude"
-                        label="latitude"
-                        required
-                        autoFocus
-                        onChange={this.changeLat} 
-                        />
-                    </div>
+                <div>
+                    <h3>Add New Spot</h3>
+                        <div className="location-btn">
+                            <Button 
+                            className="location"
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                            onClick={this.handleClick}>
+                                Change Location
+                            </Button>
+                        </div>
+            
                 </div>
+                <div id="fields">
+                    <TextField
+                    type="number" 
+                    name="longitude"
+                    label="longitude"
+                    required
+                    autoFocus
+                    onChange={this.changeLong} 
+                    />
+
+                    <TextField
+                    type="number" 
+                    name="latitude"
+                    label="latitude"
+                    required
+                    autoFocus
+                    onChange={this.changeLat} 
+                    />
+                </div>
+              </div>
                 <div  className="current">
                     <Button
                     variant="contained"
@@ -164,26 +153,22 @@ export class TruckMarker extends Component {
                 </div> 
             </div>
                 <Marker 
-                key = {this.state.id}
-                position = {{ 
-                    lat: this.state.latitude, 
-                    lng: this.state.longitude
-                            }} 
-                icon = {truckIcon}
-                >
+                    key = {this.state.id}
+                    position = {{ 
+                        lat: this.state.latitude, 
+                        lng: this.state.longitude
+                                }} 
+                    icon = {truckIcon} >
+
                     <InfoWindow
                     visible={this.state.showingInfoWindow}
                     marker={this.state.activeMarker}
                     >
-                    <div>
-                        <h3 className= "vendor_name">
-                            
-                        {this.props.reduxState.user.vendor_name}
-                        </h3>
-                        {/* <div>
-                            {vendorInfo}
-                        </div> */}
-                    </div>
+                        <div>
+                            <h3 className= "vendor_name">
+                                {this.props.reduxState.user.vendor_name}
+                            </h3>
+                        </div>
                     </InfoWindow>
                 </Marker>
                 <Marker 
@@ -192,7 +177,9 @@ export class TruckMarker extends Component {
                                 }}
                     onClick={this.onMarkerClick}
                     >
-                    <InfoWindow>
+                    <InfoWindow
+                     visible={this.state.showingInfoWindow}
+                     marker={this.state.activeMarker}>
                         <div>
                             <h3>You are here!</h3>
                         </div>

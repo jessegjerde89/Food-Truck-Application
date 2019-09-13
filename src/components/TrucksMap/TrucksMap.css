@@ -1,9 +1,8 @@
 
 .cover {
-    display:flex; 
+    display: flex; 
 }
 
-.mapUpdate  {
-
-    flex: 1;
+.mapUpdate {
+    flex-direction: row; 
 }

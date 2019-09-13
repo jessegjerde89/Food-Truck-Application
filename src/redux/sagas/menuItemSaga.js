@@ -15,7 +15,6 @@ function* fetchitems() {
     }
 }
 
-
 // when a vendor adds a new item 
 function* additems(action) {
 

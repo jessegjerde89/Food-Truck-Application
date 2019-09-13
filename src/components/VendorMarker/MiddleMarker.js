@@ -12,24 +12,25 @@ export class MiddleMarker extends Component {
                       <Link className="link_to" to="/vendor">
                         Menu 
                       </Link>
-                      </div>
+                </div>
                  
-                    <div>
-                        
-                    { this.props.reduxState.menuItem.map( items => { 
-                        // console.log(items)
-                        if(items.vendor_name === this.state.currentVendor)
-                        {
-                        return (   
-                            <div>
+                <div>
+                    
+                    {this.props.reduxState.menuItem.map( items => { 
+                    // console.log(items)
+                    if(items.vendor_name === this.state.currentVendor)
+                      {
+                      return (   
+                          <div>
                             {items.item}   
                             {items.description} 
                             {items.price} 
-                            </div>            
-                            )} 
-                          })
-                        }       
-                    </div>
+                          </div>            
+                          )
+                        } 
+                      })
+                    }       
+                </div>
             </>
         )
     }
