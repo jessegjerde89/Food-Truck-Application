@@ -1,10 +1,14 @@
+div, p {
+  padding: 0px 15px; 
+}
+
 .keys {
-  grid-column: 12 ;
+  grid-column: 2 ;
   grid-row: 1 ;
   padding-left: 100px;
   padding: 30px;
-  height: 300px;
-  width: 100px;
+  height: 80px;
+  width: 500px;
   background-color: whitesmoke;
   outline-color: rgb(191, 191, 191); 
   background-color: whitesmoke; 
@@ -16,24 +20,24 @@
 }
 
 .head {
-  font-size: 40px;
-  line-height: 40px;
+  font-size: 30px;
+  line-height: 30px;
   letter-spacing: -2px;
   font-weight: bold;
   font-family: Lato;   
   font-style: italic; 
   font-variant: normal; 
-  font-weight: 600; 
+  font-weight: 550; 
 }
 
 .subs{
-  font-size: 32px;
-  line-height: 50px;
+  font-size: 26px;
+  line-height: 28px;
   font-weight: bold;
   font-family: Lato;   
   font-style: italic; 
   font-variant: normal; 
-  font-weight: 700; 
+  font-weight: 500; 
   border-style: inset;   
 }
 
@@ -48,8 +52,8 @@
 }
 
 .map1 {
-    align-content: right; 
-    grid-column-start: 1 ;
+   
+    grid-column-start: 2 ;
     grid-row: 2 ;
     padding-left: 20px; 
     width: 2em; 

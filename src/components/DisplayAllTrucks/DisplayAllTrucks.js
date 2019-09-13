@@ -56,19 +56,19 @@ render() {
                       id="truckIcons"
                       src= "http://wherethatfoodtruck.com/graphics/default/logo.png" 
                       alt="truck-icon" 
-                      width= "25%" 
-                      height= "30%"
+                      width= "8%" 
+                      height= "8%"
                       /> 
-                  </div>
+                
                   
-                <div className= "subs">          
+                       
                       You 
                         <img 
                         id="icons"
                         src="https://png.pngtree.com/element_our/md/20180526/md_5b09436fd0515.png" 
                         alt="fav-icon"
-                        width="40%"
-                        height="80%"
+                        width="15%"
+                        height="30%"
                         />  
                 </div>
               </div>
