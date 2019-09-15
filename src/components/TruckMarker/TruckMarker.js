@@ -71,6 +71,22 @@ export class TruckMarker extends Component {
         this.handleClick(); 
     }
 
+    
+    // codeAddress = () => {
+    //     let geocoder; 
+    //     geocoder.geocode( { 'address': address}, function(results, status) {
+    //         if (status == 'OK') {
+    //         map.setCenter(results[0].geometry.location);
+    //         var marker = new google.maps.Marker({
+    //             map: map,
+    //             position: results[0].geometry.location
+    //         });
+    //         } else {
+    //         alert('Geocode was not successful for the following reason: ' + status);
+    //         }
+    //     });
+    // }
+    
     getCurrent = (event) => {
         event.preventDefault()
         this.setState({
@@ -80,6 +96,8 @@ export class TruckMarker extends Component {
     }
 
     render() {
+        var geocoder;
+        var map;
         const truckIcon = 
         { url: 'http://wherethatfoodtruck.com/graphics/default/logo.png', 
                 scaledSize: { width: 32, height: 40 } };

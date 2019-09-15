@@ -3,20 +3,22 @@ div, p {
 }
 
 .keys {
-  grid-column: 2 ;
-  grid-row: 1 ;
   padding-left: 100px;
   padding: 30px;
-  height: 80px;
-  width: 500px;
-  background-color: whitesmoke;
-  outline-color: rgb(191, 191, 191); 
+  height: 13%;
+  width: 86%;
+  outline-color: whitesmoke; 
   background-color: whitesmoke; 
-  /* opacity: 0.5; */
   color: rgb(0, 0, 0);
   text-align: center;
+}
+
+.border {
   border-style: groove;
   border-width: 20px; 
+  width: 90%; 
+  background-color: whitesmoke; 
+
 }
 
 .head {
@@ -46,16 +48,15 @@ div, p {
 }
 
 .wrapper {
-  display:grid;
+  display:flex;
   /* margin: 0 auto; */
 
 }
 
 .map1 {
-   
-    grid-column-start: 2 ;
-    grid-row: 2 ;
-    padding-left: 20px; 
-    width: 2em; 
-    height: 60%;
+    /* grid-column-start: 1;
+    grid-row: 1 ; */
+    /* padding-left: 20px;  */
+    /* width: 25%; 
+    height: 50%; */
 }

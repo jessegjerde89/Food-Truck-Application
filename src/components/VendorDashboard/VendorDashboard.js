@@ -24,13 +24,10 @@ const styles = {
     width: "150px",
     padding: "20px"
   },
-  description: 
-  {
-    width: "200px",
-  },
-  column: {
-    width: '33.33%',
-  }
+  // description: 
+  // {
+  
+  // }
 }
 
 
@@ -156,8 +153,8 @@ class VendorDashboard extends Component {
                 />
             
               {/* input for description of item */}
-            
-         
+            </div>
+            <div className={classes.input}>
               <TextField
                 type="text"
                 name="price"
@@ -167,19 +164,17 @@ class VendorDashboard extends Component {
                 value={this.state.price}
                 onChange={this.handleInputChangeFor("price")}
               />
-             
-            </div>
-            </div>
+             </div>
+            
             </div>
             <div className={classes.column} >
-            <div className="ovr2">
            <div className={classes.description}>
               <TextField
                 type="text"
                 name="description"
                 label="description"
                 variant="filled"
-                required
+                multiline
                 value={this.state.description}
                 onChange={this.handleInputChangeFor("description")}
               />

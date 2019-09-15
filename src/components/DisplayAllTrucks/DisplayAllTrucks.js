@@ -45,6 +45,7 @@ render() {
     return (
       // <MiddleVendor />
       <div className = "wrapper">
+        <div  align="center" className = "border">
           <div className="keys"> 
             <div className= "head">
             The Key      
@@ -60,8 +61,6 @@ render() {
                       height= "8%"
                       /> 
                 
-                  
-                       
                       You 
                         <img 
                         id="icons"
@@ -77,13 +76,12 @@ render() {
 
         {/* display map on dom */}
         <GoogleMapContainer
-            
             googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
             loadingElement={<div style={{ height: `100%` }} />}
-            containerElement={<div style={{ height: `580px`, width: `500px` }} />}
+            containerElement={<div style={{ height: `580px`, width: `90%` }} />}
             mapElement={<div style={{ height: `100%` }} />}
-            
         />
+        </div>
         </div>
       
         </div> 

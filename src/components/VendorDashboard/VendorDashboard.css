@@ -22,11 +22,9 @@
 }
 
 .ovr2{
-    flex-direction:row-reverse;
-}
-
-.ovr3{
-    flex-direction:row-reverse;
+    display: flex;
+    align-items: stretch;
+    
 }
 
 .radio-btn {
