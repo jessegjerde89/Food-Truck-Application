@@ -6,15 +6,15 @@
     /* grid-area: 1 / col4-start / last-line / 6; */
     background-color: whitesmoke;
     outline-color: rgb(191, 191, 191); 
-    width: 800px;
-    height: 570px;
+    width: 90%;
+    height: 550px;
    flex-direction: row; 
    
 }
 
-/* .column1 {
+.column {
    align-self: flex-start; 
-} */
+}
 
 .current{
     /* align-self: auto  */

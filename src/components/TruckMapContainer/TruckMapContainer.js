@@ -31,7 +31,7 @@ class TruckMapContainer extends Component {
 						googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
 						currentLocation={this.state.currentLatLng}
 						loadingElement={<div style={{ height: `100%` }} />}
-						containerElement={<div style={{ height: `700px`, width: `800px` }} />}
+						containerElement={<div style={{ height: `500px`, width: `80%` }} />}
 						mapElement={<div style={{ height: `100%` }} />}
 						
 					/>

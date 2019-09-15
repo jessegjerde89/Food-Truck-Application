@@ -109,7 +109,7 @@ export class TruckMarker extends Component {
     return(   
       <div className ="wrapperss">
           <div className="location-input">
-              <div className="column1">
+              <div className="column">
                 <div>
                     <h3>Add New Spot</h3>
                         <div className="location-btn">

@@ -5,16 +5,11 @@
     
 }
 
-.vendorTable {
-    width: 80%; 
-    border-collapse: collapse;
-}
-
 .title span {
      
     background-color: rgba(245, 245, 245, 0.651); 
     color: rgb(0, 0, 0);
-    padding-left: 80px; 
+    padding-left: 60px; 
     font-size: 51px;
     line-height: 44px;
     letter-spacing: -2px;
@@ -23,6 +18,7 @@
     font-style: italic; 
     font-variant: normal; 
     font-weight: 700; 
+    width: 80%; 
     
 }
 
@@ -30,8 +26,15 @@
    align-content: center; 
 } */
 
+/* .card {
+    height: 100%; 
+    width: 80%; 
+} */
+
 .menuItem {
-    padding: 100px; 
+    padding: 80px; 
     height: 40px; 
+    width: 80%; 
     column-rule-style: groove;
+    align-content: center; 
 }

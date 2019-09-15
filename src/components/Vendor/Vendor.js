@@ -109,7 +109,7 @@ favoriteItem = (event, thisid) => {
                         return (
 
                 <div className= "menuItem" align="center" >                 
-                    <Card style={{width: 400, height: 200}} align="center">
+                    <Card className="card" align="center">
                         <CardActionArea>
                             <CardMedia
                             title={item.item}
