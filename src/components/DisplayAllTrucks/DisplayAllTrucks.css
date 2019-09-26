@@ -4,7 +4,7 @@ div, p {
 
 .keys {
   padding-left: 100px;
-  padding: 30px;
+  padding: 10%;
   height: 13%;
   width: 86%;
   outline-color: whitesmoke; 
@@ -12,12 +12,13 @@ div, p {
   color: rgb(0, 0, 0);
   text-align: center;
 }
-
+f
 .border {
   border-style: groove;
   border-width: 20px; 
   width: 90%; 
-  background-color: whitesmoke; 
+  background-color: whitesmoke;  
+  
 
 }
 
@@ -53,10 +54,10 @@ div, p {
 
 }
 
-.map1 {
+/* .map1 {
     /* grid-column-start: 1;
     grid-row: 1 ; */
     /* padding-left: 20px;  */
     /* width: 25%; 
     height: 50%; */
-}
+

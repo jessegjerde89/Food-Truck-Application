@@ -24,10 +24,11 @@ const styles = {
     width: "150px",
     padding: "20px"
   },
-  // description: 
-  // {
-  
-  // }
+  description: 
+  {
+    width: "400px",
+    padding: "20px"
+  }
 }
 
 
@@ -129,8 +130,8 @@ class VendorDashboard extends Component {
           console.log(this.state)
             return (
               // displays users name onto dashboard
-        <div className= "wrapper">
-          <div className="title" align="center">
+        <div className= "wrapperVD">
+          <div className="titleDash" align="center">
            {this.props.reduxState.user.username}'s Dashboard
 
           </div>
@@ -167,26 +168,24 @@ class VendorDashboard extends Component {
              </div>
             
             </div>
-            <div className={classes.column} >
-           <div className={classes.description}>
-              <TextField
-                type="text"
-                name="description"
-                label="description"
-                variant="filled"
-                multiline
-                value={this.state.description}
-                onChange={this.handleInputChangeFor("description")}
-              />
+            </div>
+              <div className={classes.description}>
+                  <TextField
+                    type="text"
+                    name="description"
+                    label="description"
+                    variant="filled"
+                    multiline
+                    value={this.state.description}
+                    onChange={this.handleInputChangeFor("description")}
+                  />
           
             {/* input for price of item */}
-            </div>
-        </div>
-        </div>
+              </div>
       <div className={classes.column} >
       <div className="ovr3">
       <div className="checkBoxes">
-            <div>
+            <div className="row1">
               <Checkbox
                   // checked={state.checkedA}
                   // onChange={handleChange('box1')}
@@ -194,48 +193,49 @@ class VendorDashboard extends Component {
                   inputProps={{
                     'aria-label': 'primary checkbox',
                   }}
-                /> Atkins Approved |
+                /> Atkins Approved 
                 <Checkbox
                   // checked={state.checkedA}
                   // onChange={handleChange('checkedA')}
-                  value="atkinsApproved"
+                  value="containsPeanuts"
                   inputProps={{
                     'aria-label': 'primary checkbox',
                   }}
-                /> Contains Peanuts |
+                /> Con. Peanuts 
                 <Checkbox
                 // checked={state.checkedA}
                 // onChange={handleChange('checkedA')}
-                value="atkinsApproved"
+                value="kosher"
                 inputProps={{
                   'aria-label': 'primary checkbox',
                 }}
-              /> Kosher |
+              /> Kosher 
             </div>
+            <div className="row2">
               <Checkbox
                 // checked={state.checkedA}
                 // onChange={handleChange('checkedA')}
-                value="atkinsApproved"
+                value="glutenFree"
                 inputProps={{
                   'aria-label': 'primary checkbox',
                 }}
-              /> Gluten-Free |
+              /> Gluten-Free 
               <Checkbox
                 // checked={state.checkedA}
                 // onChange={handleChange('checkedA')}
-                value="atkinsApproved"
+                value="containsDairy"
                 inputProps={{
                   'aria-label': 'primary checkbox',
                 }}
-              /> Contains Dairy |
+              /> Contains Dairy 
               <Checkbox
                 // checked={state.checkedA}
                 // onChange={handleChange('checkedA')}
-                value="atkinsApproved"
+                value="halalApproved"
                 inputProps={{
                   'aria-label': 'primary checkbox',
                 }}
-              />  Halal Approved |
+              />  Halal Approved 
             
                   {/* <FormControlLabel
                     value="atkinsApproved"
@@ -276,6 +276,7 @@ class VendorDashboard extends Component {
                 </RadioGroup>
               </FormControl> */}
             {/* </div> */}
+            </div>
           </div>
         </div>
         </div>
@@ -305,6 +306,8 @@ class VendorDashboard extends Component {
             <TableCell align="right">Menu Item</TableCell>
             <TableCell align="right">Description</TableCell>
             <TableCell align="right">Price</TableCell>
+            <TableCell align="right">Delete</TableCell>
+            <TableCell align="right">Edit</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
