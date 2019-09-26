@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import './Nav.css';
+// import './Nav.css';
 import { SwipeableDrawer, Button, List, Divider, ListItem, 
         ListItemIcon, ListItemText, Drawer, MenuList, Toolbar
 } from '@material-ui/core';
@@ -11,9 +11,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import { makeStyles,  } from '@material-ui/core/styles';
-
-import { withStyles } from '@material-ui/core/styles'
-import { Menu } from '@material-ui/icons'
 
 
 const drawerWidth = 200; 
@@ -43,7 +40,7 @@ const useStyles = makeStyles(theme => ({
     }),
   },
   menuButton: {
-    marginRight: theme.spacing(10),
+    marginRight: theme.spacing(5),
   },
   drawerPaper: {
     width: drawerWidth,

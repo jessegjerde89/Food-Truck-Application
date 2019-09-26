@@ -1,12 +1,14 @@
 
-.title {
+.titleDash {
     background-color: rgba(245, 245, 245, 0.651); 
     color: rgb(0, 0, 0);
-    text-align: center; 
+    /* text-align: center;  */
     font-size: 51px;
     line-height: 44px;
     letter-spacing: -2px;
     font-weight: bold;
+    padding:5%; 
+
 }
 
 .button {
@@ -14,17 +16,23 @@
 }
 
 .vendor-table {
-    padding : 200px; 
+    padding : 10%; 
+    width: 80%; 
 }
 
 .ovr1{
-    flex-direction:row-reverse;
+    flex-direction: row;
 }
 
 .ovr2{
     display: flex;
-    align-items: stretch;
+    /* align-items: stretch; */
     
+}
+
+.ovr3{
+  column-count: 2;
+  
 }
 
 .radio-btn {
@@ -39,10 +47,16 @@
 }
 
 .allInputs {
-    display: flex;
+    /* column-count: 2; */
+    column-gap: 8%;
+    column-rule-width: 1px;
 }
 
-.wrapper {
+.checkBoxes {
+     max-width: 250px;
+}
+
+.wrapperVD {
     /* max-width: 700px; */
     margin: 0 auto;
 }

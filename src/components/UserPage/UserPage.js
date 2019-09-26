@@ -30,8 +30,9 @@ render() {
   return (
     <div className="grid">
       <div className="whiteback" >
-        <h1 className="welcome"><span>
-          Welcome, { this.props.reduxState.user.username }!
+        <h1 className="welcome">
+          <span>
+            Welcome, { this.props.reduxState.user.username }!
           </span> 
         </h1>
         
