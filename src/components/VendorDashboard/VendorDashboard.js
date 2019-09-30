@@ -19,11 +19,6 @@ const styles = {
   root: {
     width: '100%'
   },
-  input:
-  {
-    width: "150px",
-    padding: "20px"
-  },
   description: 
   {
     width: "400px",
@@ -90,7 +85,8 @@ class VendorDashboard extends Component {
       }
 
       // dispatch for editing menu items
-      handleEdit = (item) => {
+      handleEdit = (item, event) => {
+        event.preventDefault(); 
         console.log('the item', item); 
         this.setState({
           id: item.id,
@@ -142,7 +138,6 @@ class VendorDashboard extends Component {
           {/* input for menu item */}
          <div  className= {classes.column}>
           <div className="ovr1">
-           <div className={classes.input}>
             <TextField
                 type="text"
                 name="item"
@@ -154,9 +149,8 @@ class VendorDashboard extends Component {
                 />
             
               {/* input for description of item */}
-            </div>
-            <div className={classes.input}>
-              <TextField
+              <br></br>
+              <TextField 
                 type="text"
                 name="price"
                 label="price"
@@ -165,10 +159,10 @@ class VendorDashboard extends Component {
                 value={this.state.price}
                 onChange={this.handleInputChangeFor("price")}
               />
-             </div>
+           
             
             </div>
-            </div>
+            
               <div className={classes.description}>
                   <TextField
                     type="text"
@@ -182,7 +176,7 @@ class VendorDashboard extends Component {
           
             {/* input for price of item */}
               </div>
-      <div className={classes.column} >
+     
       <div className="ovr3">
       <div className="checkBoxes">
             <div className="row1">
@@ -279,7 +273,7 @@ class VendorDashboard extends Component {
             </div>
           </div>
         </div>
-        </div>
+        
         <Divider />
         <ExpansionPanelActions>
           <div className= "submit-btn">
@@ -293,7 +287,9 @@ class VendorDashboard extends Component {
             </Button>
         </div>
         </ExpansionPanelActions>
+        </div>
       </ExpansionPanel>
+      
       </div>
       </div>
       <div className="vendor-table">
@@ -302,7 +298,6 @@ class VendorDashboard extends Component {
       <Table >
         <TableHead>
           <TableRow>
-            <TableCell align="right">Item Number</TableCell>
             <TableCell align="right">Menu Item</TableCell>
             <TableCell align="right">Description</TableCell>
             <TableCell align="right">Price</TableCell>
@@ -315,8 +310,7 @@ class VendorDashboard extends Component {
           if (item.vendor_name === this.props.reduxState.user.vendor_name) {
              return (
             <TableRow key={item.id}>
-            
-              <TableCell align="right">{item.id}</TableCell>
+          
               <TableCell align="right">{item.item}</TableCell>
               <TableCell align="right">{item.description}</TableCell>
               <TableCell align="right">{item.price}</TableCell>

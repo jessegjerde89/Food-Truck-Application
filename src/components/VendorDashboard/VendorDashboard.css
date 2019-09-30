@@ -21,7 +21,10 @@
 }
 
 .ovr1{
-    flex-direction: row;
+    display:flex; 
+    flex-direction: column;
+    padding: 80px; 
+    width: 300px; 
 }
 
 .ovr2{
@@ -50,6 +53,8 @@
     /* column-count: 2; */
     column-gap: 8%;
     column-rule-width: 1px;
+   border-style: outset;
+   
 }
 
 .checkBoxes {
@@ -57,6 +62,5 @@
 }
 
 .wrapperVD {
-    /* max-width: 700px; */
-    margin: 0 auto;
+ 
 }
