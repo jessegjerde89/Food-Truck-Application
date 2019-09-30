@@ -52,6 +52,7 @@ render() {
             </div>
              <div>
               <div className= "subs">
+              <div>
                       Trucks
                       <img 
                       id="truckIcons"
@@ -60,7 +61,7 @@ render() {
                       width= "8%" 
                       height= "8%"
                       /> 
-                
+                     <div></div>
                       You 
                         <img 
                         id="icons"
@@ -69,6 +70,7 @@ render() {
                         width="15%"
                         height="30%"
                         />  
+                      </div>
                 </div>
               </div>
             </div>
@@ -77,9 +79,9 @@ render() {
         {/* display map on dom */}
         <GoogleMapContainer
             googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
-            loadingElement={<div style={{ height: `100%` }} />}
-            containerElement={<div style={{ height: `580px`, width: `90%` }} />}
-            mapElement={<div style={{ height: `100%` }} />}
+            loadingElement={<div style={{ height: `70%` }} />}
+            containerElement={<div style={{ height: `580px`, width: `100%` }} />}
+            mapElement={<div style={{ height: `70%` }} />}
         />
         </div>
         </div>

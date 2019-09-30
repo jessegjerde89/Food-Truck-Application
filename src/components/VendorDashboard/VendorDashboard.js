@@ -19,15 +19,11 @@ const styles = {
   root: {
     width: '100%'
   },
-  input:
+  description: 
   {
-    width: "150px",
+    width: "400px",
     padding: "20px"
-  },
-  // description: 
-  // {
-  
-  // }
+  }
 }
 
 
@@ -89,7 +85,8 @@ class VendorDashboard extends Component {
       }
 
       // dispatch for editing menu items
-      handleEdit = (item) => {
+      handleEdit = (item, event) => {
+        event.preventDefault(); 
         console.log('the item', item); 
         this.setState({
           id: item.id,
@@ -129,8 +126,8 @@ class VendorDashboard extends Component {
           console.log(this.state)
             return (
               // displays users name onto dashboard
-        <div className= "wrapper">
-          <div className="title" align="center">
+        <div className= "wrapperVD">
+          <div className="titleDash" align="center">
            {this.props.reduxState.user.username}'s Dashboard
 
           </div>
@@ -141,7 +138,6 @@ class VendorDashboard extends Component {
           {/* input for menu item */}
          <div  className= {classes.column}>
           <div className="ovr1">
-           <div className={classes.input}>
             <TextField
                 type="text"
                 name="item"
@@ -153,9 +149,8 @@ class VendorDashboard extends Component {
                 />
             
               {/* input for description of item */}
-            </div>
-            <div className={classes.input}>
-              <TextField
+              <br></br>
+              <TextField 
                 type="text"
                 name="price"
                 label="price"
@@ -164,29 +159,27 @@ class VendorDashboard extends Component {
                 value={this.state.price}
                 onChange={this.handleInputChangeFor("price")}
               />
-             </div>
+           
             
             </div>
-            <div className={classes.column} >
-           <div className={classes.description}>
-              <TextField
-                type="text"
-                name="description"
-                label="description"
-                variant="filled"
-                multiline
-                value={this.state.description}
-                onChange={this.handleInputChangeFor("description")}
-              />
+            
+              <div className={classes.description}>
+                  <TextField
+                    type="text"
+                    name="description"
+                    label="description"
+                    variant="filled"
+                    multiline
+                    value={this.state.description}
+                    onChange={this.handleInputChangeFor("description")}
+                  />
           
             {/* input for price of item */}
-            </div>
-        </div>
-        </div>
-      <div className={classes.column} >
+              </div>
+     
       <div className="ovr3">
       <div className="checkBoxes">
-            <div>
+            <div className="row1">
               <Checkbox
                   // checked={state.checkedA}
                   // onChange={handleChange('box1')}
@@ -194,48 +187,49 @@ class VendorDashboard extends Component {
                   inputProps={{
                     'aria-label': 'primary checkbox',
                   }}
-                /> Atkins Approved |
+                /> Atkins Approved 
                 <Checkbox
                   // checked={state.checkedA}
                   // onChange={handleChange('checkedA')}
-                  value="atkinsApproved"
+                  value="containsPeanuts"
                   inputProps={{
                     'aria-label': 'primary checkbox',
                   }}
-                /> Contains Peanuts |
+                /> Con. Peanuts 
                 <Checkbox
                 // checked={state.checkedA}
                 // onChange={handleChange('checkedA')}
-                value="atkinsApproved"
+                value="kosher"
                 inputProps={{
                   'aria-label': 'primary checkbox',
                 }}
-              /> Kosher |
+              /> Kosher 
             </div>
+            <div className="row2">
               <Checkbox
                 // checked={state.checkedA}
                 // onChange={handleChange('checkedA')}
-                value="atkinsApproved"
+                value="glutenFree"
                 inputProps={{
                   'aria-label': 'primary checkbox',
                 }}
-              /> Gluten-Free |
+              /> Gluten-Free 
               <Checkbox
                 // checked={state.checkedA}
                 // onChange={handleChange('checkedA')}
-                value="atkinsApproved"
+                value="containsDairy"
                 inputProps={{
                   'aria-label': 'primary checkbox',
                 }}
-              /> Contains Dairy |
+              /> Contains Dairy 
               <Checkbox
                 // checked={state.checkedA}
                 // onChange={handleChange('checkedA')}
-                value="atkinsApproved"
+                value="halalApproved"
                 inputProps={{
                   'aria-label': 'primary checkbox',
                 }}
-              />  Halal Approved |
+              />  Halal Approved 
             
                   {/* <FormControlLabel
                     value="atkinsApproved"
@@ -276,9 +270,10 @@ class VendorDashboard extends Component {
                 </RadioGroup>
               </FormControl> */}
             {/* </div> */}
+            </div>
           </div>
         </div>
-        </div>
+        
         <Divider />
         <ExpansionPanelActions>
           <div className= "submit-btn">
@@ -292,7 +287,9 @@ class VendorDashboard extends Component {
             </Button>
         </div>
         </ExpansionPanelActions>
+        </div>
       </ExpansionPanel>
+      
       </div>
       </div>
       <div className="vendor-table">
@@ -301,10 +298,11 @@ class VendorDashboard extends Component {
       <Table >
         <TableHead>
           <TableRow>
-            <TableCell align="right">Item Number</TableCell>
             <TableCell align="right">Menu Item</TableCell>
             <TableCell align="right">Description</TableCell>
             <TableCell align="right">Price</TableCell>
+            <TableCell align="right">Delete</TableCell>
+            <TableCell align="right">Edit</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -312,8 +310,7 @@ class VendorDashboard extends Component {
           if (item.vendor_name === this.props.reduxState.user.vendor_name) {
              return (
             <TableRow key={item.id}>
-            
-              <TableCell align="right">{item.id}</TableCell>
+          
               <TableCell align="right">{item.item}</TableCell>
               <TableCell align="right">{item.description}</TableCell>
               <TableCell align="right">{item.price}</TableCell>
