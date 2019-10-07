@@ -86,7 +86,7 @@ class VendorDashboard extends Component {
 
       // dispatch for editing menu items
       handleEdit = (event, item) => {
-        event.preventDefault(); 
+        // event.preventDefault(); 
         console.log('the item', item); 
         this.setState({
           id: item.id,
